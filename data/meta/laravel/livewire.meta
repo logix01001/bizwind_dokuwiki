@@ -1,0 +1,73 @@
+a:2:{s:7:"current";a:8:{s:4:"date";a:2:{s:7:"created";i:1660820240;s:8:"modified";i:1660878816;}s:11:"last_change";a:8:{s:4:"date";i:1660878816;s:2:"ip";s:3:"::1";s:4:"type";s:1:"E";s:2:"id";s:16:"laravel:livewire";s:4:"user";s:0:"";s:3:"sum";s:0:"";s:5:"extra";s:0:"";s:10:"sizechange";i:122;}s:4:"user";s:0:"";s:7:"creator";s:0:"";s:5:"title";s:12:"Data Binding";s:11:"description";a:2:{s:15:"tableofcontents";a:16:{i:0;a:4:{s:3:"hid";s:12:"data_binding";s:5:"title";s:12:"Data Binding";s:4:"type";s:2:"ul";s:5:"level";i:1;}i:1;a:4:{s:3:"hid";s:7:"actions";s:5:"title";s:7:"Actions";s:4:"type";s:2:"ul";s:5:"level";i:1;}i:2;a:4:{s:3:"hid";s:15:"lifecycle_hooks";s:5:"title";s:15:"Lifecycle Hooks";s:4:"type";s:2:"ul";s:5:"level";i:1;}i:3;a:4:{s:3:"hid";s:7:"nesting";s:5:"title";s:7:"Nesting";s:4:"type";s:2:"ul";s:5:"level";i:1;}i:4;a:4:{s:3:"hid";s:5:"event";s:5:"title";s:5:"Event";s:4:"type";s:2:"ul";s:5:"level";i:1;}i:5;a:4:{s:3:"hid";s:20:"setting_up_component";s:5:"title";s:20:"Setting up Component";s:4:"type";s:2:"ul";s:5:"level";i:1;}i:6;a:4:{s:3:"hid";s:15:"setting_up_form";s:5:"title";s:15:"Setting up Form";s:4:"type";s:2:"ul";s:5:"level";i:1;}i:7;a:4:{s:3:"hid";s:10:"validation";s:5:"title";s:10:"Validation";s:4:"type";s:2:"ul";s:5:"level";i:1;}i:8;a:4:{s:3:"hid";s:7:"testing";s:5:"title";s:7:"Testing";s:4:"type";s:2:"ul";s:5:"level";i:1;}i:9;a:4:{s:3:"hid";s:3:"tdd";s:5:"title";s:3:"TDD";s:4:"type";s:2:"ul";s:5:"level";i:1;}i:10;a:4:{s:3:"hid";s:8:"checkbox";s:5:"title";s:8:"Checkbox";s:4:"type";s:2:"ul";s:5:"level";i:1;}i:11;a:4:{s:3:"hid";s:12:"radio_button";s:5:"title";s:12:"Radio Button";s:4:"type";s:2:"ul";s:5:"level";i:1;}i:12;a:4:{s:3:"hid";s:10:"select_box";s:5:"title";s:10:"Select Box";s:4:"type";s:2:"ul";s:5:"level";i:1;}i:13;a:4:{s:3:"hid";s:13:"submit_button";s:5:"title";s:13:"Submit button";s:4:"type";s:2:"ul";s:5:"level";i:1;}i:14;a:4:{s:3:"hid";s:16:"tdd_profile_form";s:5:"title";s:16:"TDD profile form";s:4:"type";s:2:"ul";s:5:"level";i:1;}i:15;a:4:{s:3:"hid";s:14:"alert_alpinejs";s:5:"title";s:14:"Alert Alpinejs";s:4:"type";s:2:"ul";s:5:"level";i:1;}}s:8:"abstract";s:257:"Data Binding
+
+
+
+
+
+Actions
+
+
+
+
+
+
+
+	*  click	wire:click
+	*  keydown	wire:keydown
+	*  submit	wire:submit
+
+Direct SET
+
+
+
+Lifecycle Hooks
+
+
+
+
+
+
+
+
+
+
+
+Nesting
+
+
+
+
+
+
+
+
+
+Adding Key 
+
+
+v-for="name in names" key=id
+
+
+
+
+
+
+
+
+
+
+Event
+
+
+
+
+
+
+
+
+
+
+
+
+
+Only parent will trigger";}s:8:"relation";a:2:{s:5:"media";a:64:{s:48:"laravel:screen_shot_2022-08-18_at_7.01.36_pm.png";b:1;s:48:"laravel:screen_shot_2022-08-18_at_7.03.08_pm.png";b:1;s:48:"laravel:screen_shot_2022-08-18_at_7.04.21_pm.png";b:1;s:48:"laravel:screen_shot_2022-08-18_at_7.05.30_pm.png";b:1;s:48:"laravel:screen_shot_2022-08-18_at_7.06.50_pm.png";b:1;s:48:"laravel:screen_shot_2022-08-18_at_7.29.55_pm.png";b:1;s:48:"laravel:screen_shot_2022-08-18_at_7.33.14_pm.png";b:1;s:48:"laravel:screen_shot_2022-08-18_at_7.33.03_pm.png";b:1;s:48:"laravel:screen_shot_2022-08-18_at_7.36.34_pm.png";b:1;s:48:"laravel:screen_shot_2022-08-18_at_7.36.59_pm.png";b:1;s:48:"laravel:screen_shot_2022-08-18_at_7.38.12_pm.png";b:1;s:48:"laravel:screen_shot_2022-08-18_at_7.40.40_pm.png";b:1;s:48:"laravel:screen_shot_2022-08-18_at_7.40.50_pm.png";b:1;s:48:"laravel:screen_shot_2022-08-18_at_7.40.56_pm.png";b:1;s:48:"laravel:screen_shot_2022-08-18_at_7.42.30_pm.png";b:1;s:48:"laravel:screen_shot_2022-08-18_at_7.44.09_pm.png";b:1;s:48:"laravel:screen_shot_2022-08-18_at_8.00.38_pm.png";b:1;s:48:"laravel:screen_shot_2022-08-18_at_8.00.28_pm.png";b:1;s:48:"laravel:screen_shot_2022-08-18_at_8.08.29_pm.png";b:1;s:48:"laravel:screen_shot_2022-08-18_at_8.19.07_pm.png";b:1;s:48:"laravel:screen_shot_2022-08-18_at_8.21.15_pm.png";b:1;s:48:"laravel:screen_shot_2022-08-18_at_8.22.39_pm.png";b:1;s:48:"laravel:screen_shot_2022-08-18_at_8.23.51_pm.png";b:1;s:48:"laravel:screen_shot_2022-08-18_at_8.24.51_pm.png";b:1;s:48:"laravel:screen_shot_2022-08-18_at_8.27.34_pm.png";b:1;s:48:"laravel:screen_shot_2022-08-18_at_8.27.45_pm.png";b:1;s:48:"laravel:screen_shot_2022-08-19_at_7.22.52_am.png";b:1;s:48:"laravel:screen_shot_2022-08-19_at_7.20.47_am.png";b:1;s:48:"laravel:screen_shot_2022-08-19_at_7.22.17_am.png";b:1;s:48:"laravel:screen_shot_2022-08-19_at_7.24.18_am.png";b:1;s:48:"laravel:screen_shot_2022-08-19_at_7.24.53_am.png";b:1;s:48:"laravel:screen_shot_2022-08-19_at_7.54.21_am.png";b:1;s:48:"laravel:screen_shot_2022-08-19_at_8.02.19_am.png";b:1;s:48:"laravel:screen_shot_2022-08-19_at_8.11.22_am.png";b:1;s:48:"laravel:screen_shot_2022-08-19_at_8.11.46_am.png";b:1;s:48:"laravel:screen_shot_2022-08-19_at_8.26.14_am.png";b:1;s:48:"laravel:screen_shot_2022-08-19_at_8.28.38_am.png";b:1;s:48:"laravel:screen_shot_2022-08-19_at_8.29.08_am.png";b:1;s:48:"laravel:screen_shot_2022-08-19_at_8.30.00_am.png";b:1;s:48:"laravel:screen_shot_2022-08-19_at_8.30.50_am.png";b:1;s:48:"laravel:screen_shot_2022-08-19_at_8.31.23_am.png";b:1;s:48:"laravel:screen_shot_2022-08-19_at_8.34.02_am.png";b:1;s:48:"laravel:screen_shot_2022-08-19_at_8.35.09_am.png";b:1;s:48:"laravel:screen_shot_2022-08-19_at_8.36.21_am.png";b:1;s:48:"laravel:screen_shot_2022-08-19_at_8.43.01_am.png";b:1;s:48:"laravel:screen_shot_2022-08-19_at_8.43.33_am.png";b:1;s:48:"laravel:screen_shot_2022-08-19_at_8.51.24_am.png";b:1;s:48:"laravel:screen_shot_2022-08-19_at_8.54.48_am.png";b:1;s:48:"laravel:screen_shot_2022-08-19_at_8.58.44_am.png";b:1;s:48:"laravel:screen_shot_2022-08-19_at_9.02.29_am.png";b:1;s:48:"laravel:screen_shot_2022-08-19_at_9.45.59_am.png";b:1;s:48:"laravel:screen_shot_2022-08-19_at_9.48.27_am.png";b:1;s:48:"laravel:screen_shot_2022-08-19_at_9.56.14_am.png";b:1;s:48:"laravel:screen_shot_2022-08-19_at_9.55.48_am.png";b:1;s:48:"laravel:screen_shot_2022-08-19_at_9.57.04_am.png";b:1;s:49:"laravel:screen_shot_2022-08-19_at_10.16.27_am.png";b:1;s:49:"laravel:screen_shot_2022-08-19_at_10.25.57_am.png";b:1;s:49:"laravel:screen_shot_2022-08-19_at_10.31.37_am.png";b:1;s:49:"laravel:screen_shot_2022-08-19_at_10.51.07_am.png";b:1;s:49:"laravel:screen_shot_2022-08-19_at_10.51.32_am.png";b:1;s:49:"laravel:screen_shot_2022-08-19_at_10.51.54_am.png";b:1;s:49:"laravel:screen_shot_2022-08-19_at_10.53.35_am.png";b:1;s:49:"laravel:screen_shot_2022-08-19_at_11.13.14_am.png";b:1;s:49:"laravel:screen_shot_2022-08-19_at_11.12.07_am.png";b:1;}s:10:"firstimage";s:48:"laravel:screen_shot_2022-08-18_at_7.01.36_pm.png";}s:8:"internal";a:2:{s:5:"cache";b:1;s:3:"toc";b:1;}}s:10:"persistent";a:4:{s:4:"date";a:2:{s:7:"created";i:1660820240;s:8:"modified";i:1660878816;}s:11:"last_change";a:8:{s:4:"date";i:1660878816;s:2:"ip";s:3:"::1";s:4:"type";s:1:"E";s:2:"id";s:16:"laravel:livewire";s:4:"user";s:0:"";s:3:"sum";s:0:"";s:5:"extra";s:0:"";s:10:"sizechange";i:122;}s:4:"user";s:0:"";s:7:"creator";s:0:"";}}

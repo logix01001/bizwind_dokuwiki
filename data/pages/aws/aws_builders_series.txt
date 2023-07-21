@@ -1,0 +1,33 @@
+====== July 14 2022 ======
+
+===== Cloud Security Fundamentals =====
+  - Compliance and data privacy
+  - data protection
+  - identity & Access mgt
+  - network & app protection
+  - threat detection & continuous monitoring
+
+Security is **job zero**
+
+{{:aws:screen_shot_2022-07-14_at_5.45.33_pm.png?400|}}
+
+{{:aws:screen_shot_2022-07-14_at_5.46.23_pm.png?400|}}
+
+===== AWS START TAKING OVER =====
+
+{{:aws:screen_shot_2022-07-14_at_5.47.05_pm.png?400|}}
+
+===== Compliance and data privacy =====
+
+{{:aws:screen_shot_2022-07-14_at_5.48.12_pm.png?400|}}
+
+
+
+
+
+
+
+===== Containers and serverless: Choosing the optimal compute for your modern applications =====
+
+
+

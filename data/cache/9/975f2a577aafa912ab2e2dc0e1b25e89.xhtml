@@ -1,0 +1,22 @@
+<pre class="code"># -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure(2) do |config|
+  config.vm.box = &quot;ubuntu/focal64&quot;
+ 
+  config.vm.network &quot;forwarded_port&quot;, guest: 27017, host: 27017
+
+  config.vm.provider &quot;virtualbox&quot; do |vb|
+    vb.memory = &quot;1024&quot;
+  end
+
+  config.vm.provision &quot;docker&quot; do |d|
+    d.run &quot;mongoDB&quot;, image: &quot;mongo:2&quot;, args: &quot;-p 27017:27017&quot;
+  end
+
+  if Vagrant.has_plugin?(&quot;vagrant-cachier&quot;)
+    config.cache.scope = :box
+  end
+
+end
+</pre>

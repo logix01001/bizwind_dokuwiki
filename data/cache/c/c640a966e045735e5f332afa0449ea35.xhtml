@@ -1,0 +1,12 @@
+<pre class="code">$this-&gt;addFlash(
+            &#039;notice&#039;, //Title
+            &#039;Your changes were saved!&#039; // Message
+        );
+        
+        
+        
+{% for message in app.flashes(&#039;notice&#039;) %}
+    &lt;div class=&quot;flash-notice&quot;&gt;
+        {{ message }}
+    &lt;/div&gt;
+{% endfor %}</pre>

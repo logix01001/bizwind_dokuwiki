@@ -1,0 +1,16 @@
+====== Annonation ======
+
+
+  - @BeforeClass - Once
+  - @Before      - Always called before the each test executed
+  - @Test        - Test Case
+  - @After.      - Always called after the each test executed
+  - @AfterClass  - Once
+  - @Ignore      - Ignore Test to be executed
+
+
+JUNIT5
+
+  * @BeforeEach - @before
+  * @AfterEach - @After
+

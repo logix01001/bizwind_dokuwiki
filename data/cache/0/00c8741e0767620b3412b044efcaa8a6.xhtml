@@ -1,0 +1,65 @@
+
+<h2 class="sectionedit1" id="configuration_version">Configuration Version</h2>
+<div class="level2">
+
+<p>
+Configuration versions are the mechanism by which Vagrant 1.1+ is able to remain backwards compatible with Vagrant 1.0.x Vagrantfiles, while introducing dramatically new features and configuration options.
+</p>
+
+<p>
+The <strong>“2”</strong> in the first line above represents the version of the configuration object config that will be used for configuration for that block (the section between the do and the end). This object can be very different from version to version.
+</p>
+<pre class="code">Vagrant.configure(&quot;2&quot;) do |config|
+
+end
+</pre>
+<ul>
+<li class="level1"><div class="li"> config.vm.box - operating system</div>
+</li>
+<li class="level1"><div class="li"> config.vm.provider - virtualbox</div>
+</li>
+<li class="level1"><div class="li"> config.vm.network - how your host sees your box</div>
+</li>
+<li class="level1"><div class="li"> config.vm.synced_folder - how you access files from your computer</div>
+</li>
+<li class="level1"><div class="li"> config.vm.provision - what we want setup</div>
+</li>
+</ul>
+<pre class="code">vagrant up
+vagrant halt
+vagrant up --provisions</pre>
+<pre class="code">
+ config.vm.provider &quot;virtualbox&quot; do |vb|
+    vb.memory = &quot;1024&quot;
+    vb.cpu = &quot;4&quot;
+ end</pre>
+<pre class="code">config.vm.provision :shell, path: &quot;script.sh&quot;</pre>
+
+<p>
+RUBY 2.6 to 2.3.0
+</p>
+<pre class="code">rbenv install 2.3.0
+rbenv rehash
+rbenv global 2.3.0
+
+vi ~/.zshrc
+
+if which rbenv &gt; /dev/null; then eval &quot;$(rbenv init -)&quot;; fi
+
+vagrant reload --provision encounter error in vagrant up in bizemployee</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Configuration Version&quot;,&quot;hid&quot;:&quot;configuration_version&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:1,&quot;range&quot;:&quot;1-1257&quot;} -->
+<h3 class="sectionedit2" id="vagrant_provisioning">Vagrant Provisioning</h3>
+<div class="level3">
+
+<p>
+Provisioners in Vagrant allow us to automatically install software, alter configurations, and more on the machine as part of the vagrant up process.
+</p>
+
+<p>
+This is useful since boxes typically aren&#039;t built perfectly for our use case. Of course, if we want to just use vagrant ssh and install the software by hand, that works. But by using the provisioning systems built-in to Vagrant, it automates the process so that it is repeatable. Most importantly, it requires no human interaction, so we can vagrant destroy and vagrant up and have a fully ready-to-go work environment with a single command. Powerful.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Vagrant Provisioning&quot;,&quot;hid&quot;:&quot;vagrant_provisioning&quot;,&quot;codeblockOffset&quot;:5,&quot;secid&quot;:2,&quot;range&quot;:&quot;1258-&quot;} -->

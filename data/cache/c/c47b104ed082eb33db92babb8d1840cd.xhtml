@@ -1,0 +1,30 @@
+
+<h1 class="sectionedit1" id="custom_repository">Custom Repository</h1>
+<div class="level1">
+<ol>
+<li class="level1"><div class="li"> <a href="https://www.drupal.org/project/entity_repository" class="urlextern" title="https://www.drupal.org/project/entity_repository" rel="ugc nofollow">https://www.drupal.org/project/entity_repository</a></div>
+</li>
+<li class="level1"><div class="li"> install module</div>
+</li>
+<li class="level1"><div class="li"> create service.yml</div>
+</li>
+<li class="level1"><div class="li"> create folder Drupal\module\Repository</div>
+</li>
+<li class="level1"><div class="li"> class AdvertiserRepository extends NodeRepository</div>
+</li>
+<li class="level1"><div class="li"> protected $entityType = &#039;advertiser&#039; ID in entity @ContentEntityType(id = “advertiser”</div>
+</li>
+<li class="level1"><div class="li"> delete custom basequery in parent class not applicable to your custom entity</div>
+</li>
+<li class="level1"><div class="li"> Drupal::service(&#039;advertiser.repository.advertiser&#039;)→findAll</div>
+</li>
+</ol>
+<dl class="file">
+<dt><a href="/dokuwiki/doku.php?do=export_code&amp;id=drupal:custom_repository&amp;codeblock=0" title="Download Snippet" class="mediafile mf_yml">module.services.yml</a></dt>
+<dd><pre class="code file yml">services:
+  advertiser.repository.advertiser:
+    class: Drupal\advertiser\Repository\AdvertiserRepository
+    parent: entity_repository.repository.node</pre>
+</dd></dl>
+
+</div>

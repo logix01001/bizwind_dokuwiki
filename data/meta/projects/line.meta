@@ -1,0 +1,17 @@
+a:2:{s:7:"current";a:8:{s:4:"date";a:2:{s:7:"created";i:1639527851;s:8:"modified";i:1639700164;}s:11:"last_change";a:8:{s:4:"date";i:1639700164;s:2:"ip";s:3:"::1";s:4:"type";s:1:"E";s:2:"id";s:13:"projects:line";s:4:"user";s:0:"";s:3:"sum";s:0:"";s:5:"extra";s:0:"";s:10:"sizechange";i:1541;}s:4:"user";s:0:"";s:7:"creator";s:0:"";s:5:"title";s:12:"API USE CASE";s:11:"description";a:2:{s:15:"tableofcontents";a:11:{i:0;a:4:{s:3:"hid";s:12:"api_use_case";s:5:"title";s:12:"API USE CASE";s:4:"type";s:2:"ul";s:5:"level";i:1;}i:1;a:4:{s:3:"hid";s:14:"sprint_meeting";s:5:"title";s:14:"Sprint Meeting";s:4:"type";s:2:"ul";s:5:"level";i:1;}i:2;a:4:{s:3:"hid";s:14:"documents_link";s:5:"title";s:14:"Documents Link";s:4:"type";s:2:"ul";s:5:"level";i:1;}i:3;a:4:{s:3:"hid";s:21:"messaging_api_pricing";s:5:"title";s:21:"Messaging API pricing";s:4:"type";s:2:"ul";s:5:"level";i:1;}i:4;a:4:{s:3:"hid";s:31:"line_private_key_and_public_key";s:5:"title";s:31:"Line private key and public key";s:4:"type";s:2:"ul";s:5:"level";i:2;}i:5;a:4:{s:3:"hid";s:27:"via_browser_developer_tools";s:5:"title";s:27:"Via Browser developer tools";s:4:"type";s:2:"ul";s:5:"level";i:3;}i:6;a:4:{s:3:"hid";s:17:"insert_public_key";s:5:"title";s:17:"Insert public key";s:4:"type";s:2:"ul";s:5:"level";i:3;}i:7;a:4:{s:3:"hid";s:11:"reply_token";s:5:"title";s:11:"Reply Token";s:4:"type";s:2:"ul";s:5:"level";i:3;}i:8;a:4:{s:3:"hid";s:15:"event_hook_post";s:5:"title";s:15:"Event Hook POST";s:4:"type";s:2:"ul";s:5:"level";i:3;}i:9;a:4:{s:3:"hid";s:10:"narrowcast";s:5:"title";s:10:"Narrowcast";s:4:"type";s:2:"ul";s:5:"level";i:2;}i:10;a:4:{s:3:"hid";s:14:"jp_region_list";s:5:"title";s:14:"JP region List";s:4:"type";s:2:"ul";s:5:"level";i:3;}}s:8:"abstract";s:503:"API USE CASE
+
+
+
+
+
+Sprint Meeting
+
+	*  12-7~28
+	*  <https://teams.microsoft.com/l/meetup-join/19%3ameeting_MTM5MWZjZWMtYzYzZC00NDlmLTgyMjAtMmQwNjYzNjA0NzU5%40thread.v2/0?context=%7b%22Tid%22%3a%2242f47f52-7d4c-45f7-963d-906a479625d2%22%2c%22Oid%22%3a%2252b9e480-c3e3-4b04-8e3b-2bf850164fbf%22%7d>
+
+Documents Link
+
+	*  Screen Transition
+	*  <https://athlee-my.sharepoint.com/:p:/g/personal/wg_athlee_sg/Edy_zD4KzylIkPfr6KmrzTMB2BwMIddZEAnenLnS9aG2ZA?e=Oq764H>
+	*  Feedback link 2021-12-14
+	*  <https://…";}s:8:"relation";a:2:{s:5:"media";a:6:{s:40:"projects:reserve_sequence_diagram_en.png";b:1;s:38:"projects:reserve_system_diagram_en.png";b:1;s:19:"projects:buckup.pdf";b:1;s:86:"projects:subscriptionplans_line_ultimateguide_589d06a760ebf18e1045034e28865557_800.png";b:1;s:50:"projects:screen_shot_2021-12-16_at_10.35.02_am.png";b:1;s:49:"projects:screen_shot_2021-12-17_at_7.40.47_am.png";b:1;}s:10:"firstimage";s:40:"projects:reserve_sequence_diagram_en.png";}s:8:"internal";a:2:{s:5:"cache";b:1;s:3:"toc";b:1;}}s:10:"persistent";a:4:{s:4:"date";a:2:{s:7:"created";i:1639527851;s:8:"modified";i:1639700164;}s:11:"last_change";a:8:{s:4:"date";i:1639700164;s:2:"ip";s:3:"::1";s:4:"type";s:1:"E";s:2:"id";s:13:"projects:line";s:4:"user";s:0:"";s:3:"sum";s:0:"";s:5:"extra";s:0:"";s:10:"sizechange";i:1541;}s:4:"user";s:0:"";s:7:"creator";s:0:"";}}

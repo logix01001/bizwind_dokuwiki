@@ -1,0 +1,6 @@
+FROM webdevops/php-nginx-dev:8.2-alpine AS base
+&nbsp;
+WORKDIR /var/www/app
+&nbsp;
+RUN apk add npm nodejs=16.20.1-r0 --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.16/main/
+RUN npm install -g yarn

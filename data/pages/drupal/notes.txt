@@ -1,0 +1,97 @@
+
+
+====== Create Taxonomy vocabulary ======
+
+  * databasename store in **taxonomy_term_field_revision table**
+
+using taxonomy vocabulary we can add a master list for category
+
+===== Creation of taxonomy =====
+
+  - go to taxonomy
+  - add vocabulary
+  - add "Category"
+  - add "term"
+  - add name and save (optional description)
+  - adding this category to article
+  - go to content type
+  - select article and manage fields
+  - add field
+  - select taxonomy term
+  - enter label
+  - select unlimited
+  - select the Category in Vocabulary
+  - please make sure uncheck the "Create referenced entities if they don't already exist"
+  - save settings
+  - in manage display
+  - default the arrangment in display
+  - Teaser tab if you want to show it in the teaser (home page)
+
+
+
+
+==== update drupal core from 8.9.0 to 8.9.18 ====
+
+  * composer require drupal/core-recommended:8.9.18 --update-with-dependencies
+  * update.php
+  * clear cache
+
+
+==== Update 8.0 to 8.9 ====
+
+https://www.drupal.org/docs/installing-drupal/add-composer-to-an-existing-site
+
+  - sudo composer create-project drupal/recommended-project:^8.9 drupal80to89to9
+  - copy sites,modules,themes to fresh install 8.9
+  - copy provisioning vagrant file
+  - change conflict vagrant name ip
+  - change 7.4 php in provisioning
+  - vagrant up
+  - create database
+  - import backup database to mysql
+  - composer install
+  - update.php
+
+==== Update 8.8 or 8.9 to 9.2 ====
+
+  - chmod 777 web/sites/default
+  - chmod 666 web/sites/default/*settings.php
+  - chmod 666 web/sites/default/*services.yml
+  - composer require 'drupal/core-recommended:^9' 'drupal/core-composer-scaffold:^9' 'drupal/core-project-message:^9' --update-with-dependencies --no-update
+  - composer update
+  - update.php
+  - if in case trouble in update.php such as module outdate
+       - https://www.drupal.org/docs/updating-drupal/troubleshooting-database-updates#s-the-module-or-theme-is-incompatible-with-the-installed-version-of-drupal
+  - chmod 755 web/sites/default
+  - chmod 644 web/sites/default/*settings.php
+  - chmod 644 web/sites/default/*services.yml
+
+==== Update 8.0 to 9 ====
+
+{{:drupal:screen_shot_2021-09-15_at_11.10.52_am.png?400|}}
+
+<code>
+hello.demo:
+  title: 'Hello'
+  description: 'Hello page'
+  parent: main
+  menu_name: main
+  route_name: hello.content`
+Let’s break this down.
+</code>
+  * hello.demo - the namespace for this menu link.
+  * title - this will appear as the menu link
+  * description - this will appear as the menu link title, a tooltip and/or the description in the admin UI.
+  * parent - the parent item, which is used if you are adding this item as a child of another in a hierarchy. In this case the parent is the menu itself, so we are using the menu_name.
+  * menu_name - this is the menu name we found in the previous step._
+  * route_name - the route to call for this menu link.
+
+
+==== Request not compatible in method ====
+
+to use Request handler use
+
+<code>
+Drupal::request()->query->all()
+</code>
+

@@ -1,0 +1,45 @@
+
+<h1 class="sectionedit1" id="jquery">Jquery</h1>
+<div class="level1">
+<pre class="code">$(&#039;.link-image-tooltip&#039;).mouseenter(function(e) {
+     x = e.pageX - $(this).offset().left;
+     y = e.pageY - $(this).offset().top;
+
+     $(this).children(&quot;div.tooltip-image&quot;).css({&#039;top&#039;: y + 10,&#039;left&#039;: x + 20,&#039;display&#039;:&#039;block&#039;});
+}).mousemove(function(e) {
+     x = e.pageX - $(this).offset().left;
+     y = e.pageY - $(this).offset().top;
+
+     $(this).children(&quot;div.tooltip-image&quot;).css({&#039;top&#039;: y + 10,&#039;left&#039;: x + 20});
+}).mouseleave(function() {
+     $(this).children(&quot;div.tooltip-image&quot;).animate({&quot;opacity&quot;: &quot;hide&quot;}, &quot;fast&quot;);
+});</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Jquery&quot;,&quot;hid&quot;:&quot;jquery&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:1,&quot;range&quot;:&quot;1-573&quot;} -->
+<h1 class="sectionedit2" id="css">CSS</h1>
+<div class="level1">
+<pre class="code">.link-image-tooltip
+    position: relative
+    margin: 0px 5px
+
+.tooltip-image
+    display: none
+    position: absolute
+    padding: 8px 0 0 8px
+</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;CSS&quot;,&quot;hid&quot;:&quot;css&quot;,&quot;codeblockOffset&quot;:1,&quot;secid&quot;:2,&quot;range&quot;:&quot;574-754&quot;} -->
+<h1 class="sectionedit3" id="html">HTML</h1>
+<div class="level1">
+<pre class="code">&lt;div class=&quot;link-image-tooltip&quot;&gt;
+    &lt;a href=&quot;#&quot; target=&quot;_blank&quot;&gt;text&lt;/a&gt;
+    &lt;div class=&quot;tooltip-image&quot;&gt;
+        &lt;img src=&quot;src&quot; /&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;HTML&quot;,&quot;hid&quot;:&quot;html&quot;,&quot;codeblockOffset&quot;:2,&quot;secid&quot;:3,&quot;range&quot;:&quot;755-&quot;} -->

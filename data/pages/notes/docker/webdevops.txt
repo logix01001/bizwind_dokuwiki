@@ -1,0 +1,99 @@
+====== Setup webdevops ======
+
+
+<file yml docker-compose.yml>
+version: '3.8'
+
+services:
+  database:
+    container_name: database
+    image: mysql:8.0
+    ports:
+      - '4306:3306'
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      - MYSQL_DATABASE=bems
+      - MYSQL_ROOT_PASSWORD=bizwind
+      - MYSQL_USER=bems
+      - MYSQL_PASSWORD=bizwind
+    volumes:
+      - bems-mysql-data:/var/lib/mysql
+
+  app:
+    container_name: app
+    environment:
+      - XDEBUG_MODE=debug
+      - XDEBUG_CLIENT_HOST=host.docker.internal
+      - XDEBUG_START_WITH_REQUEST=yes
+      - XDEBUG_CLIENT_PORT=9003
+    build:
+      context: .
+      dockerfile: ./app/Dockerfile
+    ports:
+      - "8080:80"
+    volumes:
+      - ./app:/var/www/app
+      - ./nginx/vhost.conf:/opt/docker/etc/nginx/vhost.conf
+    depends_on:
+      - database
+      
+volumes:
+  bems-mysql-data:
+
+</file>
+
+**Xdebug launch.json**
+
+<file json launch.json>
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch BEMS in xDebug Mode",
+            "type": "php",
+            "request": "launch",
+            "port": 9003,
+            "pathMappings": {
+                "/var/www/app": "${workspaceFolder}/app"
+            },
+        }
+    ]
+}
+</file>
+
+<file dockerfile dockerfile>
+FROM webdevops/php-nginx-dev:8.2-alpine AS base
+
+WORKDIR /var/www/app
+
+RUN apk add npm nodejs=16.20.1-r0 --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.16/main/
+RUN npm install -g yarn
+
+</file>
+
+<file conf vhost.conf>
+
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    server_name  _ *.vm docker;
+
+    root "/var/www/app/public";
+    index index.php;
+
+    include /opt/docker/etc/nginx/vhost.common.d/*.conf;
+}
+
+
+</file>
+
+**xdebug for docker container**
+https://dev.to/jackmiras/xdebug-in-vscode-with-docker-379l
+
+
+https://dockerfile.readthedocs.io/en/latest/content/DockerImages/dockerfiles/php-nginx-dev.html

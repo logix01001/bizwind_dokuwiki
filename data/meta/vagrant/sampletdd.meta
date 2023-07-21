@@ -1,0 +1,21 @@
+a:2:{s:7:"current";a:7:{s:4:"date";a:2:{s:7:"created";i:1629443345;s:8:"modified";i:1629443345;}s:7:"creator";s:6:"Jerome";s:4:"user";s:10:"logix01001";s:11:"last_change";a:8:{s:4:"date";i:1629443345;s:2:"ip";s:3:"::1";s:4:"type";s:1:"C";s:2:"id";s:17:"vagrant:sampletdd";s:4:"user";s:10:"logix01001";s:3:"sum";s:7:"created";s:5:"extra";s:0:"";s:10:"sizechange";i:456;}s:8:"internal";a:2:{s:5:"cache";b:1;s:3:"toc";b:1;}s:11:"description";a:1:{s:8:"abstract";s:440:"# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure(2) do |config|
+  config.vm.box = "ubuntu/focal64"
+ 
+  config.vm.network "forwarded_port", guest: 27017, host: 27017
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = "1024"
+  end
+
+  config.vm.provision "docker" do |d|
+    d.run "mongoDB", image: "mongo:2", args: "-p 27017:27017"
+  end
+
+  if Vagrant.has_plugin?("vagrant-cachier")
+    config.cache.scope = :box
+  end
+
+end";}s:8:"relation";a:1:{s:10:"firstimage";s:0:"";}}s:10:"persistent";a:4:{s:4:"date";a:1:{s:7:"created";i:1629443345;}s:7:"creator";s:6:"Jerome";s:4:"user";s:10:"logix01001";s:11:"last_change";a:8:{s:4:"date";i:1629443345;s:2:"ip";s:3:"::1";s:4:"type";s:1:"C";s:2:"id";s:17:"vagrant:sampletdd";s:4:"user";s:10:"logix01001";s:3:"sum";s:7:"created";s:5:"extra";s:0:"";s:10:"sizechange";i:456;}}}

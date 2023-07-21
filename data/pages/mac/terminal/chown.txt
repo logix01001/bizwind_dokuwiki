@@ -1,0 +1,3 @@
+<code>
+sudo chown -R <user>:<group> <path_to_your_vscode_installation_directory>
+</code>

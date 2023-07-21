@@ -1,0 +1,414 @@
+====== GIT ======
+
+===== STASH =====
+Use git stash when you want to record the current state of the working directory and the index, but want to go back to a clean working directory. The command saves your local modifications away and reverts the working directory to match the HEAD commit.
+
+{{:biz:git-stash.png?400|}}
+
+  * **git stash**              --- add to stash
+  * **git stash apply**.       --- apply but retain in stash
+  * **git stash pop**          --- apply and delete from stash
+  * **git stast list**.        --- show all list
+  * **git stash push -m ""**   --- add name for easy identity
+  * **git stash drop //n//**.  --- n = position of stash to drop
+
+
+===== GIT LOG =====
+
+The git log command shows a list of all the commits made to a repository. You can see the hash of each Git commit, the message associated with each commit, and more metadata. This command is useful for displaying the history of a repository
+
+
+  * **git log --oneline**
+  * **git log --stat** //show all stat how many line modified, deleted//
+  * **git log --patch** //show location of file commited//
+  * **git log --graph** //display as a graph//
+  * **git log -2 ** //Show only the last 2 commit//
+  * **git log --after="2021-08-10"**
+  * **git log --after="2021-08-10" --before="2021-08-20"**
+  * **git log --author="jerome"**
+
+
+
+===== GIT Commits =====
+A commit in a git repository records a snapshot of all the (tracked) files in your directory. It's like a giant copy and paste, but even better!
+
+Git wants to keep commits as lightweight as possible though, so it doesn't just blindly copy the entire directory every time you commit. It can (when possible) compress a commit as a set of changes, or a "delta", from one version of the repository to the next.
+
+Git also maintains a history of which commits were made when. That's why most commits have ancestor commits above them -- we designate this with arrows in our visualization. Maintaining history is great for everyone working on the project!
+
+It's a lot to take in, but for now you can think of commits as snapshots of the project. Commits are very lightweight and switching between them is wicked fast!
+
+
+===== Git Branches =====
+
+  * GIT MAIN = MASTER
+  * GIT DEVELOP = MAIN BRANCH FOR DEVELOP
+  * GIT BUGFIXBRANCH
+  * STAGING
+  * PRODUCTION
+
+  * BACKLOG main git ng bizwind
+
+
+Branches in Git are incredibly lightweight as well. They are simply pointers to a specific commit -- nothing more. This is why many Git enthusiasts chant the mantra:
+
+branch early, and branch often
+Because there is no storage / memory overhead with making many branches, it's easier to logically divide up your work than have big beefy branches.
+
+When we start mixing branches and commits, we will see how these two features combine. For now though, just remember that a branch essentially says "I want to include the work of this commit and all parent commits."
+
+===== Branches and Merging =====
+Merging in Git creates a special commit that has two unique parents. A commit with two parents essentially means "I want to include all the work from this parent over here and this one over here, and the set of all their parents."
+
+
+{{:biz:gitbranchmerge.png?400|}}
+
+<code>
+git checkout -b bugFix
+git commit
+git checkout main
+git commit
+git merge bugFix
+</code>
+
+===== Git Rebase =====
+The second way of combining work between branches is rebasing. Rebasing essentially takes a set of commits, "copies" them, and plops them down somewhere else.
+
+While this sounds confusing, the advantage of rebasing is that it can be used to make a nice linear sequence of commits. The commit log / history of the repository will be a lot cleaner if only rebasing is allowed.
+
+{{:biz:git_rebase.png?400|}}
+
+{{:biz:mergevsrebase.png?400|}}
+
+<code>
+git checkout -b bugFix
+git commit
+git checkout main
+git commit
+git checkout bugFix
+git rebase main
+</code>
+
+===== HEAD =====
+
+First we have to talk about "HEAD". HEAD is the symbolic name for the currently checked out commit -- it's essentially what commit you're working on top of.
+
+HEAD always points to the most recent commit which is reflected in the working tree. Most git commands which make changes to the working tree will start by changing HEAD.
+
+Normally HEAD points to a branch name (like bugFix). When you commit, the status of bugFix is altered and this change is visible through HEAD.
+
+
+==== Detaching HEAD ====
+
+Detaching HEAD just means attaching it to a commit instead of a branch. This is what it looks like beforehand:
+
+HEAD -> main -> C1
+
+
+<code>
+git checkout C1
+</code>
+
+
+And now it's
+
+HEAD -> C1
+
+{{:biz:head.png?400|}}
+
+<code>
+git checkout C4
+</code>
+
+
+===== Relative Refs =====
+
+Moving around in Git by specifying commit hashes can get a bit tedious. In the real world you won't have a nice commit tree visualization next to your terminal, so you'll have to use git log to see hashes.
+
+Furthermore, hashes are usually a lot longer in the real Git world as well. For instance, the hash of the commit that introduced the previous level is fed2da64c0efc5293610bdd892f82a58e8cbc5d8. Doesn't exactly roll off the tongue...
+
+The upside is that Git is smart about hashes. It only requires you to specify enough characters of the hash until it uniquely identifies the commit. So I can type fed2 instead of the long string above.
+
+
+<code>
+git checkout main^
+</code>
+
+{{:biz:gitref.png?400|}}
+
+===== The "~" operator =====
+
+Say you want to move a lot of levels up in the commit tree. It might be tedious to type ^ several times, so Git also has the tilde (~) operator.
+
+The tilde operator (optionally) takes in a trailing number that specifies the number of parents you would like to ascend. Let's see it in action.
+
+<code>
+git checkout HEAD~4
+</code>
+
+==== Branch forcing ====
+You're an expert on relative refs now, so let's actually use them for something.
+
+One of the most common ways I use relative refs is to move branches around. You can directly reassign a branch to a commit with the -f option. So something like:
+
+git branch -f main HEAD~3
+
+moves  the main branch to three parents behind HEAD.
+
+{{:biz:force.png?400|}}
+
+{{:biz:screen_shot_2021-08-20_at_10.39.28_am.png?400|}}
+
+<code>
+git checkout main
+git branch -f main HEAD~2
+git rebase C6
+git checkout bugFix
+git branch -f bugFix HEAD~3
+git checkout C1
+</code>
+
+{{:biz:screen_shot_2021-08-20_at_10.38.20_am.png?400|}}
+
+
+==== Reversing Changes in Git ====
+
+
+There are many ways to reverse changes in Git. And just like committing, reversing changes in Git has both a low-level component (staging individual files or chunks) and a high-level component (how the changes are actually reversed). Our application will focus on the latter.
+
+There are two primary ways to undo changes in Git -- one is using git reset and the other is using git revert. We will look at each of these in the next dialog
+
+git reset reverses changes by moving a branch reference backwards in time to an older commit. In this sense you can think of it as "rewriting history;" git reset will move a branch backwards as if the commit had never been made in the first place.
+
+<code>
+git reset HEAD~1
+</code>
+=== Git Revert ===
+
+While resetting works great for local branches on your own machine, its method of "rewriting history" doesn't work for remote branches that others are using.
+
+<code>
+git revert HEAD
+</code>
+
+{{:biz:screen_shot_2021-08-20_at_10.49.29_am.png?400|}}
+
+<code>
+git reset HEAD~1
+git checkout pushed
+git revert HEAD
+</code>
+
+{{:biz:screen_shot_2021-08-20_at_10.48.29_am.png?400|}}
+
+==== Moving Work Around ====
+
+
+=== Git Cherry-pick ===
+
+<code>
+git cherry-pick
+
+git cherry-pick <Commit1> <Commit2> <...>
+
+
+</code>
+It's a very straightforward way of saying that you would like to copy a series of commits below your current location (HEAD). I personally love cherry-pick because there is very little magic involved and it's easy to understand.
+
+
+{{:biz:screen_shot_2021-08-20_at_11.00.21_am.png?800}}
+
+{{:biz:screen_shot_2021-08-20_at_11.02.19_am.png?800|}}
+
+<code>
+git cherry-pick C3 C4 C7
+</code>
+
+
+=== Git Interactive Rebase ===
+
+Git cherry-pick is great when you know which commits you want (and you know their corresponding hashes) -- it's hard to beat the simplicity it provides.
+
+But what about the situation where you don't know what commits you want? Thankfully git has you covered there as well! We can use interactive rebasing for this -- it's the best way to review a series of commits you're about to rebase.
+
+All interactive rebase means is using the rebase command with the -i option.
+
+If you include this option, git will open up a UI to show you which commits are about to be copied below the target of the rebase. It also shows their commit hashes and messages, which is great for getting a bearing on what's what.
+
+For "real" git, the UI window means opening up a file in a text editor like vim. For our purposes, I've built a small dialog window that behaves the same way.
+
+When the interactive rebase dialog opens, you have the ability to do two things in our educational application:
+
+  * You can reorder commits simply by changing their order in the UI (via dragging and dropping with the mouse).
+  * You can choose to keep all commits or drop specific ones. When the dialog opens, each commit is set to be included by the pick button next to it being active. To drop a commit, toggle off its pick button.
+It is worth mentioning that in the real git interactive rebase you can do many more things like squashing (combining) commits, amending commit messages, and even editing the commits themselves. For our purposes though we will focus on these two operations above.
+
+{{:biz:screen_shot_2021-08-20_at_11.13.51_am.png?800|}}
+
+
+==== Locally stacked commits ====
+Here's a development situation that often happens: I'm trying to track down a bug but it is quite elusive. In order to aid in my detective work, I put in a few debug commands and a few print statements.
+
+All of these debugging / print statements are in their own commits. Finally I track down the bug, fix it, and rejoice!
+
+Only problem is that I now need to get my bugFix back into the main branch. If I simply fast-forwarded main, then main would get all my debug statements which is undesirable. There has to be another way...
+
+We need to tell git to copy only one of the commits over. This is just like the levels earlier on moving work around -- we can use the same commands:
+
+  * git rebase -i
+  * git cherry-pick
+To achieve this goal.
+
+==== Juggling Commits ====
+
+
+Here's another situation that happens quite commonly. You have some changes (newImage) and another set of changes (caption) that are related, so they are stacked on top of each other in your repository (aka one after another).
+
+The tricky thing is that sometimes you need to make a small modification to an earlier commit. In this case, design wants us to change the dimensions of newImage slightly, even though that commit is way back in our history!!
+
+
+----
+{{:biz:screen_shot_2021-08-20_at_11.26.21_am.png?800}}
+
+<code>
+git rebase -i HEAD~2
+git commit --amend
+git rebase -i HEAD~2
+git checkout main
+git merge caption
+</code>
+
+{{:biz:screen_shot_2021-08-20_at_11.36.20_am.png?800|}}
+
+<code>
+git checkout main
+git cherry-pick C2
+git rebase -i HEAD~1
+git cherry-pick C3
+</code>
+
+
+
+
+===== What is Docker? Vagrant? =====
+
+Let's start by defining each tool. Definitions can be touchy; so we'll use the product description from the home pages for Docker and Vagrant right now.
+
+==== PROBLEM ====
+
+https://www.devteam.space/blog/docker-vs-vagrant-which-is-better-for-development/
+==== WHAT IS VAGRANT? – MANAGING VIRTUAL ENVIRONMENTS ====
+
+
+When running a software application, you are also running all of the libraries it uses, dependencies it has, and the operating system it’s running on. When you run the same application on a different machine, all of those things change, even if that change is very subtle. This is where the problems arise. It could be because you’re running a different operating system version or using a different tool set. It could be something as small as having a different version of PHP installed.
+
+The solution is to be able to somehow whip up an environment that’s guaranteed to be identical every time you run an application, even on a different machine. That’s exactly what virtualization attempts to do.
+
+Docker and Vagrant are based on the idea of “virtual” computing environments, where your application will run in a predictable and repeatable way. The goal is that if your buddy says “It works on my machine”, you know it will work on yours too, and the production server. However, they both attack this problem in very different ways.
+
+Vagrant is an open source tool for managing virtual environments. These environments are usually virtual machines. That’s why you run Vagrant with another tool like Virtual Box. Its goal is to solve the problems we just discussed by allowing you to spin up virtual machines that are exactly the same every time. You can be sure that the virtual machine you are running on your local machine is exactly the same as the one you’re running on your staging or production server.
+
+Once you’ve used Vagrant (and another tool like Virtual Box) to set up a virtual server, you run a provisioning script exactly the same on each machine. The provisioning script will:
+
+  * Install the correct programs you need (e.g. Node.JS, PHP, etc)
+  * Correctly set up user permissions
+  * Configure everything
+  * Install anything else your application requires
+What you end up with is essentially the same environment wherever you set up a virtual machine with Vagrant.
+
+Now, you can run your code or application, and it will run the same on your machine, your buddies machine, and staging and production. You can also push your Vagrant file and code to GitHub, and anyone that pulls in and runs it will be able to recreate the virtual environment easily. When they run your code in this environment, it should act the same every time.
+
+
+==== WHAT IS DOCKER? – CONTAINERIZED APPLICATIONS ====
+
+
+One of the drawbacks of using Vagrant is you have to run an entire virtual machine to run your application. This is very resource intensive and can take a long time to set up and run the provisioning script.
+
+Docker takes a different approach. You use a Docker file (a small ~5-30 line file) to create a Docker image. This Docker image contains:
+
+  * All of your project code
+  * Installments of anything you need (Node.JS, Rails etc)
+  * Any configurations you need
+It’s basically your complete application and all of its dependencies wrapped up into one neat package. Then you can run this image as a container on any machine running Docker. You don’t need a new virtual machine for each container, just one, as they are designed to run on top of a machine. Then, you can run as many Docker containers as you like on that virtual machine – as long as you have enough processing power and RAM.
+
+You could run a Docker container of a Rails app with a Rails installation bundled up into it, while also running a container of a Node.JS application. You wouldn’t need to install Rails or Node. Both would have their own installations contained within them. They are completely separate from each other but share an operating system kernel.
+
+Docker is gaining massive popularity as Steven J. Vaughan-Nichols puts it “I can’t think of a single company of any size that’s not at least looking into moving their server applications to containers in general and Docker in specific.”
+
+
+==== MAIN DIFFERENCES ====
+
+Vagrant sets up a predictable, repeatable environment (e.g. a virtual machine) for you to run your application. You run your code into an environment and can expect it to behave a certain way.
+
+Docker allows you to create images that ARE your project code. You use a Docker image to build an environment that you can run anywhere. If you can run Docker, you can run your application and it will work every time.
+
+Vagrant helps you set up entire virtual machines to run your applications, while Docker helps you manage containers that can run on top of a virtual machine.
+
+**Vagrant**
+
+  * virtual machine manager
+  * portable / reproducible environment
+  * useful mainly for development
+  * Big resource consumption
+
+
+
+
+**docker** 
+  * create containers
+  * Faster & lighter then VM's
+  * Isolation / Seperation
+  * deployment everywhere
+
+
+  * Both provide virtual dev env
+  * VM(vagrant) virtualises the hardware for the OS
+  * Docker virtualises the OS for the app
+  * Docker has a lot more to offer than Vagrant
+
+==== What is VIRTUAL MACHINE ====
+
+Allow to run multiple operating system in host computer
+
+  * -testing an application
+  * -running old application that run lowest OS (such as XP)
+
+
+
+Virtual box vs docker
+
+
+Vagrant using CLI 
+Virtual machine computer inside your computer
+consume sya ng memory cpu kung ilang ang inalocate yung yung kakainin ng VM
+
+
+docker containerization
+
+docker specify web server (built in OS) usage depend the resources used
+
+mcbee/ sprobe docker used
+bizwind - docker vagrant
+
+
+bkit gumagamit
+pag isang setup computer meron din ubuntu dapat same
+
+bkit kailangan virtualization
+
+sinetup ng kanya kanya mag kakaiba ng version
+
+docker install mac pag dating sa server hindi mac nahihirapan mag install 
+
+virtual box <-- docker <-- container(OS) database
+
+CI/CD ---- dun papasok kapag meron binago sa docker
+
+production nakainstall si docker
+
+
+==== Git switch (remote branch not exist in local) ====
+  - git fetch
+  - git switch branchname
+
+

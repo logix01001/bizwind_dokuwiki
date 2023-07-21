@@ -1,0 +1,172 @@
+
+<h1 class="sectionedit1" id="create_taxonomy_vocabulary">Create Taxonomy vocabulary</h1>
+<div class="level1">
+<ul>
+<li class="level1"><div class="li"> databasename store in <strong>taxonomy_term_field_revision table</strong></div>
+</li>
+</ul>
+
+<p>
+using taxonomy vocabulary we can add a master list for category
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Create Taxonomy vocabulary&quot;,&quot;hid&quot;:&quot;create_taxonomy_vocabulary&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:1,&quot;range&quot;:&quot;3-175&quot;} -->
+<h2 class="sectionedit2" id="creation_of_taxonomy">Creation of taxonomy</h2>
+<div class="level2">
+<ol>
+<li class="level1"><div class="li"> go to taxonomy</div>
+</li>
+<li class="level1"><div class="li"> add vocabulary</div>
+</li>
+<li class="level1"><div class="li"> add “Category”</div>
+</li>
+<li class="level1"><div class="li"> add “term”</div>
+</li>
+<li class="level1"><div class="li"> add name and save (optional description)</div>
+</li>
+<li class="level1"><div class="li"> adding this category to article</div>
+</li>
+<li class="level1"><div class="li"> go to content type</div>
+</li>
+<li class="level1"><div class="li"> select article and manage fields</div>
+</li>
+<li class="level1"><div class="li"> add field</div>
+</li>
+<li class="level1"><div class="li"> select taxonomy term</div>
+</li>
+<li class="level1"><div class="li"> enter label</div>
+</li>
+<li class="level1"><div class="li"> select unlimited</div>
+</li>
+<li class="level1"><div class="li"> select the Category in Vocabulary</div>
+</li>
+<li class="level1"><div class="li"> please make sure uncheck the “Create referenced entities if they don&#039;t already exist”</div>
+</li>
+<li class="level1"><div class="li"> save settings</div>
+</li>
+<li class="level1"><div class="li"> in manage display</div>
+</li>
+<li class="level1"><div class="li"> default the arrangment in display</div>
+</li>
+<li class="level1"><div class="li"> Teaser tab if you want to show it in the teaser (home page)</div>
+</li>
+</ol>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Creation of taxonomy&quot;,&quot;hid&quot;:&quot;creation_of_taxonomy&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:2,&quot;range&quot;:&quot;176-772&quot;} -->
+<h3 class="sectionedit3" id="update_drupal_core_from_890_to_8918">update drupal core from 8.9.0 to 8.9.18</h3>
+<div class="level3">
+<ul>
+<li class="level1"><div class="li"> composer require drupal/core-recommended:8.9.18 –update-with-dependencies</div>
+</li>
+<li class="level1"><div class="li"> update.php</div>
+</li>
+<li class="level1"><div class="li"> clear cache</div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;update drupal core from 8.9.0 to 8.9.18&quot;,&quot;hid&quot;:&quot;update_drupal_core_from_890_to_8918&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:3,&quot;range&quot;:&quot;773-935&quot;} -->
+<h3 class="sectionedit4" id="update_80_to_89">Update 8.0 to 8.9</h3>
+<div class="level3">
+
+<p>
+<a href="https://www.drupal.org/docs/installing-drupal/add-composer-to-an-existing-site" class="urlextern" title="https://www.drupal.org/docs/installing-drupal/add-composer-to-an-existing-site" rel="ugc nofollow">https://www.drupal.org/docs/installing-drupal/add-composer-to-an-existing-site</a>
+</p>
+<ol>
+<li class="level1"><div class="li"> sudo composer create-project drupal/recommended-project:^8.9 drupal80to89to9</div>
+</li>
+<li class="level1"><div class="li"> copy sites,modules,themes to fresh install 8.9</div>
+</li>
+<li class="level1"><div class="li"> copy provisioning vagrant file</div>
+</li>
+<li class="level1"><div class="li"> change conflict vagrant name ip</div>
+</li>
+<li class="level1"><div class="li"> change 7.4 php in provisioning</div>
+</li>
+<li class="level1"><div class="li"> vagrant up</div>
+</li>
+<li class="level1"><div class="li"> create database</div>
+</li>
+<li class="level1"><div class="li"> import backup database to mysql</div>
+</li>
+<li class="level1"><div class="li"> composer install</div>
+</li>
+<li class="level1"><div class="li"> update.php</div>
+</li>
+</ol>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Update 8.0 to 8.9&quot;,&quot;hid&quot;:&quot;update_80_to_89&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:4,&quot;range&quot;:&quot;936-1390&quot;} -->
+<h3 class="sectionedit5" id="update_88_or_89_to_92">Update 8.8 or 8.9 to 9.2</h3>
+<div class="level3">
+<ol>
+<li class="level1"><div class="li"> chmod 777 web/sites/default</div>
+</li>
+<li class="level1"><div class="li"> chmod 666 web/sites/default/*settings.php</div>
+</li>
+<li class="level1"><div class="li"> chmod 666 web/sites/default/*services.yml</div>
+</li>
+<li class="level1"><div class="li"> composer require &#039;drupal/core-recommended:^9&#039; &#039;drupal/core-composer-scaffold:^9&#039; &#039;drupal/core-project-message:^9&#039; –update-with-dependencies –no-update</div>
+</li>
+<li class="level1"><div class="li"> composer update</div>
+</li>
+<li class="level1"><div class="li"> update.php</div>
+</li>
+<li class="level1 node"><div class="li"> if in case trouble in update.php such as module outdate</div>
+<ol>
+<li class="level3"><div class="li"> <a href="https://www.drupal.org/docs/updating-drupal/troubleshooting-database-updates#s-the-module-or-theme-is-incompatible-with-the-installed-version-of-drupal" class="urlextern" title="https://www.drupal.org/docs/updating-drupal/troubleshooting-database-updates#s-the-module-or-theme-is-incompatible-with-the-installed-version-of-drupal" rel="ugc nofollow">https://www.drupal.org/docs/updating-drupal/troubleshooting-database-updates#s-the-module-or-theme-is-incompatible-with-the-installed-version-of-drupal</a></div>
+</li>
+</ol>
+</li>
+<li class="level1"><div class="li"> chmod 755 web/sites/default</div>
+</li>
+<li class="level1"><div class="li"> chmod 644 web/sites/default/*settings.php</div>
+</li>
+<li class="level1"><div class="li"> chmod 644 web/sites/default/*services.yml</div>
+</li>
+</ol>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Update 8.8 or 8.9 to 9.2&quot;,&quot;hid&quot;:&quot;update_88_or_89_to_92&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:5,&quot;range&quot;:&quot;1391-2088&quot;} -->
+<h3 class="sectionedit6" id="update_80_to_9">Update 8.0 to 9</h3>
+<div class="level3">
+
+<p>
+<a href="/dokuwiki/lib/exe/detail.php?id=drupal%3Anotes&amp;media=drupal:screen_shot_2021-09-15_at_11.10.52_am.png" class="media" title="drupal:screen_shot_2021-09-15_at_11.10.52_am.png"><img src="/dokuwiki/lib/exe/fetch.php?w=400&amp;tok=03a8ac&amp;media=drupal:screen_shot_2021-09-15_at_11.10.52_am.png" class="media" alt="" width="400" /></a>
+</p>
+<pre class="code">hello.demo:
+  title: &#039;Hello&#039;
+  description: &#039;Hello page&#039;
+  parent: main
+  menu_name: main
+  route_name: hello.content`
+Let’s break this down.</pre>
+<ul>
+<li class="level1"><div class="li"> hello.demo - the namespace for this menu link.</div>
+</li>
+<li class="level1"><div class="li"> title - this will appear as the menu link</div>
+</li>
+<li class="level1"><div class="li"> description - this will appear as the menu link title, a tooltip and/or the description in the admin UI.</div>
+</li>
+<li class="level1"><div class="li"> parent - the parent item, which is used if you are adding this item as a child of another in a hierarchy. In this case the parent is the menu itself, so we are using the menu_name.</div>
+</li>
+<li class="level1"><div class="li"> menu_name - this is the menu name we found in the previous step._</div>
+</li>
+<li class="level1"><div class="li"> route_name - the route to call for this menu link.</div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Update 8.0 to 9&quot;,&quot;hid&quot;:&quot;update_80_to_9&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:6,&quot;range&quot;:&quot;2089-2852&quot;} -->
+<h3 class="sectionedit7" id="request_not_compatible_in_method">Request not compatible in method</h3>
+<div class="level3">
+
+<p>
+to use Request handler use
+</p>
+<pre class="code">Drupal::request()-&gt;query-&gt;all()</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Request not compatible in method&quot;,&quot;hid&quot;:&quot;request_not_compatible_in_method&quot;,&quot;codeblockOffset&quot;:1,&quot;secid&quot;:7,&quot;range&quot;:&quot;2853-&quot;} -->

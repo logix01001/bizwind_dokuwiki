@@ -1,0 +1,5 @@
+Cypress.Commands.add('login', (email,password) =&gt; {
+  cy.get('input[name=&quot;email&quot;]').type(email)
+  cy.get('input[name=&quot;password&quot;]').type(password)
+  cy.get('#login-button').click()
+})

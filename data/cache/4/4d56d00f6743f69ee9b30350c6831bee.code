@@ -1,0 +1,4 @@
+services:
+  advertiser.repository.advertiser:
+    class: Drupal\advertiser\Repository\AdvertiserRepository
+    parent: entity_repository.repository.node

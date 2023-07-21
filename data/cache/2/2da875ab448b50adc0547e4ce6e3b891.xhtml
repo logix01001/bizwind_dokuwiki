@@ -1,0 +1,25 @@
+
+<p>
+Apple M1 Chip Macs
+</p>
+<pre class="code">If you are getting this error `no matching manifest for Linux/arm64/v8 in the manifest list entries` on the Apple M1 Silicon chip using Docker Compose.
+
+
+Just add this platform in the docker-compose.yml file as shown below
+
+
+platform: linux/amd64
+
+or
+
+platform: linux/x86_64
+
+</pre>
+
+<p>
+<a href="/dokuwiki/lib/exe/detail.php?id=notes%3Adocker_m1_chips&amp;media=notes:screen_shot_2022-08-02_at_9.37.05_am.png" class="media" title="notes:screen_shot_2022-08-02_at_9.37.05_am.png"><img src="/dokuwiki/lib/exe/fetch.php?w=400&amp;tok=35c733&amp;media=notes:screen_shot_2022-08-02_at_9.37.05_am.png" class="media" alt="" width="400" /></a>
+</p>
+
+<p>
+ <a href="https://onexlab-io.medium.com/apple-m1-chip-no-matching-manifest-for-linux-arm64-v8-docker-mysql-5142060a9309" class="urlextern" title="https://onexlab-io.medium.com/apple-m1-chip-no-matching-manifest-for-linux-arm64-v8-docker-mysql-5142060a9309" rel="ugc nofollow">https://onexlab-io.medium.com/apple-m1-chip-no-matching-manifest-for-linux-arm64-v8-docker-mysql-5142060a9309</a>
+</p>

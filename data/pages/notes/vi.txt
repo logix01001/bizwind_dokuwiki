@@ -1,0 +1,12 @@
+**VI editor**
+
+  * edit a file in vim (vim filename.txt || vi filename.txt)
+  * how to quit vim (:q)
+  * saving files in vim, and other ways of exiting
+  * what are vim modes (ESC/i)
+  * how to delete a single line with vim (dd)
+  * how to delete multiple lines with vim (#dd, e.g. 5dd)
+  * how to undo changes in vim (u)
+  * how to 'redo' changes (ctrl-r)
+  * searching text in vim ( /yourtext + ENTER)
+  * how to find and replace text in vim ( :%s/yourtext/replacetext/g (+c))

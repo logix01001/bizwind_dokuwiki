@@ -1,0 +1,15 @@
+const {clearDatabase} = require('../../server/db')
+&nbsp;
+module.exports = (on, config) =&gt;{
+&nbsp;
+  on('task', {
+&nbsp;
+   'clear:db': ()=&gt;{
+&nbsp;
+     return clearDatabase()
+&nbsp;
+   }
+&nbsp;
+  })
+&nbsp;
+}

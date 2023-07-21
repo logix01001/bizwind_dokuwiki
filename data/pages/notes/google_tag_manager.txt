@@ -1,0 +1,17 @@
+====== What is google tag manager ======
+one piece of tag can manage
+
+  * google ads 
+  * facebook event tag
+
+called **Container**
+
+  - Tags
+  - Triggers
+  - variables
+
+  * **tag** is a piece of javascript codeexample google analytics tags
+  * **Trigger** lets you control to track where in your website should trigger
+  * **variables** placeholder for information
+
+**google tag account** can have multiple containers

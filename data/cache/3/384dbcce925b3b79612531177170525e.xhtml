@@ -1,0 +1,1358 @@
+
+<h1 class="sectionedit1" id="the_art_of_readable_code">The Art of readable Code</h1>
+<div class="level1">
+
+<p>
+The goal of this book is help you make your code better.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;The Art of readable Code&quot;,&quot;hid&quot;:&quot;the_art_of_readable_code&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:1,&quot;range&quot;:&quot;1-99&quot;} -->
+<h2 class="sectionedit2" id="the_book_is_divided_into_four_parts">The Book is divided into four parts</h2>
+<div class="level2">
+
+</div>
+
+<h4 id="surface_level_improvements">Surface level improvements</h4>
+<div class="level4">
+
+<p>
+<em>Naming, Commenting and aesthtics simple tips that apply to every line of your codebase</em>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;The Book is divided into four parts&quot;,&quot;hid&quot;:&quot;the_book_is_divided_into_four_parts&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:2,&quot;range&quot;:&quot;100-274&quot;} -->
+<h3 class="sectionedit3" id="simplifying_loops_and_logic">Simplifying loops and logic</h3>
+<div class="level3">
+
+<p>
+“Ways to refine the loops, logic, and variables in your program to make them easier to understand”
+</p>
+
+</div>
+
+<h4 id="reorganizing_your_code">Reorganizing your code</h4>
+<div class="level4">
+
+<p>
+“Higher-level ways to organize large blocks of code and attack problems at the function level”
+</p>
+
+</div>
+
+<h4 id="selected_topics">Selected topics</h4>
+<div class="level4">
+
+<p>
+“Applying “easy to understand” to testing and to a larger data structure coding example”
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Simplifying loops and logic&quot;,&quot;hid&quot;:&quot;simplifying_loops_and_logic&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:3,&quot;range&quot;:&quot;275-676&quot;} -->
+<h2 class="sectionedit4" id="chapter_1_code_should_be_easy_to_understand">CHAPTER 1 Code should be easy to understand</h2>
+<div class="level2">
+
+<p>
+<code>CODE SHOULD BE EASY TO UNDERSTAND</code>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;CHAPTER 1 Code should be easy to understand&quot;,&quot;hid&quot;:&quot;chapter_1_code_should_be_easy_to_understand&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:4,&quot;range&quot;:&quot;677-773&quot;} -->
+<h3 class="sectionedit5" id="the_fundamental_theorem_of_readability">“The Fundamental Theorem of Readability.”</h3>
+<div class="level3">
+
+<p>
+<code>“Code should be written to minimize the time it would take for someone else to understand it.”</code>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;\u201cThe Fundamental Theorem of Readability.\u201d&quot;,&quot;hid&quot;:&quot;the_fundamental_theorem_of_readability&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:5,&quot;range&quot;:&quot;774-933&quot;} -->
+<h3 class="sectionedit6" id="is_smaller_always_better">“Is Smaller Always Better?”</h3>
+<div class="level3">
+
+<p>
+“Generally speaking, the less code you write to solve a problem, the better (see Chapter 13, Writing Less Code). It probably takes less time to understand a 2000-line class than a 5000-line class.
+But fewer lines isn’t always better! There are plenty of times when a one-line expression like:
+</p>
+<pre class="code">assert((!(bucket = FindBucket(key))) || !bucket-&gt;IsOccupied());</pre>
+
+<p>
+takes more time to understand than if it were two lines:
+</p>
+<pre class="code">bucket = FindBucket(key);
+if (bucket != NULL) assert(!bucket-&gt;IsOccupied());</pre>
+
+<p>
+Similarly, a comment can make you understand the code more quickly, even though it “adds code” to the file:
+</p>
+<pre class="code">// Fast version of &quot;hash = (65599 * hash) + c&quot;
+hash = (hash &lt;&lt; 6) + (hash &lt;&lt; 16) - hash + c;” </pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;\u201cIs Smaller Always Better?\u201d&quot;,&quot;hid&quot;:&quot;is_smaller_always_better&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:6,&quot;range&quot;:&quot;934-1729&quot;} -->
+<h3 class="sectionedit7" id="part_i_surface-level_improvements">“Part I. Surface-Level Improvements”</h3>
+<div class="level3">
+
+<p>
+“picking good names, writing good comments, and formatting your code neatly”
+“If your code has great names, well-written comments, and clean use of whitespace, your code will be much easier to read.”
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;\u201cPart\u00a0I.\u00a0Surface-Level Improvements\u201d&quot;,&quot;hid&quot;:&quot;part_i_surface-level_improvements&quot;,&quot;codeblockOffset&quot;:3,&quot;secid&quot;:7,&quot;range&quot;:&quot;1730-1994&quot;} -->
+<h2 class="sectionedit8" id="chapter_2_packing_information_into_names">“Chapter 2. Packing Information into Names”</h2>
+<div class="level2">
+
+<p>
+<code>“Pack information into your names.”</code>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;\u201cChapter\u00a02.\u00a0Packing Information into Names\u201d&quot;,&quot;hid&quot;:&quot;chapter_2_packing_information_into_names&quot;,&quot;codeblockOffset&quot;:3,&quot;secid&quot;:8,&quot;range&quot;:&quot;1995-2102&quot;} -->
+<h3 class="sectionedit9" id="choose_specific_words">Choose Specific Words</h3>
+<div class="level3">
+
+<p>
+“For example, the word “getName” is very unspecific, as in this example:”
+</p>
+<pre class="code">function getName()
+{
+  .....
+}
+
+use
+
+function getFullName
+{
+  ......
+}
+
+OR 
+
+function getFirstName
+{
+  ......
+}
+
+function getLastName
+{
+  ......
+}</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Choose Specific Words&quot;,&quot;hid&quot;:&quot;choose_specific_words&quot;,&quot;codeblockOffset&quot;:3,&quot;secid&quot;:9,&quot;range&quot;:&quot;2103-2381&quot;} -->
+<h3 class="sectionedit10" id="attaching_extra_information_to_a_name">“Attaching Extra Information to a Name”</h3>
+<div class="level3">
+
+<p>
+“if there’s something very important about a variable that the reader must know, it’s worth attaching an extra “word” to the name”
+<strong>ID ⇒ USER_ID</strong>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;\u201cAttaching Extra Information to a Name\u201d&quot;,&quot;hid&quot;:&quot;attaching_extra_information_to_a_name&quot;,&quot;codeblockOffset&quot;:4,&quot;secid&quot;:10,&quot;range&quot;:&quot;2382-2598&quot;} -->
+<h3 class="sectionedit11" id="values_with_units">Values with Units</h3>
+<div class="level3">
+
+<p>
+“If your variable is a measurement (such as an amount of time or a number of bytes), it’s helpful to encode the units into the variable’s name.”
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Values with Units&quot;,&quot;hid&quot;:&quot;values_with_units&quot;,&quot;codeblockOffset&quot;:4,&quot;secid&quot;:11,&quot;range&quot;:&quot;2599-2780&quot;} -->
+<h3 class="sectionedit12" id="encoding_other_important_attributes">“Encoding Other Important Attributes”</h3>
+<div class="level3">
+
+<p>
+“This technique of attaching extra information to a name isn’t limited to values with units. You should do it any time there’s something dangerous or surprising about the variable.”
+</p>
+<ul>
+<li class="level1"><div class="li"> “A password is in “plaintext” and should be encrypted before further processing” ⇒ password ⇒ plaintext_password</div>
+</li>
+<li class="level1"><div class="li"> “A user-provided comment that needs escaping before being displayed“ ⇒ comment ⇒ unescaped_comment</div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;\u201cEncoding Other Important Attributes\u201d&quot;,&quot;hid&quot;:&quot;encoding_other_important_attributes&quot;,&quot;codeblockOffset&quot;:4,&quot;secid&quot;:12,&quot;range&quot;:&quot;2781-3259&quot;} -->
+<h3 class="sectionedit13" id="how_long_should_a_name_be">“How Long Should a Name Be?”</h3>
+<div class="level3">
+
+<p>
+“When picking a good name, there’s an implicit constraint that the name shouldn’t be too long. No one likes to work with identifiers like this:”
+</p>
+<pre class="code">$newNavigationControllerWrappingViewControllerForDataSourceOfClass;</pre>
+
+<p>
+<strong>“The longer a name is, the harder it is to remember, and the more space it consumes on the screen, possibly causing extra lines to wrap.”</strong>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;\u201cHow Long Should a Name Be?\u201d&quot;,&quot;hid&quot;:&quot;how_long_should_a_name_be&quot;,&quot;codeblockOffset&quot;:4,&quot;secid&quot;:13,&quot;range&quot;:&quot;3260-3690&quot;} -->
+<h3 class="sectionedit14" id="shorter_names_are_okay_for_shorter_scope">“Shorter Names Are Okay for Shorter Scope”</h3>
+<div class="level3">
+
+<p>
+<code>“When you go on a short vacation, you typically pack less luggage than if you go on a long vacation”</code>
+</p>
+
+<p>
+“Similarly, identifiers that have a small “scope” (how many other lines of code can “see” this name) don’t need to carry as much information. That is, you can get away with shorter names because all that information (what type the variable is, its initial value, how it’s destroyed) is easy to see:
+</p>
+<pre class="code">if (debug) {
+    map&lt;string,int&gt; m;
+    LookUpNamesNumbers(&amp;m);
+    Print(m);
+}”</pre>
+
+<p>
+<strong>“Even though m doesn’t pack any information, it’s not a problem, because the reader already has all the information she needs to understand this code.”</strong>
+</p>
+
+<p>
+“However, suppose m were a class member or a global variable, and you saw this snippet of code:
+</p>
+<pre class="code">LookUpNamesNumbers(&amp;m);
+Print(m);”</pre>
+
+<p>
+<strong>“This code is much less readable, as it’s unclear what the type or purpose of m is.”</strong>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;\u201cShorter Names Are Okay for Shorter Scope\u201d&quot;,&quot;hid&quot;:&quot;shorter_names_are_okay_for_shorter_scope&quot;,&quot;codeblockOffset&quot;:5,&quot;secid&quot;:14,&quot;range&quot;:&quot;3691-4681&quot;} -->
+<h3 class="sectionedit15" id="acronyms_and_abbreviations">Acronyms and Abbreviations</h3>
+<div class="level3">
+
+<p>
+<code>“ would a new teammate understand what the name means? ”</code>
+</p>
+
+<p>
+BEManager ⇒ BackEndManager probably won’t understand what a BEManager is.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Acronyms and Abbreviations&quot;,&quot;hid&quot;:&quot;acronyms_and_abbreviations&quot;,&quot;codeblockOffset&quot;:7,&quot;secid&quot;:15,&quot;range&quot;:&quot;4682-4862&quot;} -->
+<h3 class="sectionedit16" id="use_name_formatting_to_convey_meaning">“Use Name Formatting to Convey Meaning”</h3>
+<div class="level3">
+
+<p>
+“Most of the formatting in this example is pretty common—using <strong>CamelCase for class names</strong>, and using <strong>lower_separated for variable names</strong>. But some of the other conventions may have surprised you.”
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;\u201cUse Name Formatting to Convey Meaning\u201d&quot;,&quot;hid&quot;:&quot;use_name_formatting_to_convey_meaning&quot;,&quot;codeblockOffset&quot;:7,&quot;secid&quot;:16,&quot;range&quot;:&quot;4863-5127&quot;} -->
+<h3 class="sectionedit17" id="other_formatting_conventions">Other Formatting Conventions</h3>
+<div class="level3">
+
+<p>
+<strong>“the author suggests that “constructors” (functions intended to be called with new) should be capitalized and that ordinary functions should start with a lowercase letter”</strong>
+</p>
+<pre class="code">var x = new DatePicker(); // DatePicker() is a &quot;constructor
+
+var y = pageHeight();      // pageHeight() is an ordinary function
+
+</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Other Formatting Conventions&quot;,&quot;hid&quot;:&quot;other_formatting_conventions&quot;,&quot;codeblockOffset&quot;:7,&quot;secid&quot;:17,&quot;range&quot;:&quot;5128-5498&quot;} -->
+<h2 class="sectionedit18" id="chapter_3_names_that_can_t_be_misconstrued">“Chapter 3. Names That Can’t Be Misconstrued”</h2>
+<div class="level2">
+
+<p>
+<code>“we focus on a different topic: watching out for names that can be misunderstood.”</code>
+</p>
+<ul>
+<li class="level1"><div class="li"> Filter() → use select() or Exclude()</div>
+</li>
+<li class="level1"><div class="li"> Clip() → truncate()</div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;\u201cChapter\u00a03.\u00a0Names That Can\u2019t Be Misconstrued\u201d&quot;,&quot;hid&quot;:&quot;chapter_3_names_that_can_t_be_misconstrued&quot;,&quot;codeblockOffset&quot;:8,&quot;secid&quot;:18,&quot;range&quot;:&quot;5499-5726&quot;} -->
+<h3 class="sectionedit19" id="prefer_min_and_max_for_inclusive">“Prefer min and max for (Inclusive) ”</h3>
+<div class="level3">
+
+<p>
+<strong>“The clearest way to name a limit is to put max_ or min_ in front of the thing being limited.”</strong>
+</p>
+
+<p>
+CART_TOO_BIG_LIMIT = 10 ⇒ MAX_ITEMS_IN_CART
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;\u201cPrefer min and max for (Inclusive) \u201d&quot;,&quot;hid&quot;:&quot;prefer_min_and_max_for_inclusive&quot;,&quot;codeblockOffset&quot;:8,&quot;secid&quot;:19,&quot;range&quot;:&quot;5727-5928&quot;} -->
+<h3 class="sectionedit20" id="prefer_first_and_last_for_inclusive_ranges">“Prefer first and last for Inclusive Ranges”</h3>
+<div class="level3">
+
+<p>
+“Here is another example where you can’t tell if it’s “up to” or “up to and including”:
+</p>
+<pre class="code">print integer_range(start=2, stop=4)
+# Does this print [2,3] or [2,3,4] (or something else)?</pre>
+
+<p>
+Although start is a reasonable parameter name, stop can be interpreted in multiple ways here.
+For inclusive ranges likes these (where the range should include both end points), a good choice is first/last. For instance:
+</p>
+<pre class="code">set.PrintKeys(first=&quot;Bart&quot;, last=&quot;Maggie&quot;)
+Unlike stop, the word last is clearly inclusive.”</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;\u201cPrefer first and last for Inclusive Ranges\u201d&quot;,&quot;hid&quot;:&quot;prefer_first_and_last_for_inclusive_ranges&quot;,&quot;codeblockOffset&quot;:8,&quot;secid&quot;:20,&quot;range&quot;:&quot;5929-6530&quot;} -->
+<h3 class="sectionedit21" id="prefer_begin_and_end_for_inclusive_exclusive_ranges">“Prefer begin and end for Inclusive/Exclusive Ranges”</h3>
+<div class="level3">
+<pre class="code">“PrintEventsInRange(&quot;OCT 16 12:00am&quot;, &quot;OCT 17 12:00am&quot;)”
+
+is better than
+
+“PrintEventsInRange(&quot;OCT 16 12:00am&quot;, &quot;OCT 16 11:59:59.9999pm&quot;)”
+</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;\u201cPrefer begin and end for Inclusive\/Exclusive Ranges\u201d&quot;,&quot;hid&quot;:&quot;prefer_begin_and_end_for_inclusive_exclusive_ranges&quot;,&quot;codeblockOffset&quot;:10,&quot;secid&quot;:21,&quot;range&quot;:&quot;6531-6764&quot;} -->
+<h3 class="sectionedit22" id="naming_booleans">Naming Booleans</h3>
+<div class="level3">
+
+<p>
+“When picking a name for a boolean variable or a function that returns a boolean, be sure it’s clear what true and false really mean.
+Here’s a dangerous example:
+bool read_password = true;”
+</p>
+<ul>
+<li class="level1"><div class="li"> We need to read the password</div>
+</li>
+<li class="level1"><div class="li"> The password has already been read</div>
+</li>
+</ul>
+
+<p>
+“In general, adding words like <strong>is, has, can, or should</strong> can make booleans more clear.”
+</p>
+
+<p>
+“For example, a function named <strong>SpaceLeft()</strong> sounds like it might return a number. If it were meant to return a boolean, a better name would be <strong>HasSpaceLeft()</strong>.”
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Naming Booleans&quot;,&quot;hid&quot;:&quot;naming_booleans&quot;,&quot;codeblockOffset&quot;:11,&quot;secid&quot;:22,&quot;range&quot;:&quot;6765-7330&quot;} -->
+<h3 class="sectionedit23" id="matching_expectations_of_users">“Matching Expectations of Users”</h3>
+<div class="level3">
+
+<p>
+getMean() ⇒ computeMean()
+</p>
+
+<p>
+<strong>“Before you decide on a name, play devil’s advocate and imagine how your name might be misunderstood. The best names are resistant to misinterpretation”</strong>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;\u201cMatching Expectations of Users\u201d&quot;,&quot;hid&quot;:&quot;matching_expectations_of_users&quot;,&quot;codeblockOffset&quot;:11,&quot;secid&quot;:23,&quot;range&quot;:&quot;7331-7572&quot;} -->
+<h2 class="sectionedit24" id="chapter_4_aesthetics">Chapter 4. Aesthetics</h2>
+<div class="level2">
+
+<p>
+<code>“Good source code should be just as “easy on the eyes.”</code>
+</p>
+<ul>
+<li class="level1"><div class="li"> Use consistent layout, with patterns the reader can get used to.</div>
+</li>
+<li class="level1"><div class="li"> Make similar code look similar.</div>
+</li>
+<li class="level1"><div class="li"> Group related lines of code into blocks.</div>
+</li>
+</ul>
+<pre class="code">class StatsKeeper {
+   public:
+   // A class for keeping track of a series of doubles
+   void Add(double d);  // and methods for quick statistics about them
+   private:   int count;       
+   /* how many so    far */ public:
+   double Average();”
+   private:   double minimum;
+    list&lt;double&gt;
+     past_items
+       ;double maximum;
+};</pre>
+
+<p>
+“It would take you a lot longer to understand it than if you had this cleaner version instead:”
+</p>
+<pre class="code">// A class for keeping track of a series of doubles
+// and methods for quick statistics about them.
+class StatsKeeper {
+  public:
+    void Add(double d);
+    double Average();
+ 
+  private:
+    list&lt;double&gt; past_items;
+    int count;  // how many so far
+
+    double minimum;
+    double maximum;
+};</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Chapter\u00a04.\u00a0Aesthetics&quot;,&quot;hid&quot;:&quot;chapter_4_aesthetics&quot;,&quot;codeblockOffset&quot;:11,&quot;secid&quot;:24,&quot;range&quot;:&quot;7573-8597&quot;} -->
+<h3 class="sectionedit25" id="rearrange_line_breaks_to_be_consistent_and_compact">“Rearrange Line Breaks to Be Consistent and Compact”</h3>
+<div class="level3">
+<pre class="code">public class PerformanceTester {
+    public static final TcpConnectionSimulator wifi = new TcpConnectionSimulator(
+        500, /* Kbps */
+        80, /* millisecs latency */
+        200, /* jitter */
+        1 /* packet loss % */);
+
+    public static final TcpConnectionSimulator t3_fiber =
+        new TcpConnectionSimulator(
+            45000, /* Kbps */
+            10, /* millisecs latency */
+            0, /* jitter */
+            0 /* packet loss % */);
+
+    public static final TcpConnectionSimulator cell = new TcpConnectionSimulator(
+        100, /* Kbps */
+        400, /* millisecs latency */
+        250, /* jitter */
+        5 /* packet loss % */);
+}</pre>
+<pre class="code">public class PerformanceTester {
+    public static final TcpConnectionSimulator wifi =
+        new TcpConnectionSimulator(
+            500,   /* Kbps */
+            80,    /* millisecs latency */
+            200,   /* jitter */
+            1      /* packet loss % */);
+
+    public static final TcpConnectionSimulator t3_fiber =
+        new TcpConnectionSimulator(
+            45000, /* Kbps */
+            10,    /* millisecs latency */
+            0,     /* jitter */
+            0      /* packet loss % */);
+
+    public static final TcpConnectionSimulator cell =
+        new TcpConnectionSimulator(
+            100,   /* Kbps */
+            400,   /* millisecs latency */
+            250,   /* jitter */
+            5      /* packet loss % */);
+}</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;\u201cRearrange Line Breaks to Be Consistent and Compact\u201d&quot;,&quot;hid&quot;:&quot;rearrange_line_breaks_to_be_consistent_and_compact&quot;,&quot;codeblockOffset&quot;:13,&quot;secid&quot;:25,&quot;range&quot;:&quot;8598-10114&quot;} -->
+<h3 class="sectionedit26" id="use_methods_to_clean_up_irregularity">“Use Methods to Clean Up Irregularity”</h3>
+<div class="level3">
+<pre class="code">assert(ExpandFullName(database_connection, &quot; Jake  Brown &quot;, &amp;error)
+    == &quot;Mr. Jacob Brown III&quot;);
+assert(error == &quot;&quot;);
+assert(ExpandFullName(database_connection, &quot;No Such Guy&quot;, &amp;error) == &quot;&quot;);
+assert(error == &quot;no match found&quot;);
+assert(ExpandFullName(database_connection, &quot;John&quot;, &amp;error) == &quot;&quot;);
+assert(error == &quot;more than one result&quot;);
+</pre>
+<pre class="code">CheckFullName(&quot;Doug Adams&quot;, &quot;Mr. Douglas Adams&quot;, &quot;&quot;);
+CheckFullName(&quot; Jake  Brown &quot;, &quot;Mr. Jake Brown III&quot;, &quot;&quot;);
+CheckFullName(&quot;No Such Guy&quot;, &quot;&quot;, &quot;no match found&quot;);
+CheckFullName(&quot;John&quot;, &quot;&quot;, &quot;more than one result&quot;);
+</pre>
+<ul>
+<li class="level1"><div class="li"> It eliminates a lot of the duplicated code from before, making the code more compact.</div>
+</li>
+<li class="level1"><div class="li"> The important parts of each test case (the names and error strings) are now by themselves, in plain sight. Before, these strings were interspersed with tokens like database_connection and error, which made it hard to “take in” the code in one eyeful.</div>
+</li>
+<li class="level1"><div class="li"> Adding new tests should be much easier now.</div>
+</li>
+</ul>
+
+<p>
+<strong>“The moral of the story is that making code “look pretty” often results in more than just surface improvements—it might help you structure your code better.”</strong>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;\u201cUse Methods to Clean Up Irregularity\u201d&quot;,&quot;hid&quot;:&quot;use_methods_to_clean_up_irregularity&quot;,&quot;codeblockOffset&quot;:15,&quot;secid&quot;:26,&quot;range&quot;:&quot;10115-11326&quot;} -->
+<h3 class="sectionedit27" id="use_column_alignment_when_helpful">“Use Column Alignment When Helpful”</h3>
+<div class="level3">
+<pre class="code">“CheckFullName(&quot;Doug Adams&quot;  , &quot;Mr. Douglas Adams&quot; , &quot;&quot;);
+CheckFullName(&quot; Jake  Brown &quot;, &quot;Mr. Jake Brown III&quot;, &quot;&quot;);
+CheckFullName(&quot;No Such Guy&quot;  , &quot;&quot;                  , &quot;no match found&quot;);
+CheckFullName(&quot;John&quot;         , &quot;&quot;                  , &quot;more than one result&quot;);”
+
+“ it’s easier to distinguish the second and third arguments to CheckFullName().”</pre>
+<pre class="code">“# Extract POST parameters to local variables
+details  = request.POST.get(&#039;details&#039;)
+location = request.POST.get(&#039;location&#039;)
+phone    = equest.POST.get(&#039;phone&#039;)
+email    = request.POST.get(&#039;email&#039;)
+url      = request.POST.get(&#039;url&#039;)”
+</pre>
+
+<p>
+<strong>“equest instead of request”</strong>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;\u201cUse Column Alignment When Helpful\u201d&quot;,&quot;hid&quot;:&quot;use_column_alignment_when_helpful&quot;,&quot;codeblockOffset&quot;:17,&quot;secid&quot;:27,&quot;range&quot;:&quot;11327-12045&quot;} -->
+<h3 class="sectionedit28" id="pick_a_meaningful_order_and_use_it_consistently">“Pick a Meaningful Order, and Use It Consistently”</h3>
+<div class="level3">
+<pre class="code">
+details  = request.POST.get(&#039;details&#039;)
+location = request.POST.get(&#039;location&#039;)
+phone    = request.POST.get(&#039;phone&#039;)
+email    = request.POST.get(&#039;email&#039;)
+url      = request.POST.get(&#039;url&#039;)
+</pre>
+<ul>
+<li class="level1"><div class="li"> Match the order of the variables to the order of the &lt;input&gt; fields on the corresponding <abbr title="HyperText Markup Language">HTML</abbr> form.</div>
+</li>
+<li class="level1"><div class="li"> Order them from “most important” to “least important.”</div>
+</li>
+<li class="level1"><div class="li"> Order them alphabetically.</div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;\u201cPick a Meaningful Order, and Use It Consistently\u201d&quot;,&quot;hid&quot;:&quot;pick_a_meaningful_order_and_use_it_consistently&quot;,&quot;codeblockOffset&quot;:19,&quot;secid&quot;:28,&quot;range&quot;:&quot;12046-12521&quot;} -->
+<h3 class="sectionedit29" id="organize_declarations_into_blocks">Organize Declarations into Blocks</h3>
+<div class="level3">
+<pre class="code">class FrontEndServer {
+  public:
+    FrontendServer();
+    void ViewProfile(HttpRequest* request);
+    void OpenDatabase(string location, string user);
+    void SaveProfile(HttpRequest* request);
+    string ExtractQueryParam(HttpRequest* request, string param);
+    void ReplyOK(HttpRequest* request, string html);
+    void FindFriends(HttpRequest* request);
+    void ReplyNotFound(HttpRequest* request, string error);
+    void CloseDatabase(string location);
+    ~FrontendServer();
+};
+ </pre>
+<pre class="code">class FrontendServer {
+  public:
+    FrontendServer();
+    ~FrontendServer();
+
+    // Handlers
+    void ViewProfile(HttpRequest* request);
+    void SaveProfile(HttpRequest* request);
+    void FindFriends(HttpRequest* request);
+
+    // Request/Reply Utilities
+    string ExtractQueryParam(HttpRequest* request, string param);
+    void ReplyOK(HttpRequest* request, string html);
+    void ReplyNotFound(HttpRequest* request, string error);
+
+    // Database Helpers
+    void OpenDatabase(string location, string user);
+    void CloseDatabase(string location);
+};</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Organize Declarations into Blocks&quot;,&quot;hid&quot;:&quot;organize_declarations_into_blocks&quot;,&quot;codeblockOffset&quot;:20,&quot;secid&quot;:29,&quot;range&quot;:&quot;12522-13646&quot;} -->
+<h3 class="sectionedit30" id="break_code_into_paragraphs">“Break Code into “Paragraphs”</h3>
+<div class="level3">
+<pre class="code">def suggest_new_friends(user, email_password):
+    # Get the user&#039;s friends&#039; email addresses.
+    friends = user.friends()
+    friend_emails = set(f.email for f in friends)
+
+    # Import all email addresses from this user&#039;s email account.
+    contacts = import_contacts(user.email, email_password)
+    contact_emails = set(c.email for c in contacts)
+
+    # Find matching users that they aren&#039;t already friends with.
+    non_friend_emails = contact_emails - friend_emails
+    suggested_friends = User.objects.select(email__in=non_friend_emails)
+
+    # Display these lists on the page.
+    display[&#039;user&#039;] = user
+    display[&#039;friends&#039;] = friends
+    display[&#039;suggested_friends&#039;] = suggested_friends
+
+    return render(&quot;suggested_friends.html&quot;, display)</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;\u201cBreak Code into \u201cParagraphs\u201d&quot;,&quot;hid&quot;:&quot;break_code_into_paragraphs&quot;,&quot;codeblockOffset&quot;:22,&quot;secid&quot;:30,&quot;range&quot;:&quot;13647-14461&quot;} -->
+<h3 class="sectionedit31" id="personal_style_versus_consistency">Personal Style versus Consistency</h3>
+<div class="level3">
+<pre class="code">class Logger {
+    ...
+};
+
+or
+
+class Logger
+{
+    ...
+};</pre>
+
+<p>
+<em><strong>if one of these styles is chosen over the other, it doesn’t substantially affect the readability of the codebase. But if these two styles are mixed throughout the code, it does affect the readability. “consistency is far more important”</strong></em>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Personal Style versus Consistency&quot;,&quot;hid&quot;:&quot;personal_style_versus_consistency&quot;,&quot;codeblockOffset&quot;:23,&quot;secid&quot;:31,&quot;range&quot;:&quot;14462-14832&quot;} -->
+<h2 class="sectionedit32" id="chapter_5_knowing_what_to_comment">“Chapter 5. Knowing What to Comment”</h2>
+<div class="level2">
+
+<p>
+<code>“The purpose of commenting is to help the reader know as much as the writer did.”</code>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;\u201cChapter\u00a05.\u00a0Knowing What to Comment\u201d&quot;,&quot;hid&quot;:&quot;chapter_5_knowing_what_to_comment&quot;,&quot;codeblockOffset&quot;:24,&quot;secid&quot;:32,&quot;range&quot;:&quot;14833-14979&quot;} -->
+<h3 class="sectionedit33" id="what_not_to_comment">“What NOT to Comment”</h3>
+<div class="level3">
+<pre class="code">// The class definition for Account
+class Account {
+  public:
+    // Constructor
+    Account();
+
+    // Set the profit member to a new value”
+     void SetProfit(double profit);
+
+    // Return the profit from this Account
+    double GetProfit();
+};</pre>
+
+<p>
+“These comments are worthless because they don’t provide any <strong>new information or help the reader understand the code better</strong>.”
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;\u201cWhat NOT to Comment\u201d&quot;,&quot;hid&quot;:&quot;what_not_to_comment&quot;,&quot;codeblockOffset&quot;:24,&quot;secid&quot;:33,&quot;range&quot;:&quot;14980-15420&quot;} -->
+<h3 class="sectionedit34" id="don_t_comment_just_for_the_sake_of_commenting">“Don’t Comment Just for the Sake of Commenting”</h3>
+<div class="level3">
+<pre class="code">// Find the Node in the given subtree, with the given name, using the given depth.
+Node* FindNodeInSubtree(Node* subtree, string name, int depth);</pre>
+<pre class="code">// Find a Node with the given &#039;name&#039; or return NULL.
+// If depth &lt;= 0, only &#039;subtree&#039; is inspected.
+// If depth == N, only &#039;subtree&#039; and N levels below are inspected.
+Node* FindNodeInSubtree(Node* subtree, string name, int depth);”</pre>
+
+<p>
+<em>If you want to have a comment here, <strong>it might as well elaborate on more important details</strong></em>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;\u201cDon\u2019t Comment Just for the Sake of Commenting\u201d&quot;,&quot;hid&quot;:&quot;don_t_comment_just_for_the_sake_of_commenting&quot;,&quot;codeblockOffset&quot;:25,&quot;secid&quot;:34,&quot;range&quot;:&quot;15421-15997&quot;} -->
+<h3 class="sectionedit35" id="don_t_comment_bad_names_fix_the_names_instead">“Don’t Comment Bad Names—Fix the Names Instead”</h3>
+<div class="level3">
+
+<p>
+<code>“A good name is better than a good comment”</code>
+</p>
+<pre class="code">“// Releases the handle for this key. This doesn&#039;t modify the actual registry.
+void DeleteRegistry(RegistryKey* key);”
+
+use 
+
+void ReleaseRegistryHandle(RegistryKey* key);
+</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;\u201cDon\u2019t Comment Bad Names\u2014Fix the Names Instead\u201d&quot;,&quot;hid&quot;:&quot;don_t_comment_bad_names_fix_the_names_instead&quot;,&quot;codeblockOffset&quot;:27,&quot;secid&quot;:35,&quot;range&quot;:&quot;15998-16310&quot;} -->
+<h3 class="sectionedit36" id="comment_the_flaws_in_your_code">“Comment the Flaws in Your Code”</h3>
+<div class="level3">
+
+<p>
+“<em> TODO: use a faster algorithm”
+
+“</em> TODO(dustin): handle other image formats besides JPEG”
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong>Marker</strong>	Typical meaning</div>
+</li>
+<li class="level1"><div class="li"> <strong>TODO</strong>:	Stuff I haven’t gotten around to yet</div>
+</li>
+<li class="level1"><div class="li"> <strong><img src="/lib/images/smileys/fixme.gif" class="icon" alt="FIXME" /></strong>:	Known-broken code here</div>
+</li>
+<li class="level1"><div class="li"> <strong>HACK</strong>:	Admittedly inelegant solution to a problem</div>
+</li>
+<li class="level1"><div class="li"> <strong>XXX</strong>:	Danger! major problem here</div>
+</li>
+</ul>
+
+<p>
+<em><strong>“Don’t be embarrassed to document those flaws”</strong></em>
+</p>
+
+<p>
+<code>“The important thing is that you should always feel free to comment on your thoughts about how the code should change in the future”</code>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;\u201cComment the Flaws in Your Code\u201d&quot;,&quot;hid&quot;:&quot;comment_the_flaws_in_your_code&quot;,&quot;codeblockOffset&quot;:28,&quot;secid&quot;:36,&quot;range&quot;:&quot;16311-16891&quot;} -->
+<h3 class="sectionedit37" id="comment_on_your_constants">“Comment on Your Constants”</h3>
+<div class="level3">
+<pre class="code">NUM_THREADS = 8  # as long as it&#039;s &gt;= 2 * num_processors, that&#039;s good enough.</pre>
+
+<p>
+<strong><em>Now the person reading the code has some guidance on how to adjust that value</em></strong>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;\u201cComment on Your Constants\u201d&quot;,&quot;hid&quot;:&quot;comment_on_your_constants&quot;,&quot;codeblockOffset&quot;:28,&quot;secid&quot;:37,&quot;range&quot;:&quot;16892-17117&quot;} -->
+<h3 class="sectionedit38" id="put_yourself_in_the_reader_s_shoes">“Put Yourself in the Reader’s Shoes”</h3>
+<div class="level3">
+<pre class="code">void Clear() {
+        vector&lt;float&gt;().swap(data);  // Huh? Why not just data.clear()?
+    }</pre>
+
+<p>
+<em>“Well, it turns out that this is the only way to force a vector to truly relinquish its memory to the memory allocator”</em>
+</p>
+<pre class="code">// Force vector to relinquish its memory (look up &quot;STL swap trick&quot;)
+vector&lt;float&gt;().swap(data);</pre>
+
+<p>
+<strong>advice is to do whatever helps the reader understand the code more easily. This may involve commenting the what, the how, or the why (or all three).</strong>
+</p>
+<ul>
+<li class="level1"><div class="li"> Write down whatever comment is on your mind.</div>
+</li>
+<li class="level1"><div class="li"> Read the comment, and see what (if anything) needs to be improved.</div>
+</li>
+<li class="level1"><div class="li"> Make improvements.</div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;\u201cPut Yourself in the Reader\u2019s Shoes\u201d&quot;,&quot;hid&quot;:&quot;put_yourself_in_the_reader_s_shoes&quot;,&quot;codeblockOffset&quot;:29,&quot;secid&quot;:38,&quot;range&quot;:&quot;17118-17819&quot;} -->
+<h2 class="sectionedit39" id="chapter_6_making_comments_precise_and_compact">Chapter 6. Making Comments Precise and Compact</h2>
+<div class="level2">
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Chapter\u00a06.\u00a0Making Comments Precise and Compact&quot;,&quot;hid&quot;:&quot;chapter_6_making_comments_precise_and_compact&quot;,&quot;codeblockOffset&quot;:31,&quot;secid&quot;:39,&quot;range&quot;:&quot;17820-17881&quot;} -->
+<h3 class="sectionedit40" id="keep_comments_compact">Keep Comments Compact</h3>
+<div class="level3">
+<pre class="code">“/ The int is the CategoryType.
+// The first float in the inner pair is the &#039;score&#039;,
+// the second is the &#039;weight&#039;.
+typedef hash_map&lt;int, pair&lt;float, float&gt; &gt; ScoreMap;”
+
+do this 
+
+“// CategoryType -&gt; (score, weight)
+typedef hash_map&lt;int, pair&lt;float, float&gt; &gt; ScoreMap;”
+</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Keep Comments Compact&quot;,&quot;hid&quot;:&quot;keep_comments_compact&quot;,&quot;codeblockOffset&quot;:31,&quot;secid&quot;:40,&quot;range&quot;:&quot;17882-18211&quot;} -->
+<h3 class="sectionedit41" id="avoid_ambiguous_pronouns">Avoid Ambiguous Pronouns</h3>
+<div class="level3">
+<pre class="code">// Insert the data into the cache, but check if it&#039;s too big first.
+
+It may refer to data or Cache
+
+use
+
+“// Insert the data into the cache, but check if the data is too big first”
+</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Avoid Ambiguous Pronouns&quot;,&quot;hid&quot;:&quot;avoid_ambiguous_pronouns&quot;,&quot;codeblockOffset&quot;:32,&quot;secid&quot;:41,&quot;range&quot;:&quot;18212-18450&quot;} -->
+<h3 class="sectionedit42" id="describe_function_behavior_precisely">“Describe Function Behavior Precisely”</h3>
+<div class="level3">
+<pre class="code">“// Return the number of lines in this file.
+int CountLines(string filename) { ... }”
+
+use 
+
+// Count how many newline bytes (&#039;\n&#039;) are in the file.
+int CountLines(string filename) { ... }
+</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;\u201cDescribe Function Behavior Precisely\u201d&quot;,&quot;hid&quot;:&quot;describe_function_behavior_precisely&quot;,&quot;codeblockOffset&quot;:33,&quot;secid&quot;:42,&quot;range&quot;:&quot;18451-18714&quot;} -->
+<h3 class="sectionedit43" id="use_input_output_examples_that_illustrate_corner_cases">Use Input/Output Examples That Illustrate Corner Cases</h3>
+<div class="level3">
+<pre class="code">// Remove the suffix/prefix of &#039;chars&#039; from the input &#039;src&#039;.
+String Strip(String src, String chars) { ... }
+
+do this :
+//....
+// Example: Strip(&quot;abba/a/ba&quot;, &quot;ab&quot;) returns &quot;/a/&quot;
+String Strip(String src, String chars) { ... }
+</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Use Input\/Output Examples That Illustrate Corner Cases&quot;,&quot;hid&quot;:&quot;use_input_output_examples_that_illustrate_corner_cases&quot;,&quot;codeblockOffset&quot;:34,&quot;secid&quot;:43,&quot;range&quot;:&quot;18715-19022&quot;} -->
+<h3 class="sectionedit44" id="state_the_intent_of_your_code">“State the Intent of Your Code”</h3>
+<div class="level3">
+
+<p>
+<code>commenting is often about telling the reader what you were thinking about when you wrote the code</code>
+</p>
+<pre class="code">// Iterate through the list in reverse order
+for (list&lt;Product&gt;::reverse_iterator it = products.rbegin(); 
+
+do
+
+“// Display each price, from highest to lowest
+for (list&lt;Product&gt;::reverse_iterator it = products.rbegin(); ”
+
+</pre>
+
+<p>
+<em>This comment explains what the program is doing at a higher level. This is much more in tune with what the programmer was thinking when she wrote the code.</em>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;\u201cState the Intent of Your Code\u201d&quot;,&quot;hid&quot;:&quot;state_the_intent_of_your_code&quot;,&quot;codeblockOffset&quot;:35,&quot;secid&quot;:44,&quot;range&quot;:&quot;19023-19578&quot;} -->
+<h3 class="sectionedit45" id="named_function_parameter_comments">“Named Function Parameter” Comments”</h3>
+<div class="level3">
+
+<p>
+In languages like Python, you can assign the arguments by name:
+</p>
+<pre class="code">def Connect(timeout, use_encryption):  ...
+
+# Call the function using named parameters
+Connect(timeout = 10, use_encryption = False)</pre>
+
+<p>
+“In languages like C++ and Java, you can’t do this. However, you can use an inline comment to the same effect:
+</p>
+<pre class="code">void Connect(int timeout, bool use_encryption) { ... }
+
+// Call the function with commented parameters
+Connect(/* timeout_ms = */ 10, /* use_encryption = */ false);”</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;\u201cNamed Function Parameter\u201d Comments\u201d&quot;,&quot;hid&quot;:&quot;named_function_parameter_comments&quot;,&quot;codeblockOffset&quot;:36,&quot;secid&quot;:45,&quot;range&quot;:&quot;19579-20146&quot;} -->
+<h2 class="sectionedit46" id="part_ii_simplifying_loops_and_logic">“Part II. Simplifying Loops and Logic”</h2>
+<div class="level2">
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;\u201cPart\u00a0II.\u00a0Simplifying Loops and Logic\u201d&quot;,&quot;hid&quot;:&quot;part_ii_simplifying_loops_and_logic&quot;,&quot;codeblockOffset&quot;:38,&quot;secid&quot;:46,&quot;range&quot;:&quot;20147-20204&quot;} -->
+<h2 class="sectionedit47" id="chapter_7_making_control_flow_easy_to_read">“Chapter 7. Making Control Flow Easy to Read”</h2>
+<div class="level2">
+
+<p>
+<code>Make all your conditionals, loops, and other changes to control flow as “natural” as possible—written in a way that doesn’t make the reader stop and reread your code.</code>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;\u201cChapter\u00a07.\u00a0Making Control Flow Easy to Read\u201d&quot;,&quot;hid&quot;:&quot;chapter_7_making_control_flow_easy_to_read&quot;,&quot;codeblockOffset&quot;:38,&quot;secid&quot;:47,&quot;range&quot;:&quot;20205-20449&quot;} -->
+<h3 class="sectionedit48" id="the_order_of_arguments_in_conditionals">“The Order of Arguments in Conditionals”</h3>
+<div class="level3">
+<pre class="code">if (length &gt;= 10)
+
+or
+
+if (10 &lt;= length)
+
+
+
+“while (bytes_received &lt; bytes_expected)
+or
+while (bytes_expected &gt; bytes_received)”
+</pre>
+
+<p>
+the Left hand side
+</p>
+
+<p>
+the expression being interrogated whose value is more in flux
+</p>
+
+<p>
+the right hand side 
+</p>
+
+<p>
+The expression being compared against, whose value is more constant.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;\u201cThe Order of Arguments in Conditionals\u201d&quot;,&quot;hid&quot;:&quot;the_order_of_arguments_in_conditionals&quot;,&quot;codeblockOffset&quot;:38,&quot;secid&quot;:48,&quot;range&quot;:&quot;20450-20833&quot;} -->
+<h3 class="sectionedit49" id="the_order_of_if_else_blocks">The Order of if/else Blocks</h3>
+<div class="level3">
+<ul>
+<li class="level1"><div class="li"> Prefer dealing with the positive case first instead of the negative—e.g., if (debug) instead of if (!debug).</div>
+</li>
+<li class="level1"><div class="li"> Prefer dealing with the simpler case first to get it out of the way. This approach might also allow both the if and the else to be visible on the screen at the same time, which is nice.</div>
+</li>
+<li class="level1"><div class="li"> Prefer dealing with the more interesting or conspicuous case first.</div>
+</li>
+</ul>
+<pre class="code">if (!url.HasQueryParameter(&quot;expand_all&quot;)) {
+    response.Render(items);
+    ...
+} else {
+    for (int i = 0; i &lt; items.size(); i++) {
+        items[i].Expand();
+    }
+    ...
+}</pre>
+<pre class="code">“if (url.HasQueryParameter(&quot;expand_all&quot;)) {
+    for (int i = 0; i &lt; items.size(); i++) {
+        items[i].Expand();
+    }
+    ...
+} else {
+    response.Render(items);
+    ...
+}”
+</pre>
+
+<p>
+<em><strong>“Again, depending on the details, this may be a judgment call”</strong></em>
+</p>
+
+<p>
+<em><strong>To summarize, our advice is simply to pay attention to these factors and watch out for cases where your if/else is in an awkward order.</strong></em>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;The Order of if\/else Blocks&quot;,&quot;hid&quot;:&quot;the_order_of_if_else_blocks&quot;,&quot;codeblockOffset&quot;:39,&quot;secid&quot;:49,&quot;range&quot;:&quot;20834-21866&quot;} -->
+<h3 class="sectionedit50" id="theconditional_expression_aka_ternary_operator">The ?: Conditional Expression (a.k.a. “Ternary Operator”)</h3>
+<div class="level3">
+<pre class="code">time_str += (hour &gt;= 12) ? &quot;pm&quot; : &quot;am&quot;;</pre>
+<pre class="code">if (hour &gt;= 12) {
+    time_str += &quot;pm&quot;;
+} else {
+    time_str += &quot;am&quot;;
+}</pre>
+<pre class="code">However, these expressions can quickly become difficult to read:
+return exponent &gt;= 0 ? mantissa * (1 &lt;&lt; exponent) : mantissa / (1 &lt;&lt; -exponent);</pre>
+<pre class="code">if (exponent &gt;= 0) {
+    return mantissa * (1 &lt;&lt; exponent);
+} else {
+    return mantissa / (1 &lt;&lt; -exponent);
+}
+</pre>
+
+<p>
+<code>“By default, use an if/else. The ternary ?: should be used only for the simplest cases.”</code>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;The ?: Conditional Expression (a.k.a. \u201cTernary Operator\u201d)&quot;,&quot;hid&quot;:&quot;theconditional_expression_aka_ternary_operator&quot;,&quot;codeblockOffset&quot;:41,&quot;secid&quot;:50,&quot;range&quot;:&quot;21867-22475&quot;} -->
+<h3 class="sectionedit51" id="avoid_do_while_loops">“Avoid do/while Loops”</h3>
+<div class="level3">
+
+<p>
+<em>What’s weird about a do/while loop is that a block of code may or may not be reexecuted based on a condition underneath it. Typically, logical conditions are above the code they guard—this is the way it works with if, while, and for statements. Because you typically read code from top to bottom, this makes do/while a bit unnatural. Many readers end up reading the code twice.</em>
+</p>
+<pre class="code">“// Imitating a do/while — DON&#039;T DO THIS!
+body
+
+while (condition) {
+    body (again)
+}”
+</pre>
+
+<p>
+according to bjarne stroustrup
+<em>In my experience, the do-statement is a source of errors and confusion. … I prefer the condition “up front where I can see it.” Consequently, I tend to avoid do-statements.</em>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;\u201cAvoid do\/while Loops\u201d&quot;,&quot;hid&quot;:&quot;avoid_do_while_loops&quot;,&quot;codeblockOffset&quot;:45,&quot;secid&quot;:51,&quot;range&quot;:&quot;22476-23228&quot;} -->
+<h3 class="sectionedit52" id="minimize_nesting">Minimize Nesting</h3>
+<div class="level3">
+
+<p>
+Deeply nested code is hard to understand. Each level of nesting pushes an extra condition onto the reader’s “mental stack.
+</p>
+<pre class="code">if (user_result == SUCCESS) {
+    if (permission_result != SUCCESS) {
+       reply.WriteErrors(&quot;error reading permissions&quot;);
+       reply.Done();
+       return;
+    }
+    reply.WriteErrors(&quot;&quot;);
+    
+    
+    
+
+if (user_result != SUCCESS) {
+    reply.WriteErrors(user_result);
+    reply.Done();
+    return;
+}
+
+if (permission_result != SUCCESS) {
+    reply.WriteErrors(permission_result);
+    reply.Done();
+    return;
+}</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Minimize Nesting&quot;,&quot;hid&quot;:&quot;minimize_nesting&quot;,&quot;codeblockOffset&quot;:46,&quot;secid&quot;:52,&quot;range&quot;:&quot;23229-23821&quot;} -->
+<h3 class="sectionedit53" id="removing_nesting_inside_loops">Removing Nesting Inside Loops</h3>
+<div class="level3">
+<pre class="code">for (int i = 0; i &lt; results.size(); i++) {&gt;
+    if (results[i] != NULL) {
+        non_null_count++;
+
+        if (results[i]-&gt;name != &quot;&quot;) {
+            cout &lt;&lt; &quot;Considering candidate...&quot; &lt;&lt; endl;
+
+            ...
+        }
+    }
+}”</pre>
+
+<p>
+Refactor:
+</p>
+<pre class="code">for (int i = 0; i &lt; results.size(); i++) {
+    if (results[i] == NULL) continue;
+    non_null_count++;
+
+    if (results[i]-&gt;name == &quot;&quot;) continue;
+    cout &lt;&lt; &quot;Considering candidate...&quot; &lt;&lt; endl;
+
+    ...
+}”
+</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Removing Nesting Inside Loops&quot;,&quot;hid&quot;:&quot;removing_nesting_inside_loops&quot;,&quot;codeblockOffset&quot;:47,&quot;secid&quot;:53,&quot;range&quot;:&quot;23822-24347&quot;} -->
+<h2 class="sectionedit54" id="chapter_8_breaking_down_giant_expressions">Chapter 8. Breaking Down Giant Expressions</h2>
+<div class="level2">
+
+<p>
+<code>Break down your giant expressions into more digestible pieces.</code>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Chapter\u00a08.\u00a0Breaking Down Giant Expressions&quot;,&quot;hid&quot;:&quot;chapter_8_breaking_down_giant_expressions&quot;,&quot;codeblockOffset&quot;:49,&quot;secid&quot;:54,&quot;range&quot;:&quot;24348-24472&quot;} -->
+<h3 class="sectionedit55" id="explaining_variables">Explaining Variables</h3>
+<div class="level3">
+
+<p>
+This extra variable is sometimes called an “explaining variable” because it helps explain what the subexpression means.
+</p>
+
+<p>
+Here is an example:
+</p>
+<pre class="code">if line.split(&#039;:&#039;)[0].strip() == &quot;root&quot;:
+    ...</pre>
+
+<p>
+Here is the same code, now with an explaining variable:
+</p>
+<pre class="code">username = line.split(&#039;:&#039;)[0].strip()
+if username == &quot;root&quot;:</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Explaining Variables&quot;,&quot;hid&quot;:&quot;explaining_variables&quot;,&quot;codeblockOffset&quot;:49,&quot;secid&quot;:55,&quot;range&quot;:&quot;24473-24849&quot;} -->
+<h3 class="sectionedit56" id="summary_variables">Summary Variables</h3>
+<div class="level3">
+
+<p>
+We call this a summary variable if its purpose is simply to replace a larger chunk of code with a smaller name that can be managed and thought about more easily.
+</p>
+<pre class="code">if (request.user.id == document.owner_id) {
+    // user can edit this document...
+}
+
+...
+
+if (request.user.id != document.owner_id) {
+  “// document is read-only...”
+}
+
+</pre>
+
+<p>
+<strong>The main concept in this code is, “Does the user own the document?” </strong>
+</p>
+<pre class="code">final boolean user_owns_document = (request.user.id == document.owner_id);
+
+if (user_owns_document) {
+    // user can edit this document...
+}
+
+...
+
+if (!user_owns_document) {
+    // document is read-only...
+}</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Summary Variables&quot;,&quot;hid&quot;:&quot;summary_variables&quot;,&quot;codeblockOffset&quot;:51,&quot;secid&quot;:56,&quot;range&quot;:&quot;24850-25535&quot;} -->
+<h3 class="sectionedit57" id="using_de_morgan_s_laws">Using De Morgan’s Laws</h3>
+<div class="level3">
+
+<p>
+<code>“Distribute the not and switch and/or.”</code>
+</p>
+<pre class="code">“if (!(file_exists &amp;&amp; !is_protected)) Error(&quot;Sorry, could not read file.&quot;);
+
+It can be rewritten to:
+
+if (!file_exists || is_protected) Error(&quot;Sorry, could not read file.&quot;);”
+</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Using De Morgan\u2019s Laws&quot;,&quot;hid&quot;:&quot;using_de_morgan_s_laws&quot;,&quot;codeblockOffset&quot;:53,&quot;secid&quot;:57,&quot;range&quot;:&quot;25536-25816&quot;} -->
+<h3 class="sectionedit58" id="abusing_short-circuit_logic">Abusing Short-Circuit Logic</h3>
+<div class="level3">
+<pre class="code">assert((!(bucket = FindBucket(key))) || !bucket-&gt;IsOccupied());</pre>
+<pre class="code">
+bucket = FindBucket(key);
+if (bucket != NULL) assert(!bucket-&gt;IsOccupied());
+</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Abusing Short-Circuit Logic&quot;,&quot;hid&quot;:&quot;abusing_short-circuit_logic&quot;,&quot;codeblockOffset&quot;:54,&quot;secid&quot;:58,&quot;range&quot;:&quot;25817-26030&quot;} -->
+<h3 class="sectionedit59" id="examplewrestling_with_complicated_logic">Example: Wrestling with Complicated Logic</h3>
+<div class="level3">
+<pre class="code">“[0,2) overlaps with [2,4)”
+
+A - - - - - - A
+              B - - - - - - B
+
+0.     1.     2.     3.     4.     5
+
+
+return (begin &gt;= other.begin &amp;&amp; begin &lt; other.end) ||
+       (end &gt; other.begin &amp;&amp; end &lt;= other.end) || 
+       (begin &lt;= other.begin &amp;&amp; end &gt;= other.end);
+</pre>
+
+<p>
+<em>This code has become way too complicated</em>
+</p>
+<pre class="code">
+bool Range::OverlapsWith(Range other) {
+    if (other.end &lt;= begin) return false;  // They end before we begin
+    if (other.begin &gt;= end) return false;  // They begin after we end
+
+    return true;  // Only possibility left: they overlap
+}</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Example: Wrestling with Complicated Logic&quot;,&quot;hid&quot;:&quot;examplewrestling_with_complicated_logic&quot;,&quot;codeblockOffset&quot;:56,&quot;secid&quot;:59,&quot;range&quot;:&quot;26031-26682&quot;} -->
+<h3 class="sectionedit60" id="breaking_down_giant_statements">Breaking Down Giant Statements</h3>
+<div class="level3">
+<pre class="code">var update_highlight = function (message_num) {
+    if ($(&quot;#vote_value&quot; + message_num).html() === &quot;Up&quot;) {
+        $(&quot;#thumbs_up&quot; + message_num).addClass(&quot;highlighted&quot;);
+        $(&quot;#thumbs_down&quot; + message_num).removeClass(&quot;highlighted&quot;);
+    } else if ($(&quot;#vote_value&quot; + message_num).html() === &quot;Down&quot;) {
+        $(&quot;#thumbs_up&quot; + message_num).removeClass(&quot;highlighted&quot;);
+        $(&quot;#thumbs_down&quot; + message_num).addClass(&quot;highlighted&quot;);
+    } else {
+        $(&quot;#thumbs_up&quot; + message_num).removeClass(&quot;highighted&quot;); 
+        $(&quot;#thumbs_down&quot; + message_num).removeClass(&quot;highlighted&quot;);
+    }
+};</pre>
+
+<p>
+<em>“DRY—Don’t Repeat Yourself—principle”</em>
+</p>
+<pre class="code">var update_highlight = function (message_num) {
+    var thumbs_up = $(&quot;#thumbs_up&quot; + message_num);
+    var thumbs_down = $(&quot;#thumbs_down&quot; + message_num);
+    var vote_value = $(&quot;#vote_value&quot; + message_num).html();
+    var hi = &quot;highlighted&quot;;
+
+    if (vote_value === &quot;Up&quot;) {
+        thumbs_up.addClass(hi);
+        thumbs_down.removeClass(hi);
+    } else if (vote_value === &quot;Down&quot;) {
+        thumbs_up.removeClass(hi);
+        thumbs_down.addClass(hi);
+    } else {
+        thumbs_up.removeClass(hi);
+        thumbs_down.removeClass(hi);
+    }
+};</pre>
+<ul>
+<li class="level1"><div class="li"> It helps avoid typing mistakes. (In fact, did you notice that in the first example, the string was misspelled as “highighted” in the fifth case?)</div>
+</li>
+<li class="level1"><div class="li"> It shrinks the line width even more, making the code easier to scan through.</div>
+</li>
+<li class="level1"><div class="li"> If the class name needed to change, there’s just one place to change it.</div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Breaking Down Giant Statements&quot;,&quot;hid&quot;:&quot;breaking_down_giant_statements&quot;,&quot;codeblockOffset&quot;:58,&quot;secid&quot;:60,&quot;range&quot;:&quot;26683-28258&quot;} -->
+<h2 class="sectionedit61" id="chapter_9_variables_and_readability">Chapter 9. Variables and Readability</h2>
+<div class="level2">
+
+<p>
+Specifically, there are three problems to contend with:
+</p>
+<ol>
+<li class="level1"><div class="li"> The more variables there are, the harder it is to keep track of them all.</div>
+</li>
+<li class="level1"><div class="li"> The bigger a variable’s scope, the longer you have to keep track of it.</div>
+</li>
+<li class="level1"><div class="li"> The more often a variable changes, the harder it is to keep track of its current value.</div>
+</li>
+</ol>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Chapter\u00a09.\u00a0Variables and Readability&quot;,&quot;hid&quot;:&quot;chapter_9_variables_and_readability&quot;,&quot;codeblockOffset&quot;:60,&quot;secid&quot;:61,&quot;range&quot;:&quot;28259-28616&quot;} -->
+<h3 class="sectionedit62" id="useless_temporary_variables">Useless Temporary Variables</h3>
+<div class="level3">
+<pre class="code">
+now = datetime.datetime.now()
+root_message.last_view_time = now
+</pre>
+<ul>
+<li class="level1"><div class="li"> It isn’t breaking down a complex expression.</div>
+</li>
+<li class="level1"><div class="li"> It doesn’t add clarification—the expression datetime.datetime.now() is clear enough.</div>
+</li>
+<li class="level1"><div class="li"> It’s used only once, so it doesn’t compress any redundant code.</div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Useless Temporary Variables&quot;,&quot;hid&quot;:&quot;useless_temporary_variables&quot;,&quot;codeblockOffset&quot;:60,&quot;secid&quot;:62,&quot;range&quot;:&quot;28617-28953&quot;} -->
+<h3 class="sectionedit63" id="eliminating_intermediate_results">Eliminating Intermediate Results</h3>
+<div class="level3">
+<pre class="code">var remove_one = function (array, value_to_remove) {
+    var index_to_remove = null;
+    for (var i = 0; i &lt; array.length; i += 1) {
+        if (array[i] === value_to_remove) {
+            index_to_remove = i;
+            break;
+        }
+    }
+    if (index_to_remove !== null) {
+        array.splice(index_to_remove, 1);
+    }
+};</pre>
+<pre class="code">var remove_one = function (array, value_to_remove) {
+    for (var i = 0; i &lt; array.length; i += 1) {
+        if (array[i] === value_to_remove) {
+            array.splice(i, 1);
+            return;”
+</pre>
+
+<p>
+<strong><em>In general, it’s a good strategy to complete the task as quickly as possible.</em></strong>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Eliminating Intermediate Results&quot;,&quot;hid&quot;:&quot;eliminating_intermediate_results&quot;,&quot;codeblockOffset&quot;:61,&quot;secid&quot;:63,&quot;range&quot;:&quot;28954-29656&quot;} -->
+<h3 class="sectionedit64" id="shrink_the_scope_of_your_variables">Shrink the Scope of Your Variables</h3>
+<div class="level3">
+
+<p>
+<code>Make your variable visible by as few lines of code as possible.</code>
+</p>
+<pre class="code">class LargeClass {
+    string str_;
+
+    void Method1() {
+        str_ = ...;
+        Method2();
+    }
+
+    void Method2() {
+        // Uses str_
+    }
+
+    // Lots of other methods that don&#039;t use str_ ...
+};</pre>
+
+<p>
+<em>In some sense, a class member variable is like a “mini-global” inside the realm of the class.</em>
+</p>
+<pre class="code">
+class LargeClass {
+    void Method1() {
+        string str = ...;
+        Method2(str);
+    }
+
+    void Method2(string str) {
+        // Uses str
+    }
+
+    // Now other methods can&#039;t see str.
+}; 
+</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Shrink the Scope of Your Variables&quot;,&quot;hid&quot;:&quot;shrink_the_scope_of_your_variables&quot;,&quot;codeblockOffset&quot;:63,&quot;secid&quot;:64,&quot;range&quot;:&quot;29657-30312&quot;} -->
+<h3 class="sectionedit65" id="prefer_write-once_variables">Prefer Write-Once Variables</h3>
+<div class="level3">
+
+<p>
+<code>The more places a variable is manipulated, the harder it is to reason about its current value.</code>
+</p>
+<pre class="code">&lt;input type=&quot;text&quot; id=&quot;input1&quot; value=&quot;Dustin&quot;&gt;
+&lt;input type=&quot;text&quot; id=&quot;input2&quot; value=&quot;Trevor&quot;&gt;
+&lt;input type=&quot;text&quot; id=&quot;input3&quot; value=&quot;&quot;&gt;
+&lt;input type=&quot;text&quot; id=&quot;input4&quot; value=&quot;Melissa&quot;&gt;
+
+
+var setFirstEmptyInput = function (new_value) {
+    var found = false;
+    var i = 1;
+    var elem = document.getElementById(&#039;input&#039; + i);
+    while (elem !== null) {
+        if (elem.value === &#039;&#039;) {
+            found = true;
+            break;
+        }
+        i++;
+        elem = document.getElementById(&#039;input&#039; + i);
+    }
+    if (found) elem.value = new_value;
+    return elem;
+};</pre>
+<ul>
+<li class="level1"><div class="li"> var found</div>
+</li>
+<li class="level1"><div class="li"> var i</div>
+</li>
+<li class="level1"><div class="li"> var elem</div>
+</li>
+</ul>
+<pre class="code">var setFirstEmptyInput = function (new_value) {
+    var i = 1;
+    var elem = document.getElementById(&#039;input&#039; + i);
+    while (elem !== null) {
+        if (elem.value === &#039;&#039;) {
+            elem.value = new_value;
+            return elem;
+        }
+        i++;
+        elem = document.getElementById(&#039;input&#039; + i);
+    }
+    return null;
+};</pre>
+<pre class="code">
+
+var setFirstEmptyInput = function (new_value) {
+    for (var i = 1; true; i++) {
+        var elem = document.getElementById(&#039;input&#039; + i);
+        if (elem === null)
+            return null;  // Search Failed. No empty input found.
+
+        if (elem.value === &#039;&#039;) {
+            elem.value = new_value;
+            return elem;
+        }
+    }
+}; </pre>
+
+<p>
+<em>In particular, notice how elem acts as a write-once variable whose lifespan is contained inside the loop</em>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Prefer Write-Once Variables&quot;,&quot;hid&quot;:&quot;prefer_write-once_variables&quot;,&quot;codeblockOffset&quot;:65,&quot;secid&quot;:65,&quot;range&quot;:&quot;30313-&quot;} -->

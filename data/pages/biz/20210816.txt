@@ -1,0 +1,158 @@
+====== First Day Aug 16 2021 ======
+
+
+Calendar Sync
+
+Morning meeting
+
+meet and greet
+
+
+introduce sarili
+project involve
+favorite quarantine passtime
+
+
+morning meeting
+  * Previous day accomplishment
+  * problem encounter
+  * task for today
+
+
+Day 1 - 
+  * Setup workstation * [✔]
+  * xCode * [ ✔] 
+  * Google Chrome * [ ✔] 
+  * Accounts * [ ✔] 
+  * Microsoft Account * [✔ ] 
+  * Microsoft One Drive * [ ✔] 
+  * Calendar App in Mac * [ ✔] 
+  * MS Teams * [ ✔] 
+  * Backlog * [✔] 
+  * iTerm2 * [ ✔] 
+  * Setup terminal (zshrc/bashrc) * [ ✔] 
+  * Homebrew and Cask * [ ✔] 
+  * NVM and Node * [✔] 
+  * Java and JENV (Install v1.8) * [✔] 
+  * Git (Backlog) * [ ✔] 
+  * SSH keys * [ ✔] 
+  * Git Completion * [ ✔] 
+  * Git Diff Highlight * [ ✔] 
+  * Virtual Box * [✔ ] 
+  * DBeaver * [✔ ]
+  * Vagrant * [ ✔] 
+  * Microsoft Office * [ ✔] 
+  * Activate using company email * [ ✔] 
+  * VS Code (or any preferred IDE) * [✔ ] 
+  * Create projects folder under ~/ * [ ✔] 
+  * Create first Mac backup [✔]
+
+*NVM if want to install new version of node
+purpose compatibility of version
+
+install java 
+using homebrew
+install terminal
+
+cask under homebrew
+to install GUI application
+
+last option in browser installation
+
+
+https://bems-ph.bizwind.co.jp/portal/timerecord
+
+http://bss.bizwind.co.jp/skill_sheet/
+
+スペースURL：https://biz1.backlog.jp
+
+ユーザID：Del.Rosario.Jerome
+
+パスワード：JhfknHbu
+
+encounter Error
+
+<code>
+fatal: Could not resolve HEAD to a revision
+Already up-to-date.
+
+run:
+brew update-reset
+</code>
+
+<code>
+brew install java
+brew install jenv
+
+
+brew tap adoptopenjdk/openjdk
+
+brew tap homebrew/cask-versions
+
+
+brew install --cask homebrew/cask-versions/adoptopenjdk8
+
+brew install openjdk@8
+
+echo 'export PATH="$HOME/.jenv/bin:$PATH"' >> ~/.zshrc
+
+echo 'eval "$(jenv init -)"' >> ~/.zshrc
+
+restart terminal 
+
+jenv add /Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+
+
+
+
+install java 11
+
+brew install openjdk@11
+
+brew tap adoptopenjdk/openjdk
+
+brew search adoptopenjdk
+
+brew install --cask adoptopenjdk11
+
+jenv add /Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home
+
+</code>
+=== ADD hightlight in git ===
+
+<code>
+git config --global core.pager "`brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight | less"
+</code>
+
+Day 2 to 6 - 
+  * Books and Dev Tools * [ ] 
+  * Unix File System and Directory Structure * [ ] 
+  * Basic Unix commands (e.g: cp, mv, vim) * [ ] 
+  * The Art of Readable Code * [ ] 
+  * Chapters 1 - 9 * [ ] 
+  * Test-Driven Java Development (Presentation/Discussion) * [ ] 
+  * Chapters 1 - 5 * [ ] 
+  * Chapters 6 (Focus on Concepts) * [ ] 
+  * Chapters 6 (p163 ~ p169) * [ ] 
+  * Basics of Cypress * [ ] 
+  * Git (Presentation/Discussion) * [ ] 
+  * Basics * [ ] 
+  * Branch - https://learngitbranching.js.org/ * [ ] 
+  * Merge * [ ] 
+  * Rebase * [ ] 
+  * Stash * [ ] 
+  * Log * [ ] 
+  * Docker, Virtual Box and Vagrant (Presentation/Discussion) * [ ] 
+  * Setup one existing project that uses virtual box, vagrant and docker (JFOODO) * [ ] 
+  * Database Concepts (Presentation/Discussion) * [ ] 
+  * ERD * [ ] 
+  * Constraints * [ ] 
+  * Foreign Keys
+
+Day 7 Onwards - 
+  * Symfony and Project * [ ] 
+  * Read and study symfony * [ ] 
+  * Study BEMS codebase * [ ] 
+  * Plan project (Continue BEMS)
+
+

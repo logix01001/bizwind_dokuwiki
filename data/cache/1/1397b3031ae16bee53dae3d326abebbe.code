@@ -1,0 +1,58 @@
+<span class="sc1"><span class="coMULTI">{#</span>
+<span class="sc1"> time can be any string acceptable by http://www.php.net/strtotime, the</span>
+<span class="sc1"> template will output that time's month.</span>
+<span class="sc1"> If you don't want to pass in a date you can set time like this:</span>
+<span class="sc1"> {% set time = &quot;now&quot;|date(&quot;U&quot;) %}</span>
+<span class="sc1"> {% set time = &quot;December 2012&quot;|date(&quot;U&quot;) %}</span>
+<span class="sc1"> How ever you want to output items onto the calendar is a different issue,</span>
+<span class="sc1"> but I'd assume pushing everything into an array numerically indexed by that day:</span>
+<span class="sc1"> $days = array(1=&gt;array('Something on the first'),31=&gt;array('Halloween'));</span>
+<span class="sc1">#}</span></span>
+	&lt;table&gt;
+		&lt;thead&gt;
+			&lt;tr&gt;
+				&lt;th colspan=&quot;7&quot; class=&quot;center&quot;&gt;
+					<span class="br0">&#123;</span><span class="br0">&#123;</span> <span class="re0">time</span><span class="sy0">|</span><a href="http://twig.sensiolabs.org/doc/filters/date.html"><span class="kw2">date</span></a><span class="br0">&#40;</span><span class="st0">'F'</span><span class="br0">&#41;</span> <span class="br0">&#125;</span><span class="br0">&#125;</span>
+				&lt;/th&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+				&lt;th width=&quot;12%&quot;&gt;Sunday&lt;/th&gt;
+				&lt;th width=&quot;15%&quot;&gt;Monday&lt;/th&gt;
+				&lt;th width=&quot;15%&quot;&gt;Tuesday&lt;/th&gt;
+				&lt;th width=&quot;16%&quot;&gt;Wednesday&lt;/th&gt;
+				&lt;th width=&quot;15%&quot;&gt;Thursday&lt;/th&gt;
+				&lt;th width=&quot;15%&quot;&gt;Friday&lt;/th&gt;
+				&lt;th width=&quot;12%&quot;&gt;Saturday&lt;/th&gt;
+			&lt;/tr&gt;
+		&lt;/thead&gt;
+		&lt;tbody&gt;
+			&lt;tr&gt;
+			<span class="br0">&#123;</span>% <a href="http://twig.sensiolabs.org/doc/tags/set.html"><span class="kw1">set</span></a> <span class="re0">daysInMonth</span> <span class="sy0">=</span> <span class="re0">time</span><span class="sy0">|</span><a href="http://twig.sensiolabs.org/doc/filters/date.html"><span class="kw2">date</span></a><span class="br0">&#40;</span><span class="st0">'t'</span><span class="br0">&#41;</span> %<span class="br0">&#125;</span>
+			<span class="br0">&#123;</span>% <a href="http://twig.sensiolabs.org/doc/tags/set.html"><span class="kw1">set</span></a> <span class="re0">startDow</span> <span class="sy0">=</span> <span class="re0">time</span><span class="sy0">|</span><a href="http://twig.sensiolabs.org/doc/filters/date.html"><span class="kw2">date</span></a><span class="br0">&#40;</span><span class="st0">'F 1\\s\\t Y'</span><span class="br0">&#41;</span><span class="sy0">|</span><a href="http://twig.sensiolabs.org/doc/filters/date.html"><span class="kw2">date</span></a><span class="br0">&#40;</span><span class="st0">'w'</span><span class="br0">&#41;</span> %<span class="br0">&#125;</span>
+			<span class="br0">&#123;</span>% <a href="http://twig.sensiolabs.org/doc/tags/set.html"><span class="kw1">set</span></a> <span class="re0">dow</span> <span class="sy0">=</span> <span class="re0">startDow</span> %<span class="br0">&#125;</span>
+			<span class="br0">&#123;</span>% <a href="http://twig.sensiolabs.org/doc/tags/for.html"><span class="kw1">for</span></a> <span class="re0">day</span> <span class="kw5">in</span> <a href="http://twig.sensiolabs.org/doc/functions/range.html"><span class="kw3">range</span></a><span class="br0">&#40;</span><span class="nu0">1</span>,daysInMonth<span class="br0">&#41;</span> %<span class="br0">&#125;</span>
+				<span class="br0">&#123;</span>% <a href="http://twig.sensiolabs.org/doc/tags/if.html"><span class="kw1">if</span></a> <span class="re0">loop</span><span class="sy0">.</span><a href="http://twig.sensiolabs.org/doc/filters/first.html"><span class="kw2">first</span></a> <span class="kw5">and</span> <span class="re0">startDow</span> <span class="sy0">!=</span> <span class="nu0">0</span> %<span class="br0">&#125;</span>
+					&lt;td colspan=&quot;<span class="br0">&#123;</span><span class="br0">&#123;</span> <span class="re0">startDow</span> <span class="br0">&#125;</span><span class="br0">&#125;</span>&quot;&gt;&lt;/td&gt;
+				<span class="br0">&#123;</span>% <a href="http://twig.sensiolabs.org/doc/tags/endif.html"><span class="kw1">endif</span></a> %<span class="br0">&#125;</span>
+				&lt;td&gt;
+					&lt;div&gt;
+						&lt;div&gt;<span class="br0">&#123;</span><span class="br0">&#123;</span> <span class="re0">day</span> <span class="br0">&#125;</span><span class="br0">&#125;</span>&lt;/div&gt;
+						&lt;div&gt;
+						 <span class="sc1"><span class="coMULTI">{# day content here #}</span></span>
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/td&gt;
+				<span class="br0">&#123;</span>% <a href="http://twig.sensiolabs.org/doc/tags/if.html"><span class="kw1">if</span></a> <span class="re0">loop</span><span class="sy0">.</span><a href="http://twig.sensiolabs.org/doc/filters/last.html"><span class="kw2">last</span></a> <span class="kw5">and</span> <span class="re0">dow</span> <span class="sy0">!=</span> <span class="nu0">6</span> %<span class="br0">&#125;</span>
+					&lt;td colspan=&quot;<span class="br0">&#123;</span><span class="br0">&#123;</span> <span class="nu0">6</span> <span class="sy0">-</span> <span class="re0">dow</span> <span class="br0">&#125;</span><span class="br0">&#125;</span>&quot;&gt;&amp;nbsp;&lt;/td&gt;
+				<span class="br0">&#123;</span>% <a href="http://twig.sensiolabs.org/doc/tags/endif.html"><span class="kw1">endif</span></a> %<span class="br0">&#125;</span>
+				<span class="br0">&#123;</span>% <a href="http://twig.sensiolabs.org/doc/tags/if.html"><span class="kw1">if</span></a> <span class="re0">dow</span> <span class="sy0">==</span> <span class="nu0">6</span> %<span class="br0">&#125;</span>
+					<span class="br0">&#123;</span>% <a href="http://twig.sensiolabs.org/doc/tags/set.html"><span class="kw1">set</span></a> <span class="re0">dow</span> <span class="sy0">=</span> <span class="nu0">0</span> %<span class="br0">&#125;</span>
+				&lt;/tr&gt;
+				&lt;tr&gt;
+				<span class="br0">&#123;</span>% <a href="http://twig.sensiolabs.org/doc/tags/else.html"><span class="kw1">else</span></a> %<span class="br0">&#125;</span>
+					<span class="br0">&#123;</span>% <a href="http://twig.sensiolabs.org/doc/tags/set.html"><span class="kw1">set</span></a> <span class="re0">dow</span> <span class="sy0">=</span> <span class="re0">dow</span> <span class="sy0">+</span> <span class="nu0">1</span> %<span class="br0">&#125;</span>
+				<span class="br0">&#123;</span>% <a href="http://twig.sensiolabs.org/doc/tags/endif.html"><span class="kw1">endif</span></a> %<span class="br0">&#125;</span>
+			<span class="br0">&#123;</span>% <a href="http://twig.sensiolabs.org/doc/tags/endfor.html"><span class="kw1">endfor</span></a> %<span class="br0">&#125;</span>
+			&lt;/tr&gt;
+		&lt;/tbody&gt;
+	&lt;/table&gt;

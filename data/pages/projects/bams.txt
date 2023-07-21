@@ -1,0 +1,9 @@
+====== BAMS and COMS ======
+
+BEMS -> BAMS job work hours
+
+COMS -> if there is a profits vs expense
+
+
+**used same database**
+

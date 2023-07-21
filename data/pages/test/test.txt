@@ -1,0 +1,4 @@
+
+====== How to sign homebrew PHP module in macOS ======
+
+https://www.simplified.guide/macos/apache-php-homebrew-codesign#:~:text=Code%20signing%20has%20been%20optional,but%20mandatory%20since%20macOS%20Monterey.&text=You%20need%20to%20create%20a,PHP%20module%20using%20codesign%20utility.

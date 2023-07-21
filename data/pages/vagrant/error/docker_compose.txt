@@ -1,0 +1,7 @@
+<code>
+/tmp/vagrant-shell: line 1: docker-compose: command not found
+</code>
+
+<code>
+sudo vagrant plugin install vagrant-docker-compose
+</code>

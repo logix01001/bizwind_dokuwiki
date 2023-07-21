@@ -1,0 +1,3 @@
+<code>
+sudo vagrant plugin install vagrant vagrant-host-shell
+</code>

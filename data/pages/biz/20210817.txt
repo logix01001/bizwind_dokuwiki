@@ -1,0 +1,1170 @@
+====== The Art of readable Code ======
+
+
+The goal of this book is help you make your code better.
+
+===== The Book is divided into four parts =====
+
+=== Surface level improvements ===
+//Naming, Commenting and aesthtics simple tips that apply to every line of your codebase//
+==== Simplifying loops and logic ==== 
+“Ways to refine the loops, logic, and variables in your program to make them easier to understand”
+=== Reorganizing your code ===
+
+“Higher-level ways to organize large blocks of code and attack problems at the function level”
+=== Selected topics ===
+
+“Applying “easy to understand” to testing and to a larger data structure coding example”
+
+ 
+
+
+
+
+===== CHAPTER 1 Code should be easy to understand =====
+''CODE SHOULD BE EASY TO UNDERSTAND''
+ 
+
+==== “The Fundamental Theorem of Readability.” ====
+''“Code should be written to minimize the time it would take for someone else to understand it.”''
+
+==== “Is Smaller Always Better?” ====
+
+
+“Generally speaking, the less code you write to solve a problem, the better (see Chapter 13, Writing Less Code). It probably takes less time to understand a 2000-line class than a 5000-line class.
+But fewer lines isn’t always better! There are plenty of times when a one-line expression like:
+<code>
+assert((!(bucket = FindBucket(key))) || !bucket->IsOccupied());
+</code>
+takes more time to understand than if it were two lines:
+<code>
+bucket = FindBucket(key);
+if (bucket != NULL) assert(!bucket->IsOccupied());
+</code>
+Similarly, a comment can make you understand the code more quickly, even though it “adds code” to the file:
+<code>
+// Fast version of "hash = (65599 * hash) + c"
+hash = (hash << 6) + (hash << 16) - hash + c;” 
+</code>
+
+
+==== “Part I. Surface-Level Improvements” ====
+
+“picking good names, writing good comments, and formatting your code neatly”
+“If your code has great names, well-written comments, and clean use of whitespace, your code will be much easier to read.”
+
+
+
+===== “Chapter 2. Packing Information into Names” =====
+''“Pack information into your names.”''
+
+
+==== Choose Specific Words ====
+
+
+“For example, the word “getName” is very unspecific, as in this example:”
+<code>
+function getName()
+{
+  .....
+}
+
+use
+
+function getFullName
+{
+  ......
+}
+
+OR 
+
+function getFirstName
+{
+  ......
+}
+
+function getLastName
+{
+  ......
+}
+</code>
+
+==== “Attaching Extra Information to a Name” ====
+“if there’s something very important about a variable that the reader must know, it’s worth attaching an extra “word” to the name”
+**ID => USER_ID**
+
+
+==== Values with Units ====
+“If your variable is a measurement (such as an amount of time or a number of bytes), it’s helpful to encode the units into the variable’s name.”
+
+==== “Encoding Other Important Attributes” ====
+“This technique of attaching extra information to a name isn’t limited to values with units. You should do it any time there’s something dangerous or surprising about the variable.”
+
+  * “A password is in “plaintext” and should be encrypted before further processing” => password => plaintext_password
+  * “A user-provided comment that needs escaping before being displayed" => comment => unescaped_comment
+
+
+==== “How Long Should a Name Be?” ====
+
+“When picking a good name, there’s an implicit constraint that the name shouldn’t be too long. No one likes to work with identifiers like this:”
+
+<code>
+$newNavigationControllerWrappingViewControllerForDataSourceOfClass;
+</code>
+
+
+**“The longer a name is, the harder it is to remember, and the more space it consumes on the screen, possibly causing extra lines to wrap.”**
+
+
+==== “Shorter Names Are Okay for Shorter Scope” ====
+''“When you go on a short vacation, you typically pack less luggage than if you go on a long vacation”''
+
+“Similarly, identifiers that have a small “scope” (how many other lines of code can “see” this name) don’t need to carry as much information. That is, you can get away with shorter names because all that information (what type the variable is, its initial value, how it’s destroyed) is easy to see:
+<code>
+if (debug) {
+    map<string,int> m;
+    LookUpNamesNumbers(&m);
+    Print(m);
+}”
+</code>
+
+**“Even though m doesn’t pack any information, it’s not a problem, because the reader already has all the information she needs to understand this code.”**
+
+
+“However, suppose m were a class member or a global variable, and you saw this snippet of code:
+<code>
+LookUpNamesNumbers(&m);
+Print(m);”
+</code>
+**“This code is much less readable, as it’s unclear what the type or purpose of m is."**
+ 
+
+==== Acronyms and Abbreviations ====
+''“ would a new teammate understand what the name means? ”''
+
+BEManager => BackEndManager probably won’t understand what a BEManager is.
+
+==== “Use Name Formatting to Convey Meaning” ====
+
+“Most of the formatting in this example is pretty common—using **CamelCase for class names**, and using **lower_separated for variable names**. But some of the other conventions may have surprised you.”
+
+==== Other Formatting Conventions ====
+**“the author suggests that “constructors” (functions intended to be called with new) should be capitalized and that ordinary functions should start with a lowercase letter”**
+
+<code>
+var x = new DatePicker(); // DatePicker() is a "constructor
+
+var y = pageHeight();      // pageHeight() is an ordinary function
+
+
+</code>
+
+
+===== “Chapter 3. Names That Can’t Be Misconstrued” =====
+''“we focus on a different topic: watching out for names that can be misunderstood.”'' 
+   * Filter() -> use select() or Exclude()
+   * Clip() -> truncate()
+
+==== “Prefer min and max for (Inclusive) ” ====
+**“The clearest way to name a limit is to put max_ or min_ in front of the thing being limited.”**
+
+CART_TOO_BIG_LIMIT = 10 => MAX_ITEMS_IN_CART
+
+==== “Prefer first and last for Inclusive Ranges” ====
+
+“Here is another example where you can’t tell if it’s “up to” or “up to and including”:
+<code>
+print integer_range(start=2, stop=4)
+# Does this print [2,3] or [2,3,4] (or something else)?
+</code>
+Although start is a reasonable parameter name, stop can be interpreted in multiple ways here.
+For inclusive ranges likes these (where the range should include both end points), a good choice is first/last. For instance:
+<code>
+set.PrintKeys(first="Bart", last="Maggie")
+Unlike stop, the word last is clearly inclusive.”
+</code>
+
+
+==== “Prefer begin and end for Inclusive/Exclusive Ranges” ====
+
+<code>
+“PrintEventsInRange("OCT 16 12:00am", "OCT 17 12:00am")”
+
+is better than
+
+“PrintEventsInRange("OCT 16 12:00am", "OCT 16 11:59:59.9999pm")”
+
+</code>
+
+
+==== Naming Booleans ====
+
+“When picking a name for a boolean variable or a function that returns a boolean, be sure it’s clear what true and false really mean.
+Here’s a dangerous example:
+bool read_password = true;”
+  * We need to read the password
+  * The password has already been read
+
+“In general, adding words like **is, has, can, or should** can make booleans more clear.”
+
+“For example, a function named **SpaceLeft()** sounds like it might return a number. If it were meant to return a boolean, a better name would be **HasSpaceLeft()**.”
+
+
+==== “Matching Expectations of Users” ====
+
+getMean() => computeMean()
+
+
+**“Before you decide on a name, play devil’s advocate and imagine how your name might be misunderstood. The best names are resistant to misinterpretation”**
+
+
+===== Chapter 4. Aesthetics =====
+''“Good source code should be just as “easy on the eyes.”''
+
+  * Use consistent layout, with patterns the reader can get used to.
+  * Make similar code look similar.
+  * Group related lines of code into blocks.
+
+
+<code>
+class StatsKeeper {
+   public:
+   // A class for keeping track of a series of doubles
+   void Add(double d);  // and methods for quick statistics about them
+   private:   int count;       
+   /* how many so    far */ public:
+   double Average();”
+   private:   double minimum;
+    list<double>
+     past_items
+       ;double maximum;
+};
+</code>
+
+“It would take you a lot longer to understand it than if you had this cleaner version instead:”
+
+<code>
+// A class for keeping track of a series of doubles
+// and methods for quick statistics about them.
+class StatsKeeper {
+  public:
+    void Add(double d);
+    double Average();
+ 
+  private:
+    list<double> past_items;
+    int count;  // how many so far
+
+    double minimum;
+    double maximum;
+};
+</code> 
+
+==== “Rearrange Line Breaks to Be Consistent and Compact”  ====
+
+<code>
+public class PerformanceTester {
+    public static final TcpConnectionSimulator wifi = new TcpConnectionSimulator(
+        500, /* Kbps */
+        80, /* millisecs latency */
+        200, /* jitter */
+        1 /* packet loss % */);
+
+    public static final TcpConnectionSimulator t3_fiber =
+        new TcpConnectionSimulator(
+            45000, /* Kbps */
+            10, /* millisecs latency */
+            0, /* jitter */
+            0 /* packet loss % */);
+
+    public static final TcpConnectionSimulator cell = new TcpConnectionSimulator(
+        100, /* Kbps */
+        400, /* millisecs latency */
+        250, /* jitter */
+        5 /* packet loss % */);
+}
+</code>
+
+
+<code>
+public class PerformanceTester {
+    public static final TcpConnectionSimulator wifi =
+        new TcpConnectionSimulator(
+            500,   /* Kbps */
+            80,    /* millisecs latency */
+            200,   /* jitter */
+            1      /* packet loss % */);
+
+    public static final TcpConnectionSimulator t3_fiber =
+        new TcpConnectionSimulator(
+            45000, /* Kbps */
+            10,    /* millisecs latency */
+            0,     /* jitter */
+            0      /* packet loss % */);
+
+    public static final TcpConnectionSimulator cell =
+        new TcpConnectionSimulator(
+            100,   /* Kbps */
+            400,   /* millisecs latency */
+            250,   /* jitter */
+            5      /* packet loss % */);
+}
+</code>
+
+==== “Use Methods to Clean Up Irregularity” ====
+
+<code>
+assert(ExpandFullName(database_connection, " Jake  Brown ", &error)
+    == "Mr. Jacob Brown III");
+assert(error == "");
+assert(ExpandFullName(database_connection, "No Such Guy", &error) == "");
+assert(error == "no match found");
+assert(ExpandFullName(database_connection, "John", &error) == "");
+assert(error == "more than one result");
+
+</code>
+
+<code>
+CheckFullName("Doug Adams", "Mr. Douglas Adams", "");
+CheckFullName(" Jake  Brown ", "Mr. Jake Brown III", "");
+CheckFullName("No Such Guy", "", "no match found");
+CheckFullName("John", "", "more than one result");
+
+</code>
+
+  * It eliminates a lot of the duplicated code from before, making the code more compact.
+  * The important parts of each test case (the names and error strings) are now by themselves, in plain sight. Before, these strings were interspersed with tokens like database_connection and error, which made it hard to “take in” the code in one eyeful.
+  * Adding new tests should be much easier now.
+
+**“The moral of the story is that making code “look pretty” often results in more than just surface improvements—it might help you structure your code better.”**
+
+
+==== “Use Column Alignment When Helpful” ====
+
+<code>
+“CheckFullName("Doug Adams"  , "Mr. Douglas Adams" , "");
+CheckFullName(" Jake  Brown ", "Mr. Jake Brown III", "");
+CheckFullName("No Such Guy"  , ""                  , "no match found");
+CheckFullName("John"         , ""                  , "more than one result");”
+
+“ it’s easier to distinguish the second and third arguments to CheckFullName().”
+</code>
+
+
+<code>
+“# Extract POST parameters to local variables
+details  = request.POST.get('details')
+location = request.POST.get('location')
+phone    = equest.POST.get('phone')
+email    = request.POST.get('email')
+url      = request.POST.get('url')”
+
+</code>
+
+**“equest instead of request”**
+
+==== “Pick a Meaningful Order, and Use It Consistently” ====
+
+<code>
+
+details  = request.POST.get('details')
+location = request.POST.get('location')
+phone    = request.POST.get('phone')
+email    = request.POST.get('email')
+url      = request.POST.get('url')
+
+</code>
+
+  * Match the order of the variables to the order of the <input> fields on the corresponding HTML form.
+  * Order them from “most important” to “least important.”
+  * Order them alphabetically.
+
+
+==== Organize Declarations into Blocks ====
+
+<code>
+class FrontEndServer {
+  public:
+    FrontendServer();
+    void ViewProfile(HttpRequest* request);
+    void OpenDatabase(string location, string user);
+    void SaveProfile(HttpRequest* request);
+    string ExtractQueryParam(HttpRequest* request, string param);
+    void ReplyOK(HttpRequest* request, string html);
+    void FindFriends(HttpRequest* request);
+    void ReplyNotFound(HttpRequest* request, string error);
+    void CloseDatabase(string location);
+    ~FrontendServer();
+};
+ 
+</code>
+
+<code>
+class FrontendServer {
+  public:
+    FrontendServer();
+    ~FrontendServer();
+
+    // Handlers
+    void ViewProfile(HttpRequest* request);
+    void SaveProfile(HttpRequest* request);
+    void FindFriends(HttpRequest* request);
+
+    // Request/Reply Utilities
+    string ExtractQueryParam(HttpRequest* request, string param);
+    void ReplyOK(HttpRequest* request, string html);
+    void ReplyNotFound(HttpRequest* request, string error);
+
+    // Database Helpers
+    void OpenDatabase(string location, string user);
+    void CloseDatabase(string location);
+};
+</code>
+
+==== “Break Code into “Paragraphs” ====
+
+<code>
+def suggest_new_friends(user, email_password):
+    # Get the user's friends' email addresses.
+    friends = user.friends()
+    friend_emails = set(f.email for f in friends)
+
+    # Import all email addresses from this user's email account.
+    contacts = import_contacts(user.email, email_password)
+    contact_emails = set(c.email for c in contacts)
+
+    # Find matching users that they aren't already friends with.
+    non_friend_emails = contact_emails - friend_emails
+    suggested_friends = User.objects.select(email__in=non_friend_emails)
+
+    # Display these lists on the page.
+    display['user'] = user
+    display['friends'] = friends
+    display['suggested_friends'] = suggested_friends
+
+    return render("suggested_friends.html", display)
+</code>
+
+
+==== Personal Style versus Consistency ====
+
+<code>
+class Logger {
+    ...
+};
+
+or
+
+class Logger
+{
+    ...
+};
+</code>
+
+
+//**if one of these styles is chosen over the other, it doesn’t substantially affect the readability of the codebase. But if these two styles are mixed throughout the code, it does affect the readability. “consistency is far more important”**//
+
+===== “Chapter 5. Knowing What to Comment” =====
+
+''“The purpose of commenting is to help the reader know as much as the writer did.”''
+
+==== “What NOT to Comment” ====
+
+<code>
+// The class definition for Account
+class Account {
+  public:
+    // Constructor
+    Account();
+
+    // Set the profit member to a new value”
+     void SetProfit(double profit);
+
+    // Return the profit from this Account
+    double GetProfit();
+};
+</code>
+
+“These comments are worthless because they don’t provide any **new information or help the reader understand the code better**.”
+
+
+==== “Don’t Comment Just for the Sake of Commenting” ====
+
+<code>
+// Find the Node in the given subtree, with the given name, using the given depth.
+Node* FindNodeInSubtree(Node* subtree, string name, int depth);
+</code>
+
+<code>
+// Find a Node with the given 'name' or return NULL.
+// If depth <= 0, only 'subtree' is inspected.
+// If depth == N, only 'subtree' and N levels below are inspected.
+Node* FindNodeInSubtree(Node* subtree, string name, int depth);”
+</code>
+
+//If you want to have a comment here, **it might as well elaborate on more important details**//
+
+
+==== “Don’t Comment Bad Names—Fix the Names Instead” ====
+
+''“A good name is better than a good comment”''
+
+<code>
+“// Releases the handle for this key. This doesn't modify the actual registry.
+void DeleteRegistry(RegistryKey* key);”
+
+use 
+
+void ReleaseRegistryHandle(RegistryKey* key);
+
+</code>
+
+==== “Comment the Flaws in Your Code” ====
+
+“// TODO: use a faster algorithm”
+
+“// TODO(dustin): handle other image formats besides JPEG”
+
+
+
+  * **Marker**	Typical meaning
+  * **TODO**:	Stuff I haven’t gotten around to yet
+  * **FIXME**:	Known-broken code here
+  * **HACK**:	Admittedly inelegant solution to a problem
+  * **XXX**:	Danger! major problem here
+
+
+//**“Don’t be embarrassed to document those flaws”**//
+
+''“The important thing is that you should always feel free to comment on your thoughts about how the code should change in the future”'' 
+
+
+
+==== “Comment on Your Constants” ====
+
+
+<code>
+NUM_THREADS = 8  # as long as it's >= 2 * num_processors, that's good enough.
+</code>
+
+**//Now the person reading the code has some guidance on how to adjust that value//**
+
+
+==== “Put Yourself in the Reader’s Shoes” ====
+
+
+<code>
+void Clear() {
+        vector<float>().swap(data);  // Huh? Why not just data.clear()?
+    }
+</code>
+//“Well, it turns out that this is the only way to force a vector to truly relinquish its memory to the memory allocator”//
+
+<code>
+// Force vector to relinquish its memory (look up "STL swap trick")
+vector<float>().swap(data);
+</code>
+
+**advice is to do whatever helps the reader understand the code more easily. This may involve commenting the what, the how, or the why (or all three).**
+
+  * Write down whatever comment is on your mind.
+  * Read the comment, and see what (if anything) needs to be improved.
+  * Make improvements.
+
+===== Chapter 6. Making Comments Precise and Compact =====
+
+==== Keep Comments Compact ====
+
+<code>
+“/ The int is the CategoryType.
+// The first float in the inner pair is the 'score',
+// the second is the 'weight'.
+typedef hash_map<int, pair<float, float> > ScoreMap;”
+
+do this 
+
+“// CategoryType -> (score, weight)
+typedef hash_map<int, pair<float, float> > ScoreMap;”
+
+</code>
+
+
+==== Avoid Ambiguous Pronouns ====
+
+<code>
+// Insert the data into the cache, but check if it's too big first.
+
+It may refer to data or Cache
+
+use
+
+“// Insert the data into the cache, but check if the data is too big first”
+
+</code>
+
+
+==== “Describe Function Behavior Precisely” ====
+
+<code>
+“// Return the number of lines in this file.
+int CountLines(string filename) { ... }”
+
+use 
+
+// Count how many newline bytes ('\n') are in the file.
+int CountLines(string filename) { ... }
+
+</code>
+
+==== Use Input/Output Examples That Illustrate Corner Cases ====
+
+<code>
+// Remove the suffix/prefix of 'chars' from the input 'src'.
+String Strip(String src, String chars) { ... }
+
+do this :
+//....
+// Example: Strip("abba/a/ba", "ab") returns "/a/"
+String Strip(String src, String chars) { ... }
+
+</code>
+
+
+==== “State the Intent of Your Code” ====
+
+''commenting is often about telling the reader what you were thinking about when you wrote the code'' 
+
+<code>
+// Iterate through the list in reverse order
+for (list<Product>::reverse_iterator it = products.rbegin(); 
+
+do
+
+“// Display each price, from highest to lowest
+for (list<Product>::reverse_iterator it = products.rbegin(); ”
+
+
+</code>
+
+//This comment explains what the program is doing at a higher level. This is much more in tune with what the programmer was thinking when she wrote the code.//
+
+==== “Named Function Parameter” Comments” ====
+
+In languages like Python, you can assign the arguments by name:
+<code>
+def Connect(timeout, use_encryption):  ...
+
+# Call the function using named parameters
+Connect(timeout = 10, use_encryption = False)
+</code>
+
+
+“In languages like C++ and Java, you can’t do this. However, you can use an inline comment to the same effect:
+<code>
+void Connect(int timeout, bool use_encryption) { ... }
+
+// Call the function with commented parameters
+Connect(/* timeout_ms = */ 10, /* use_encryption = */ false);”
+</code>
+
+
+===== “Part II. Simplifying Loops and Logic” =====
+
+===== “Chapter 7. Making Control Flow Easy to Read” =====
+
+''Make all your conditionals, loops, and other changes to control flow as “natural” as possible—written in a way that doesn’t make the reader stop and reread your code.''
+
+==== “The Order of Arguments in Conditionals” ====
+
+
+<code>
+if (length >= 10)
+
+or
+
+if (10 <= length)
+
+
+
+“while (bytes_received < bytes_expected)
+or
+while (bytes_expected > bytes_received)”
+
+</code>
+
+the Left hand side
+
+the expression being interrogated whose value is more in flux
+
+the right hand side 
+
+The expression being compared against, whose value is more constant.
+
+
+
+==== The Order of if/else Blocks ====
+
+  * Prefer dealing with the positive case first instead of the negative—e.g., if (debug) instead of if (!debug).
+  * Prefer dealing with the simpler case first to get it out of the way. This approach might also allow both the if and the else to be visible on the screen at the same time, which is nice.
+  * Prefer dealing with the more interesting or conspicuous case first.
+
+
+<code>
+if (!url.HasQueryParameter("expand_all")) {
+    response.Render(items);
+    ...
+} else {
+    for (int i = 0; i < items.size(); i++) {
+        items[i].Expand();
+    }
+    ...
+}
+</code>
+
+<code>
+“if (url.HasQueryParameter("expand_all")) {
+    for (int i = 0; i < items.size(); i++) {
+        items[i].Expand();
+    }
+    ...
+} else {
+    response.Render(items);
+    ...
+}”
+
+</code>
+
+
+
+//**“Again, depending on the details, this may be a judgment call”**//
+
+//**To summarize, our advice is simply to pay attention to these factors and watch out for cases where your if/else is in an awkward order.**//
+
+==== The ?: Conditional Expression (a.k.a. “Ternary Operator”) ====
+
+<code>
+time_str += (hour >= 12) ? "pm" : "am";
+</code>
+
+<code>
+if (hour >= 12) {
+    time_str += "pm";
+} else {
+    time_str += "am";
+}
+</code>
+
+
+<code>
+However, these expressions can quickly become difficult to read:
+return exponent >= 0 ? mantissa * (1 << exponent) : mantissa / (1 << -exponent);
+</code>
+
+<code>
+if (exponent >= 0) {
+    return mantissa * (1 << exponent);
+} else {
+    return mantissa / (1 << -exponent);
+}
+
+</code>
+
+''“By default, use an if/else. The ternary ?: should be used only for the simplest cases.”''
+
+
+
+==== “Avoid do/while Loops” ====
+
+//What’s weird about a do/while loop is that a block of code may or may not be reexecuted based on a condition underneath it. Typically, logical conditions are above the code they guard—this is the way it works with if, while, and for statements. Because you typically read code from top to bottom, this makes do/while a bit unnatural. Many readers end up reading the code twice.//
+
+
+<code>
+“// Imitating a do/while — DON'T DO THIS!
+body
+
+while (condition) {
+    body (again)
+}”
+
+</code>
+
+
+according to bjarne stroustrup
+//In my experience, the do-statement is a source of errors and confusion. … I prefer the condition “up front where I can see it.” Consequently, I tend to avoid do-statements.//
+
+==== Minimize Nesting ====
+
+Deeply nested code is hard to understand. Each level of nesting pushes an extra condition onto the reader’s “mental stack.
+
+<code>
+if (user_result == SUCCESS) {
+    if (permission_result != SUCCESS) {
+       reply.WriteErrors("error reading permissions");
+       reply.Done();
+       return;
+    }
+    reply.WriteErrors("");
+    
+    
+    
+
+if (user_result != SUCCESS) {
+    reply.WriteErrors(user_result);
+    reply.Done();
+    return;
+}
+
+if (permission_result != SUCCESS) {
+    reply.WriteErrors(permission_result);
+    reply.Done();
+    return;
+}
+</code>
+
+
+
+==== Removing Nesting Inside Loops ====
+
+<code>
+for (int i = 0; i < results.size(); i++) {>
+    if (results[i] != NULL) {
+        non_null_count++;
+
+        if (results[i]->name != "") {
+            cout << "Considering candidate..." << endl;
+
+            ...
+        }
+    }
+}”
+</code>
+
+Refactor:
+<code>
+for (int i = 0; i < results.size(); i++) {
+    if (results[i] == NULL) continue;
+    non_null_count++;
+
+    if (results[i]->name == "") continue;
+    cout << "Considering candidate..." << endl;
+
+    ...
+}”
+
+</code>
+
+
+===== Chapter 8. Breaking Down Giant Expressions =====
+''Break down your giant expressions into more digestible pieces.''
+
+==== Explaining Variables ====
+
+
+This extra variable is sometimes called an “explaining variable” because it helps explain what the subexpression means.
+
+Here is an example:
+<code>
+if line.split(':')[0].strip() == "root":
+    ...
+</code>
+
+Here is the same code, now with an explaining variable:
+<code>
+username = line.split(':')[0].strip()
+if username == "root":
+</code>
+
+
+==== Summary Variables ====
+We call this a summary variable if its purpose is simply to replace a larger chunk of code with a smaller name that can be managed and thought about more easily.
+ 
+<code>
+if (request.user.id == document.owner_id) {
+    // user can edit this document...
+}
+
+...
+
+if (request.user.id != document.owner_id) {
+  “// document is read-only...”
+}
+
+
+</code>
+
+**The main concept in this code is, “Does the user own the document?” **
+
+<code>
+final boolean user_owns_document = (request.user.id == document.owner_id);
+
+if (user_owns_document) {
+    // user can edit this document...
+}
+
+...
+
+if (!user_owns_document) {
+    // document is read-only...
+}
+</code>
+
+
+==== Using De Morgan’s Laws ====
+''“Distribute the not and switch and/or.”''
+
+<code>
+“if (!(file_exists && !is_protected)) Error("Sorry, could not read file.");
+
+It can be rewritten to:
+
+if (!file_exists || is_protected) Error("Sorry, could not read file.");”
+
+</code>
+
+
+==== Abusing Short-Circuit Logic ====
+<code>
+assert((!(bucket = FindBucket(key))) || !bucket->IsOccupied());
+</code>
+
+<code>
+
+bucket = FindBucket(key);
+if (bucket != NULL) assert(!bucket->IsOccupied());
+
+</code>
+ 
+==== Example: Wrestling with Complicated Logic ====
+
+
+
+
+<code>
+“[0,2) overlaps with [2,4)”
+
+A - - - - - - A
+              B - - - - - - B
+
+0.     1.     2.     3.     4.     5
+
+
+return (begin >= other.begin && begin < other.end) ||
+       (end > other.begin && end <= other.end) || 
+       (begin <= other.begin && end >= other.end);
+
+</code>
+//This code has become way too complicated//
+
+
+<code>
+
+bool Range::OverlapsWith(Range other) {
+    if (other.end <= begin) return false;  // They end before we begin
+    if (other.begin >= end) return false;  // They begin after we end
+
+    return true;  // Only possibility left: they overlap
+}
+</code>
+
+==== Breaking Down Giant Statements ====
+
+<code>
+var update_highlight = function (message_num) {
+    if ($("#vote_value" + message_num).html() === "Up") {
+        $("#thumbs_up" + message_num).addClass("highlighted");
+        $("#thumbs_down" + message_num).removeClass("highlighted");
+    } else if ($("#vote_value" + message_num).html() === "Down") {
+        $("#thumbs_up" + message_num).removeClass("highlighted");
+        $("#thumbs_down" + message_num).addClass("highlighted");
+    } else {
+        $("#thumbs_up" + message_num).removeClass("highighted"); 
+        $("#thumbs_down" + message_num).removeClass("highlighted");
+    }
+};
+</code>
+
+//“DRY—Don’t Repeat Yourself—principle”//
+
+<code>
+var update_highlight = function (message_num) {
+    var thumbs_up = $("#thumbs_up" + message_num);
+    var thumbs_down = $("#thumbs_down" + message_num);
+    var vote_value = $("#vote_value" + message_num).html();
+    var hi = "highlighted";
+
+    if (vote_value === "Up") {
+        thumbs_up.addClass(hi);
+        thumbs_down.removeClass(hi);
+    } else if (vote_value === "Down") {
+        thumbs_up.removeClass(hi);
+        thumbs_down.addClass(hi);
+    } else {
+        thumbs_up.removeClass(hi);
+        thumbs_down.removeClass(hi);
+    }
+};
+</code>
+
+  * It helps avoid typing mistakes. (In fact, did you notice that in the first example, the string was misspelled as "highighted" in the fifth case?)
+  * It shrinks the line width even more, making the code easier to scan through.
+  * If the class name needed to change, there’s just one place to change it.
+
+
+===== Chapter 9. Variables and Readability =====
+Specifically, there are three problems to contend with:
+
+  - The more variables there are, the harder it is to keep track of them all.
+  - The bigger a variable’s scope, the longer you have to keep track of it.
+  - The more often a variable changes, the harder it is to keep track of its current value.
+
+
+==== Useless Temporary Variables ====
+<code>
+
+now = datetime.datetime.now()
+root_message.last_view_time = now
+
+</code>
+
+  * It isn’t breaking down a complex expression.
+  * It doesn’t add clarification—the expression datetime.datetime.now() is clear enough.
+  * It’s used only once, so it doesn’t compress any redundant code.
+
+==== Eliminating Intermediate Results ====
+
+
+<code>
+var remove_one = function (array, value_to_remove) {
+    var index_to_remove = null;
+    for (var i = 0; i < array.length; i += 1) {
+        if (array[i] === value_to_remove) {
+            index_to_remove = i;
+            break;
+        }
+    }
+    if (index_to_remove !== null) {
+        array.splice(index_to_remove, 1);
+    }
+};
+</code>
+
+
+<code>
+var remove_one = function (array, value_to_remove) {
+    for (var i = 0; i < array.length; i += 1) {
+        if (array[i] === value_to_remove) {
+            array.splice(i, 1);
+            return;”
+
+</code>
+
+
+**//In general, it’s a good strategy to complete the task as quickly as possible.//**
+
+
+
+==== Shrink the Scope of Your Variables ====
+''Make your variable visible by as few lines of code as possible.''
+
+<code>
+class LargeClass {
+    string str_;
+
+    void Method1() {
+        str_ = ...;
+        Method2();
+    }
+
+    void Method2() {
+        // Uses str_
+    }
+
+    // Lots of other methods that don't use str_ ...
+};
+</code>
+//In some sense, a class member variable is like a “mini-global” inside the realm of the class.//
+
+<code>
+
+class LargeClass {
+    void Method1() {
+        string str = ...;
+        Method2(str);
+    }
+
+    void Method2(string str) {
+        // Uses str
+    }
+
+    // Now other methods can't see str.
+}; 
+
+</code>
+
+==== Prefer Write-Once Variables ====
+
+''The more places a variable is manipulated, the harder it is to reason about its current value.''
+
+
+<code>
+<input type="text" id="input1" value="Dustin">
+<input type="text" id="input2" value="Trevor">
+<input type="text" id="input3" value="">
+<input type="text" id="input4" value="Melissa">
+
+
+var setFirstEmptyInput = function (new_value) {
+    var found = false;
+    var i = 1;
+    var elem = document.getElementById('input' + i);
+    while (elem !== null) {
+        if (elem.value === '') {
+            found = true;
+            break;
+        }
+        i++;
+        elem = document.getElementById('input' + i);
+    }
+    if (found) elem.value = new_value;
+    return elem;
+};
+</code>
+
+  * var found
+  * var i
+  * var elem
+
+<code>
+var setFirstEmptyInput = function (new_value) {
+    var i = 1;
+    var elem = document.getElementById('input' + i);
+    while (elem !== null) {
+        if (elem.value === '') {
+            elem.value = new_value;
+            return elem;
+        }
+        i++;
+        elem = document.getElementById('input' + i);
+    }
+    return null;
+};
+</code>
+
+<code>
+
+
+var setFirstEmptyInput = function (new_value) {
+    for (var i = 1; true; i++) {
+        var elem = document.getElementById('input' + i);
+        if (elem === null)
+            return null;  // Search Failed. No empty input found.
+
+        if (elem.value === '') {
+            elem.value = new_value;
+            return elem;
+        }
+    }
+}; 
+</code>
+
+//In particular, notice how elem acts as a write-once variable whose lifespan is contained inside the loop//

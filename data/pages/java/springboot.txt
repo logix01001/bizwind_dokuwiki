@@ -1,0 +1,57 @@
+====== Spring boot MVC ======
+
+
+Migrations
+scr/resources/db/migration
+
+Entity
+src/main/entity
+
+Controller
+Repo
+Specs
+/under repo
+Services
+src/main
+
+OrganizationRepository -> EntityRepository
+Specs
+Include All properties
+
+
+Intra&Employee
+
+
+View files
+src/resources/template/views/intra
+
+
+Model Attribute
+->for passing to view from controller
+
+
+OrganizationService.fetchOrganization
+
+
+dependencyInjection Repository
+
+symfony
+method(Repo $repo)
+Spring
+@Autowired
+public Repo repo
+
+edit
+form = FromEntity
+
+messages.properties
+messages_ja.properties
+#{organization.name}
+
+
+  * @Transient - is used to ignore a field to not persist in database in JPA
+  * @JsonIgnore is used to ignore the logical property used in serialization and deserialization.
+  * @NotNull - not null in database
+
+
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" }) ?

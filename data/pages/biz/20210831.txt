@@ -1,0 +1,31 @@
+
+Branch upstream
+Push set upstream
+
+After  up stream
+
+
+Branches add pull request
+To preemployment_feature
+
+Request pull request
+
+
+What happen in commit changes must be descriptive
+Descriptive create requirement master fixture
+
+
+Commit message is present tense
+
+New line every item
+Kapantay hung bracket
+
+
+Logical commit by order
+
+
+
+Not commit the comment out
+
+After merge
+Delete manually the branch created 

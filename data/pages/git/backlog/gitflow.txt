@@ -1,0 +1,34 @@
+  - checkout branch
+  - checkout -b "PHILMNG-1555_description"
+  - git status
+  - git diff
+  - git add
+  - git commit -m "PHILMNG-9888 description commit"
+  - git push -u origin PHILMNG-1555_description
+  - after merge
+  - git checkout develop
+  - git pull --prune
+  - git branch -d PHILMNG-1555_description
+
+
+====== If already Push in remote ======
+  - git checkout develop
+  - git pull
+  - git checkout feature
+  - git merge --no-ff
+
+====== If already not push yet in remote ======
+  - git checkout develop
+  - git pull
+  - git checkout feature
+  - git rebase develop
+
+
+====== dave problem every push in remote ======
+
+  * new branch feature
+  * get all commit from previous branch
+  * git cherry-pick commit hash
+  * git cherry-pick --continue after all merge fix
+  * git push -u
+

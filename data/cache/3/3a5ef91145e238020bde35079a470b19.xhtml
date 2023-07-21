@@ -1,0 +1,175 @@
+
+<h1 class="sectionedit1" id="headline">Headline</h1>
+<div class="level1">
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Headline&quot;,&quot;hid&quot;:&quot;headline&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:1,&quot;range&quot;:&quot;1-24&quot;} -->
+<h2 class="sectionedit2" id="error_response_guide">Error Response Guide</h2>
+<div class="level2">
+
+<p>
+<a href="https://developers.line.biz/en/reference/messaging-api/#error-responses" class="urlextern" title="https://developers.line.biz/en/reference/messaging-api/#error-responses" rel="ugc nofollow">https://developers.line.biz/en/reference/messaging-api/#error-responses</a>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Error Response Guide&quot;,&quot;hid&quot;:&quot;error_response_guide&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:2,&quot;range&quot;:&quot;25-131&quot;} -->
+<h2 class="sectionedit3" id="issuance_token_30_max_30_mins_validity">Issuance Token (30 Max, 30 mins validity)</h2>
+<div class="level2">
+
+<p>
+<a href="https://api.line.me/oauth2/v2.1/token" class="urlextern" title="https://api.line.me/oauth2/v2.1/token" rel="ugc nofollow">https://api.line.me/oauth2/v2.1/token</a>
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong>Content-Type</strong> application/x-www-form-urlencoded</div>
+</li>
+</ul>
+
+<p>
+<strong> BODY form urlencoded </strong>
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong>grant_type</strong> client_credentials</div>
+</li>
+<li class="level1"><div class="li"> <strong>client_assertion_type</strong> urn:ietf:params:oauth:client-assertion-type:jwt-bearer</div>
+</li>
+<li class="level1"><div class="li"> <strong>client_assertion</strong> {GENERATED JWT}</div>
+</li>
+</ul>
+
+<p>
+<a href="https://developers.line.biz/en/docs/messaging-api/generate-json-web-token/#generate-jwt" class="urlextern" title="https://developers.line.biz/en/docs/messaging-api/generate-json-web-token/#generate-jwt" rel="ugc nofollow">https://developers.line.biz/en/docs/messaging-api/generate-json-web-token/#generate-jwt</a>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Issuance Token (30 Max, 30 mins validity)&quot;,&quot;hid&quot;:&quot;issuance_token_30_max_30_mins_validity&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:3,&quot;range&quot;:&quot;132-562&quot;} -->
+<h2 class="sectionedit4" id="message_push">Message Push</h2>
+<div class="level2">
+
+<p>
+<a href="https://api.line.me/v2/bot/message/push" class="urlextern" title="https://api.line.me/v2/bot/message/push" rel="ugc nofollow">https://api.line.me/v2/bot/message/push</a>
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong>Content-Type</strong> application/json</div>
+</li>
+<li class="level1"><div class="li"> <strong>Authorization</strong> Bearer {Channel Access Token (generated JWT or short lived)}</div>
+</li>
+</ul>
+
+<p>
+<strong>Body Message Raw</strong>
+</p>
+<pre class="code">{
+    &quot;to&quot;: lineid,
+    &quot;messages&quot;:[
+        {
+            &quot;type&quot;:&quot;text&quot;,
+            &quot;text&quot;:&quot;Hello, world1&quot;
+        }
+    ]
+}</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Message Push&quot;,&quot;hid&quot;:&quot;message_push&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:4,&quot;range&quot;:&quot;563-917&quot;} -->
+<h2 class="sectionedit5" id="issuance_short_lived_token">Issuance Short lived Token</h2>
+<div class="level2">
+
+<p>
+<a href="https://api.line.me/v2/oauth/accessToken" class="urlextern" title="https://api.line.me/v2/oauth/accessToken" rel="ugc nofollow">https://api.line.me/v2/oauth/accessToken</a>
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong>Content-Type</strong> application/x-www-form-urlencoded</div>
+</li>
+</ul>
+
+<p>
+<strong> BODY form urlencoded </strong>
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong>grant_type</strong> client_credentials</div>
+</li>
+<li class="level1"><div class="li"> <strong> client_id</strong> client_id</div>
+</li>
+<li class="level1"><div class="li"> <strong> client_secret </strong> client_secret</div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Issuance Short lived Token&quot;,&quot;hid&quot;:&quot;issuance_short_lived_token&quot;,&quot;codeblockOffset&quot;:1,&quot;secid&quot;:5,&quot;range&quot;:&quot;918-1191&quot;} -->
+<h3 class="sectionedit6" id="response">response</h3>
+<div class="level3">
+<pre class="code">{
+&quot;access_token&quot;:&quot;W1TeHCgfH2Liwa.....&quot;,
+&quot;expires_in&quot;:2592000,
+&quot;token_type&quot;:&quot;Bearer&quot;
+}</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;response&quot;,&quot;hid&quot;:&quot;response&quot;,&quot;codeblockOffset&quot;:1,&quot;secid&quot;:6,&quot;range&quot;:&quot;1192-1313&quot;} -->
+<h2 class="sectionedit7" id="verify_short_lived">Verify Short lived</h2>
+<div class="level2">
+
+<p>
+<a href="https://api.line.me/v2/oauth/verify" class="urlextern" title="https://api.line.me/v2/oauth/verify" rel="ugc nofollow">https://api.line.me/v2/oauth/verify</a>
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong>Content-Type</strong> application/x-www-form-urlencoded</div>
+</li>
+</ul>
+
+<p>
+<strong> BODY form urlencoded </strong>
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong>access_token</strong> access_token</div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Verify Short lived&quot;,&quot;hid&quot;:&quot;verify_short_lived&quot;,&quot;codeblockOffset&quot;:2,&quot;secid&quot;:7,&quot;range&quot;:&quot;1314-1501&quot;} -->
+<h3 class="sectionedit8" id="response1">Response</h3>
+<div class="level3">
+<pre class="code">{
+&quot;access_token&quot;:&quot;W1TeHCgfH2Liwa.....&quot;,
+&quot;expires_in&quot;:2592000, //SECONDS LEFT
+&quot;token_type&quot;:&quot;Bearer&quot;
+}</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Response&quot;,&quot;hid&quot;:&quot;response1&quot;,&quot;codeblockOffset&quot;:2,&quot;secid&quot;:8,&quot;range&quot;:&quot;1502-1638&quot;} -->
+<h3 class="sectionedit9" id="error_response">Error Response</h3>
+<div class="level3">
+<pre class="code">// If the channel access token has expired
+{
+    &quot;error&quot;: &quot;invalid_request&quot;,
+    &quot;error_description&quot;: &quot;access_token invalid&quot;
+}
+
+// If an invalid value is specified for the access_token property
+{
+    &quot;error&quot;: &quot;invalid_request&quot;,
+    &quot;error_description&quot;: &quot;access_token in invalid format&quot;
+}</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Error Response&quot;,&quot;hid&quot;:&quot;error_response&quot;,&quot;codeblockOffset&quot;:3,&quot;secid&quot;:9,&quot;range&quot;:&quot;1639-1968&quot;} -->
+<h2 class="sectionedit10" id="revoke_short_lived">Revoke Short lived</h2>
+<div class="level2">
+
+<p>
+<a href="https://api.line.me/v2/oauth/revoke" class="urlextern" title="https://api.line.me/v2/oauth/revoke" rel="ugc nofollow">https://api.line.me/v2/oauth/revoke</a>
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong>Content-Type</strong> application/x-www-form-urlencoded</div>
+</li>
+</ul>
+
+<p>
+<strong> BODY form urlencoded </strong>
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong>access_token</strong> access_token</div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Revoke Short lived&quot;,&quot;hid&quot;:&quot;revoke_short_lived&quot;,&quot;codeblockOffset&quot;:4,&quot;secid&quot;:10,&quot;range&quot;:&quot;1969-&quot;} -->

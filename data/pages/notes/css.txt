@@ -1,0 +1,32 @@
+====== Mobile Responsive ======
+<code>
+@media only screen and (max-width:  600px){
+
+
+}
+</code>
+
+====== Tablet Responsive ======
+<code>
+@media screen and (max-width:  768px){
+
+
+}
+</code>
+
+
+====== LAPTOP Responsive ======
+<code>
+@media only screen and (max-width:  992px){
+
+
+}
+</code>
+
+====== large screen Responsive ======
+<code>
+@media screen and (max-width:  1200px){
+
+
+}
+</code>

@@ -1,0 +1,678 @@
+
+<h1 class="sectionedit1" id="git">GIT</h1>
+<div class="level1">
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;GIT&quot;,&quot;hid&quot;:&quot;git&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:1,&quot;range&quot;:&quot;1-19&quot;} -->
+<h2 class="sectionedit2" id="stash">STASH</h2>
+<div class="level2">
+
+<p>
+Use git stash when you want to record the current state of the working directory and the index, but want to go back to a clean working directory. The command saves your local modifications away and reverts the working directory to match the HEAD commit.
+</p>
+
+<p>
+<a href="/lib/exe/detail.php?id=biz%3A20210820&amp;media=biz:git-stash.png" class="media" title="biz:git-stash.png"><img src="/lib/exe/fetch.php?w=400&amp;tok=357703&amp;media=biz:git-stash.png" class="media" alt="" width="400" /></a>
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong>git stash</strong>              — add to stash</div>
+</li>
+<li class="level1"><div class="li"> <strong>git stash apply</strong>.       — apply but retain in stash</div>
+</li>
+<li class="level1"><div class="li"> <strong>git stash pop</strong>          — apply and delete from stash</div>
+</li>
+<li class="level1"><div class="li"> <strong>git stast list</strong>.        — show all list</div>
+</li>
+<li class="level1"><div class="li"> <strong>git stash push -m ““</strong>   — add name for easy identity</div>
+</li>
+<li class="level1"><div class="li"> <strong>git stash drop <em>n</em></strong>.  — n = position of stash to drop</div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;STASH&quot;,&quot;hid&quot;:&quot;stash&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:2,&quot;range&quot;:&quot;20-671&quot;} -->
+<h2 class="sectionedit3" id="git_log">GIT LOG</h2>
+<div class="level2">
+
+<p>
+The git log command shows a list of all the commits made to a repository. You can see the hash of each Git commit, the message associated with each commit, and more metadata. This command is useful for displaying the history of a repository
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong>git log –oneline</strong></div>
+</li>
+<li class="level1"><div class="li"> <strong>git log –stat</strong> <em>show all stat how many line modified, deleted</em></div>
+</li>
+<li class="level1"><div class="li"> <strong>git log –patch</strong> <em>show location of file commited</em></div>
+</li>
+<li class="level1"><div class="li"> <strong>git log –graph</strong> <em>display as a graph</em></div>
+</li>
+<li class="level1"><div class="li"> <strong>git log -2 </strong> <em>Show only the last 2 commit</em></div>
+</li>
+<li class="level1"><div class="li"> <strong>git log –after=“2021-08-10”</strong></div>
+</li>
+<li class="level1"><div class="li"> <strong>git log –after=“2021-08-10” –before=“2021-08-20”</strong></div>
+</li>
+<li class="level1"><div class="li"> <strong>git log –author=“jerome”</strong></div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;GIT LOG&quot;,&quot;hid&quot;:&quot;git_log&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:3,&quot;range&quot;:&quot;672-1325&quot;} -->
+<h2 class="sectionedit4" id="git_commits">GIT Commits</h2>
+<div class="level2">
+
+<p>
+A commit in a git repository records a snapshot of all the (tracked) files in your directory. It&#039;s like a giant copy and paste, but even better!
+</p>
+
+<p>
+Git wants to keep commits as lightweight as possible though, so it doesn&#039;t just blindly copy the entire directory every time you commit. It can (when possible) compress a commit as a set of changes, or a “delta”, from one version of the repository to the next.
+</p>
+
+<p>
+Git also maintains a history of which commits were made when. That&#039;s why most commits have ancestor commits above them – we designate this with arrows in our visualization. Maintaining history is great for everyone working on the project!
+</p>
+
+<p>
+It&#039;s a lot to take in, but for now you can think of commits as snapshots of the project. Commits are very lightweight and switching between them is wicked fast!
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;GIT Commits&quot;,&quot;hid&quot;:&quot;git_commits&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:4,&quot;range&quot;:&quot;1326-2161&quot;} -->
+<h2 class="sectionedit5" id="git_branches">Git Branches</h2>
+<div class="level2">
+<ul>
+<li class="level1"><div class="li"> GIT MAIN = MASTER</div>
+</li>
+<li class="level1"><div class="li"> GIT DEVELOP = MAIN BRANCH FOR DEVELOP</div>
+</li>
+<li class="level1"><div class="li"> GIT BUGFIXBRANCH</div>
+</li>
+<li class="level1"><div class="li"> STAGING</div>
+</li>
+<li class="level1"><div class="li"> PRODUCTION</div>
+</li>
+</ul>
+<ul>
+<li class="level1"><div class="li"> BACKLOG main git ng bizwind</div>
+</li>
+</ul>
+
+<p>
+Branches in Git are incredibly lightweight as well. They are simply pointers to a specific commit – nothing more. This is why many Git enthusiasts chant the mantra:
+</p>
+
+<p>
+branch early, and branch often
+Because there is no storage / memory overhead with making many branches, it&#039;s easier to logically divide up your work than have big beefy branches.
+</p>
+
+<p>
+When we start mixing branches and commits, we will see how these two features combine. For now though, just remember that a branch essentially says “I want to include the work of this commit and all parent commits.”
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Git Branches&quot;,&quot;hid&quot;:&quot;git_branches&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:5,&quot;range&quot;:&quot;2162-2898&quot;} -->
+<h2 class="sectionedit6" id="branches_and_merging">Branches and Merging</h2>
+<div class="level2">
+
+<p>
+Merging in Git creates a special commit that has two unique parents. A commit with two parents essentially means “I want to include all the work from this parent over here and this one over here, and the set of all their parents.”
+</p>
+
+<p>
+<a href="/lib/exe/detail.php?id=biz%3A20210820&amp;media=biz:gitbranchmerge.png" class="media" title="biz:gitbranchmerge.png"><img src="/lib/exe/fetch.php?w=400&amp;tok=7f8a72&amp;media=biz:gitbranchmerge.png" class="media" alt="" width="400" /></a>
+</p>
+<pre class="code">git checkout -b bugFix
+git commit
+git checkout main
+git commit
+git merge bugFix</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Branches and Merging&quot;,&quot;hid&quot;:&quot;branches_and_merging&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:6,&quot;range&quot;:&quot;2899-3294&quot;} -->
+<h2 class="sectionedit7" id="git_rebase">Git Rebase</h2>
+<div class="level2">
+
+<p>
+The second way of combining work between branches is rebasing. Rebasing essentially takes a set of commits, “copies” them, and plops them down somewhere else.
+</p>
+
+<p>
+While this sounds confusing, the advantage of rebasing is that it can be used to make a nice linear sequence of commits. The commit log / history of the repository will be a lot cleaner if only rebasing is allowed.
+</p>
+
+<p>
+<a href="/lib/exe/detail.php?id=biz%3A20210820&amp;media=biz:git_rebase.png" class="media" title="biz:git_rebase.png"><img src="/lib/exe/fetch.php?w=400&amp;tok=1ff1d1&amp;media=biz:git_rebase.png" class="media" alt="" width="400" /></a>
+</p>
+
+<p>
+<a href="/lib/exe/detail.php?id=biz%3A20210820&amp;media=biz:mergevsrebase.png" class="media" title="biz:mergevsrebase.png"><img src="/lib/exe/fetch.php?w=400&amp;tok=0acf7f&amp;media=biz:mergevsrebase.png" class="media" alt="" width="400" /></a>
+</p>
+<pre class="code">git checkout -b bugFix
+git commit
+git checkout main
+git commit
+git checkout bugFix
+git rebase main</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Git Rebase&quot;,&quot;hid&quot;:&quot;git_rebase&quot;,&quot;codeblockOffset&quot;:1,&quot;secid&quot;:7,&quot;range&quot;:&quot;3295-3871&quot;} -->
+<h2 class="sectionedit8" id="head">HEAD</h2>
+<div class="level2">
+
+<p>
+First we have to talk about “HEAD”. HEAD is the symbolic name for the currently checked out commit – it&#039;s essentially what commit you&#039;re working on top of.
+</p>
+
+<p>
+HEAD always points to the most recent commit which is reflected in the working tree. Most git commands which make changes to the working tree will start by changing HEAD.
+</p>
+
+<p>
+Normally HEAD points to a branch name (like bugFix). When you commit, the status of bugFix is altered and this change is visible through HEAD.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;HEAD&quot;,&quot;hid&quot;:&quot;head&quot;,&quot;codeblockOffset&quot;:2,&quot;secid&quot;:8,&quot;range&quot;:&quot;3872-4364&quot;} -->
+<h3 class="sectionedit9" id="detaching_head">Detaching HEAD</h3>
+<div class="level3">
+
+<p>
+Detaching HEAD just means attaching it to a commit instead of a branch. This is what it looks like beforehand:
+</p>
+
+<p>
+HEAD → main → C1
+</p>
+<pre class="code">git checkout C1</pre>
+
+<p>
+And now it&#039;s
+</p>
+
+<p>
+HEAD → C1
+</p>
+
+<p>
+<a href="/lib/exe/detail.php?id=biz%3A20210820&amp;media=biz:head.png" class="media" title="biz:head.png"><img src="/lib/exe/fetch.php?w=400&amp;tok=8b9379&amp;media=biz:head.png" class="media" alt="" width="400" /></a>
+</p>
+<pre class="code">git checkout C4</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Detaching HEAD&quot;,&quot;hid&quot;:&quot;detaching_head&quot;,&quot;codeblockOffset&quot;:2,&quot;secid&quot;:9,&quot;range&quot;:&quot;4365-4639&quot;} -->
+<h2 class="sectionedit10" id="relative_refs">Relative Refs</h2>
+<div class="level2">
+
+<p>
+Moving around in Git by specifying commit hashes can get a bit tedious. In the real world you won&#039;t have a nice commit tree visualization next to your terminal, so you&#039;ll have to use git log to see hashes.
+</p>
+
+<p>
+Furthermore, hashes are usually a lot longer in the real Git world as well. For instance, the hash of the commit that introduced the previous level is fed2da64c0efc5293610bdd892f82a58e8cbc5d8. Doesn&#039;t exactly roll off the tongue…
+</p>
+
+<p>
+The upside is that Git is smart about hashes. It only requires you to specify enough characters of the hash until it uniquely identifies the commit. So I can type fed2 instead of the long string above.
+</p>
+<pre class="code">git checkout main^</pre>
+
+<p>
+<a href="/lib/exe/detail.php?id=biz%3A20210820&amp;media=biz:gitref.png" class="media" title="biz:gitref.png"><img src="/lib/exe/fetch.php?w=400&amp;tok=97918a&amp;media=biz:gitref.png" class="media" alt="" width="400" /></a>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Relative Refs&quot;,&quot;hid&quot;:&quot;relative_refs&quot;,&quot;codeblockOffset&quot;:4,&quot;secid&quot;:10,&quot;range&quot;:&quot;4640-5371&quot;} -->
+<h2 class="sectionedit11" id="the_operator">The &quot;~&quot; operator</h2>
+<div class="level2">
+
+<p>
+Say you want to move a lot of levels up in the commit tree. It might be tedious to type ^ several times, so Git also has the tilde (~) operator.
+</p>
+
+<p>
+The tilde operator (optionally) takes in a trailing number that specifies the number of parents you would like to ascend. Let&#039;s see it in action.
+</p>
+<pre class="code">git checkout HEAD~4</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;The \&quot;~\&quot; operator&quot;,&quot;hid&quot;:&quot;the_operator&quot;,&quot;codeblockOffset&quot;:5,&quot;secid&quot;:11,&quot;range&quot;:&quot;5372-5730&quot;} -->
+<h3 class="sectionedit12" id="branch_forcing">Branch forcing</h3>
+<div class="level3">
+
+<p>
+You&#039;re an expert on relative refs now, so let&#039;s actually use them for something.
+</p>
+
+<p>
+One of the most common ways I use relative refs is to move branches around. You can directly reassign a branch to a commit with the -f option. So something like:
+</p>
+
+<p>
+git branch -f main HEAD~3
+</p>
+
+<p>
+moves  the main branch to three parents behind HEAD.
+</p>
+
+<p>
+<a href="/lib/exe/detail.php?id=biz%3A20210820&amp;media=biz:force.png" class="media" title="biz:force.png"><img src="/lib/exe/fetch.php?w=400&amp;tok=e051d7&amp;media=biz:force.png" class="media" alt="" width="400" /></a>
+</p>
+
+<p>
+<a href="/lib/exe/detail.php?id=biz%3A20210820&amp;media=biz:screen_shot_2021-08-20_at_10.39.28_am.png" class="media" title="biz:screen_shot_2021-08-20_at_10.39.28_am.png"><img src="/lib/exe/fetch.php?w=400&amp;tok=9f03d5&amp;media=biz:screen_shot_2021-08-20_at_10.39.28_am.png" class="media" alt="" width="400" /></a>
+</p>
+<pre class="code">git checkout main
+git branch -f main HEAD~2
+git rebase C6
+git checkout bugFix
+git branch -f bugFix HEAD~3
+git checkout C1</pre>
+
+<p>
+<a href="/lib/exe/detail.php?id=biz%3A20210820&amp;media=biz:screen_shot_2021-08-20_at_10.38.20_am.png" class="media" title="biz:screen_shot_2021-08-20_at_10.38.20_am.png"><img src="/lib/exe/fetch.php?w=400&amp;tok=ade890&amp;media=biz:screen_shot_2021-08-20_at_10.38.20_am.png" class="media" alt="" width="400" /></a>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Branch forcing&quot;,&quot;hid&quot;:&quot;branch_forcing&quot;,&quot;codeblockOffset&quot;:6,&quot;secid&quot;:12,&quot;range&quot;:&quot;5731-6359&quot;} -->
+<h3 class="sectionedit13" id="reversing_changes_in_git">Reversing Changes in Git</h3>
+<div class="level3">
+
+<p>
+There are many ways to reverse changes in Git. And just like committing, reversing changes in Git has both a low-level component (staging individual files or chunks) and a high-level component (how the changes are actually reversed). Our application will focus on the latter.
+</p>
+
+<p>
+There are two primary ways to undo changes in Git – one is using git reset and the other is using git revert. We will look at each of these in the next dialog
+</p>
+
+<p>
+git reset reverses changes by moving a branch reference backwards in time to an older commit. In this sense you can think of it as “rewriting history;” git reset will move a branch backwards as if the commit had never been made in the first place.
+</p>
+<pre class="code">git reset HEAD~1</pre>
+
+</div>
+
+<h4 id="git_revert">Git Revert</h4>
+<div class="level4">
+
+<p>
+While resetting works great for local branches on your own machine, its method of “rewriting history” doesn&#039;t work for remote branches that others are using.
+</p>
+<pre class="code">git revert HEAD</pre>
+
+<p>
+<a href="/lib/exe/detail.php?id=biz%3A20210820&amp;media=biz:screen_shot_2021-08-20_at_10.49.29_am.png" class="media" title="biz:screen_shot_2021-08-20_at_10.49.29_am.png"><img src="/lib/exe/fetch.php?w=400&amp;tok=a4c6cb&amp;media=biz:screen_shot_2021-08-20_at_10.49.29_am.png" class="media" alt="" width="400" /></a>
+</p>
+<pre class="code">git reset HEAD~1
+git checkout pushed
+git revert HEAD</pre>
+
+<p>
+<a href="/lib/exe/detail.php?id=biz%3A20210820&amp;media=biz:screen_shot_2021-08-20_at_10.48.29_am.png" class="media" title="biz:screen_shot_2021-08-20_at_10.48.29_am.png"><img src="/lib/exe/fetch.php?w=400&amp;tok=646d28&amp;media=biz:screen_shot_2021-08-20_at_10.48.29_am.png" class="media" alt="" width="400" /></a>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Reversing Changes in Git&quot;,&quot;hid&quot;:&quot;reversing_changes_in_git&quot;,&quot;codeblockOffset&quot;:7,&quot;secid&quot;:13,&quot;range&quot;:&quot;6360-7509&quot;} -->
+<h3 class="sectionedit14" id="moving_work_around">Moving Work Around</h3>
+<div class="level3">
+
+</div>
+
+<h4 id="git_cherry-pick">Git Cherry-pick</h4>
+<div class="level4">
+<pre class="code">git cherry-pick
+
+git cherry-pick &lt;Commit1&gt; &lt;Commit2&gt; &lt;...&gt;
+
+</pre>
+
+<p>
+It&#039;s a very straightforward way of saying that you would like to copy a series of commits below your current location (HEAD). I personally love cherry-pick because there is very little magic involved and it&#039;s easy to understand.
+</p>
+
+<p>
+<a href="/lib/exe/detail.php?id=biz%3A20210820&amp;media=biz:screen_shot_2021-08-20_at_11.00.21_am.png" class="media" title="biz:screen_shot_2021-08-20_at_11.00.21_am.png"><img src="/lib/exe/fetch.php?w=800&amp;tok=69c052&amp;media=biz:screen_shot_2021-08-20_at_11.00.21_am.png" class="media" alt="" width="800" /></a>
+</p>
+
+<p>
+<a href="/lib/exe/detail.php?id=biz%3A20210820&amp;media=biz:screen_shot_2021-08-20_at_11.02.19_am.png" class="media" title="biz:screen_shot_2021-08-20_at_11.02.19_am.png"><img src="/lib/exe/fetch.php?w=800&amp;tok=c92a4e&amp;media=biz:screen_shot_2021-08-20_at_11.02.19_am.png" class="media" alt="" width="800" /></a>
+</p>
+<pre class="code">git cherry-pick C3 C4 C7</pre>
+
+</div>
+
+<h4 id="git_interactive_rebase">Git Interactive Rebase</h4>
+<div class="level4">
+
+<p>
+Git cherry-pick is great when you know which commits you want (and you know their corresponding hashes) – it&#039;s hard to beat the simplicity it provides.
+</p>
+
+<p>
+But what about the situation where you don&#039;t know what commits you want? Thankfully git has you covered there as well! We can use interactive rebasing for this – it&#039;s the best way to review a series of commits you&#039;re about to rebase.
+</p>
+
+<p>
+All interactive rebase means is using the rebase command with the -i option.
+</p>
+
+<p>
+If you include this option, git will open up a UI to show you which commits are about to be copied below the target of the rebase. It also shows their commit hashes and messages, which is great for getting a bearing on what&#039;s what.
+</p>
+
+<p>
+For “real” git, the UI window means opening up a file in a text editor like vim. For our purposes, I&#039;ve built a small dialog window that behaves the same way.
+</p>
+
+<p>
+When the interactive rebase dialog opens, you have the ability to do two things in our educational application:
+</p>
+<ul>
+<li class="level1"><div class="li"> You can reorder commits simply by changing their order in the UI (via dragging and dropping with the mouse).</div>
+</li>
+<li class="level1"><div class="li"> You can choose to keep all commits or drop specific ones. When the dialog opens, each commit is set to be included by the pick button next to it being active. To drop a commit, toggle off its pick button.</div>
+</li>
+</ul>
+
+<p>
+It is worth mentioning that in the real git interactive rebase you can do many more things like squashing (combining) commits, amending commit messages, and even editing the commits themselves. For our purposes though we will focus on these two operations above.
+</p>
+
+<p>
+<a href="/lib/exe/detail.php?id=biz%3A20210820&amp;media=biz:screen_shot_2021-08-20_at_11.13.51_am.png" class="media" title="biz:screen_shot_2021-08-20_at_11.13.51_am.png"><img src="/lib/exe/fetch.php?w=800&amp;tok=02ad3c&amp;media=biz:screen_shot_2021-08-20_at_11.13.51_am.png" class="media" alt="" width="800" /></a>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Moving Work Around&quot;,&quot;hid&quot;:&quot;moving_work_around&quot;,&quot;codeblockOffset&quot;:10,&quot;secid&quot;:14,&quot;range&quot;:&quot;7510-9677&quot;} -->
+<h3 class="sectionedit15" id="locally_stacked_commits">Locally stacked commits</h3>
+<div class="level3">
+
+<p>
+Here&#039;s a development situation that often happens: I&#039;m trying to track down a bug but it is quite elusive. In order to aid in my detective work, I put in a few debug commands and a few print statements.
+</p>
+
+<p>
+All of these debugging / print statements are in their own commits. Finally I track down the bug, fix it, and rejoice!
+</p>
+
+<p>
+Only problem is that I now need to get my bugFix back into the main branch. If I simply fast-forwarded main, then main would get all my debug statements which is undesirable. There has to be another way…
+</p>
+
+<p>
+We need to tell git to copy only one of the commits over. This is just like the levels earlier on moving work around – we can use the same commands:
+</p>
+<ul>
+<li class="level1"><div class="li"> git rebase -i</div>
+</li>
+<li class="level1"><div class="li"> git cherry-pick</div>
+</li>
+</ul>
+
+<p>
+To achieve this goal.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Locally stacked commits&quot;,&quot;hid&quot;:&quot;locally_stacked_commits&quot;,&quot;codeblockOffset&quot;:12,&quot;secid&quot;:15,&quot;range&quot;:&quot;9678-10454&quot;} -->
+<h3 class="sectionedit16" id="juggling_commits">Juggling Commits</h3>
+<div class="level3">
+
+<p>
+Here&#039;s another situation that happens quite commonly. You have some changes (newImage) and another set of changes (caption) that are related, so they are stacked on top of each other in your repository (aka one after another).
+</p>
+
+<p>
+The tricky thing is that sometimes you need to make a small modification to an earlier commit. In this case, design wants us to change the dimensions of newImage slightly, even though that commit is way back in our history!!
+</p>
+<hr />
+
+<p>
+<a href="/lib/exe/detail.php?id=biz%3A20210820&amp;media=biz:screen_shot_2021-08-20_at_11.26.21_am.png" class="media" title="biz:screen_shot_2021-08-20_at_11.26.21_am.png"><img src="/lib/exe/fetch.php?w=800&amp;tok=9c5565&amp;media=biz:screen_shot_2021-08-20_at_11.26.21_am.png" class="media" alt="" width="800" /></a>
+</p>
+<pre class="code">git rebase -i HEAD~2
+git commit --amend
+git rebase -i HEAD~2
+git checkout main
+git merge caption</pre>
+
+<p>
+<a href="/lib/exe/detail.php?id=biz%3A20210820&amp;media=biz:screen_shot_2021-08-20_at_11.36.20_am.png" class="media" title="biz:screen_shot_2021-08-20_at_11.36.20_am.png"><img src="/lib/exe/fetch.php?w=800&amp;tok=d4612f&amp;media=biz:screen_shot_2021-08-20_at_11.36.20_am.png" class="media" alt="" width="800" /></a>
+</p>
+<pre class="code">git checkout main
+git cherry-pick C2
+git rebase -i HEAD~1
+git cherry-pick C3</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Juggling Commits&quot;,&quot;hid&quot;:&quot;juggling_commits&quot;,&quot;codeblockOffset&quot;:12,&quot;secid&quot;:16,&quot;range&quot;:&quot;10455-11265&quot;} -->
+<h2 class="sectionedit17" id="what_is_docker_vagrant">What is Docker? Vagrant?</h2>
+<div class="level2">
+
+<p>
+Let&#039;s start by defining each tool. Definitions can be touchy; so we&#039;ll use the product description from the home pages for Docker and Vagrant right now.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;What is Docker? Vagrant?&quot;,&quot;hid&quot;:&quot;what_is_docker_vagrant&quot;,&quot;codeblockOffset&quot;:14,&quot;secid&quot;:17,&quot;range&quot;:&quot;11266-11457&quot;} -->
+<h3 class="sectionedit18" id="problem">PROBLEM</h3>
+<div class="level3">
+
+<p>
+<a href="https://www.devteam.space/blog/docker-vs-vagrant-which-is-better-for-development/" class="urlextern" title="https://www.devteam.space/blog/docker-vs-vagrant-which-is-better-for-development/" rel="ugc nofollow">https://www.devteam.space/blog/docker-vs-vagrant-which-is-better-for-development/</a>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;PROBLEM&quot;,&quot;hid&quot;:&quot;problem&quot;,&quot;codeblockOffset&quot;:14,&quot;secid&quot;:18,&quot;range&quot;:&quot;11458-11558&quot;} -->
+<h3 class="sectionedit19" id="what_is_vagrant_managing_virtual_environments">WHAT IS VAGRANT? – MANAGING VIRTUAL ENVIRONMENTS</h3>
+<div class="level3">
+
+<p>
+When running a software application, you are also running all of the libraries it uses, dependencies it has, and the operating system it’s running on. When you run the same application on a different machine, all of those things change, even if that change is very subtle. This is where the problems arise. It could be because you’re running a different operating system version or using a different tool set. It could be something as small as having a different version of PHP installed.
+</p>
+
+<p>
+The solution is to be able to somehow whip up an environment that’s guaranteed to be identical every time you run an application, even on a different machine. That’s exactly what virtualization attempts to do.
+</p>
+
+<p>
+Docker and Vagrant are based on the idea of “virtual” computing environments, where your application will run in a predictable and repeatable way. The goal is that if your buddy says “It works on my machine”, you know it will work on yours too, and the production server. However, they both attack this problem in very different ways.
+</p>
+
+<p>
+Vagrant is an open source tool for managing virtual environments. These environments are usually virtual machines. That’s why you run Vagrant with another tool like Virtual Box. Its goal is to solve the problems we just discussed by allowing you to spin up virtual machines that are exactly the same every time. You can be sure that the virtual machine you are running on your local machine is exactly the same as the one you’re running on your staging or production server.
+</p>
+
+<p>
+Once you’ve used Vagrant (and another tool like Virtual Box) to set up a virtual server, you run a provisioning script exactly the same on each machine. The provisioning script will:
+</p>
+<ul>
+<li class="level1"><div class="li"> Install the correct programs you need (e.g. Node.JS, PHP, etc)</div>
+</li>
+<li class="level1"><div class="li"> Correctly set up user permissions</div>
+</li>
+<li class="level1"><div class="li"> Configure everything</div>
+</li>
+<li class="level1"><div class="li"> Install anything else your application requires</div>
+</li>
+</ul>
+
+<p>
+What you end up with is essentially the same environment wherever you set up a virtual machine with Vagrant.
+</p>
+
+<p>
+Now, you can run your code or application, and it will run the same on your machine, your buddies machine, and staging and production. You can also push your Vagrant file and code to GitHub, and anyone that pulls in and runs it will be able to recreate the virtual environment easily. When they run your code in this environment, it should act the same every time.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;WHAT IS VAGRANT? \u2013 MANAGING VIRTUAL ENVIRONMENTS&quot;,&quot;hid&quot;:&quot;what_is_vagrant_managing_virtual_environments&quot;,&quot;codeblockOffset&quot;:14,&quot;secid&quot;:19,&quot;range&quot;:&quot;11559-13999&quot;} -->
+<h3 class="sectionedit20" id="what_is_docker_containerized_applications">WHAT IS DOCKER? – CONTAINERIZED APPLICATIONS</h3>
+<div class="level3">
+
+<p>
+One of the drawbacks of using Vagrant is you have to run an entire virtual machine to run your application. This is very resource intensive and can take a long time to set up and run the provisioning script.
+</p>
+
+<p>
+Docker takes a different approach. You use a Docker file (a small ~5-30 line file) to create a Docker image. This Docker image contains:
+</p>
+<ul>
+<li class="level1"><div class="li"> All of your project code</div>
+</li>
+<li class="level1"><div class="li"> Installments of anything you need (Node.JS, Rails etc)</div>
+</li>
+<li class="level1"><div class="li"> Any configurations you need</div>
+</li>
+</ul>
+
+<p>
+It’s basically your complete application and all of its dependencies wrapped up into one neat package. Then you can run this image as a container on any machine running Docker. You don’t need a new virtual machine for each container, just one, as they are designed to run on top of a machine. Then, you can run as many Docker containers as you like on that virtual machine – as long as you have enough processing power and RAM.
+</p>
+
+<p>
+You could run a Docker container of a Rails app with a Rails installation bundled up into it, while also running a container of a Node.JS application. You wouldn’t need to install Rails or Node. Both would have their own installations contained within them. They are completely separate from each other but share an operating system kernel.
+</p>
+
+<p>
+Docker is gaining massive popularity as Steven J. Vaughan-Nichols puts it “I can’t think of a single company of any size that’s not at least looking into moving their server applications to containers in general and Docker in specific.”
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;WHAT IS DOCKER? \u2013 CONTAINERIZED APPLICATIONS&quot;,&quot;hid&quot;:&quot;what_is_docker_containerized_applications&quot;,&quot;codeblockOffset&quot;:14,&quot;secid&quot;:20,&quot;range&quot;:&quot;14000-15551&quot;} -->
+<h3 class="sectionedit21" id="main_differences">MAIN DIFFERENCES</h3>
+<div class="level3">
+
+<p>
+Vagrant sets up a predictable, repeatable environment (e.g. a virtual machine) for you to run your application. You run your code into an environment and can expect it to behave a certain way.
+</p>
+
+<p>
+Docker allows you to create images that ARE your project code. You use a Docker image to build an environment that you can run anywhere. If you can run Docker, you can run your application and it will work every time.
+</p>
+
+<p>
+Vagrant helps you set up entire virtual machines to run your applications, while Docker helps you manage containers that can run on top of a virtual machine.
+</p>
+
+<p>
+<strong>Vagrant</strong>
+</p>
+<ul>
+<li class="level1"><div class="li"> virtual machine manager</div>
+</li>
+<li class="level1"><div class="li"> portable / reproducible environment</div>
+</li>
+<li class="level1"><div class="li"> useful mainly for development</div>
+</li>
+<li class="level1"><div class="li"> Big resource consumption</div>
+</li>
+</ul>
+
+<p>
+<strong>docker</strong>
+</p>
+<ul>
+<li class="level1"><div class="li"> create containers</div>
+</li>
+<li class="level1"><div class="li"> Faster &amp; lighter then VM&#039;s</div>
+</li>
+<li class="level1"><div class="li"> Isolation / Seperation</div>
+</li>
+<li class="level1"><div class="li"> deployment everywhere</div>
+</li>
+</ul>
+<ul>
+<li class="level1"><div class="li"> Both provide virtual dev env</div>
+</li>
+<li class="level1"><div class="li"> VM(vagrant) virtualises the hardware for the <abbr title="Operating System">OS</abbr></div>
+</li>
+<li class="level1"><div class="li"> Docker virtualises the <abbr title="Operating System">OS</abbr> for the app</div>
+</li>
+<li class="level1"><div class="li"> Docker has a lot more to offer than Vagrant</div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;MAIN DIFFERENCES&quot;,&quot;hid&quot;:&quot;main_differences&quot;,&quot;codeblockOffset&quot;:14,&quot;secid&quot;:21,&quot;range&quot;:&quot;15552-16595&quot;} -->
+<h3 class="sectionedit22" id="what_is_virtual_machine">What is VIRTUAL MACHINE</h3>
+<div class="level3">
+
+<p>
+Allow to run multiple operating system in host computer
+</p>
+<ul>
+<li class="level1"><div class="li"> -testing an application</div>
+</li>
+<li class="level1"><div class="li"> -running old application that run lowest <abbr title="Operating System">OS</abbr> (such as XP)</div>
+</li>
+</ul>
+
+<p>
+Virtual box vs docker
+</p>
+
+<p>
+Vagrant using CLI 
+Virtual machine computer inside your computer
+consume sya ng memory cpu kung ilang ang inalocate yung yung kakainin ng VM
+</p>
+
+<p>
+docker containerization
+</p>
+
+<p>
+docker specify web server (built in <abbr title="Operating System">OS</abbr>) usage depend the resources used
+</p>
+
+<p>
+mcbee/ sprobe docker used
+bizwind - docker vagrant
+</p>
+
+<p>
+bkit gumagamit
+pag isang setup computer meron din ubuntu dapat same
+</p>
+
+<p>
+bkit kailangan virtualization
+</p>
+
+<p>
+sinetup ng kanya kanya mag kakaiba ng version
+</p>
+
+<p>
+docker install mac pag dating sa server hindi mac nahihirapan mag install 
+</p>
+
+<p>
+virtual box ←- docker ←- container(<abbr title="Operating System">OS</abbr>) database
+</p>
+
+<p>
+CI/CD —- dun papasok kapag meron binago sa docker
+</p>
+
+<p>
+production nakainstall si docker
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;What is VIRTUAL MACHINE&quot;,&quot;hid&quot;:&quot;what_is_virtual_machine&quot;,&quot;codeblockOffset&quot;:14,&quot;secid&quot;:22,&quot;range&quot;:&quot;16596-17459&quot;} -->
+<h3 class="sectionedit23" id="git_switch_remote_branch_not_exist_in_local">Git switch (remote branch not exist in local)</h3>
+<div class="level3">
+<ol>
+<li class="level1"><div class="li"> git fetch</div>
+</li>
+<li class="level1"><div class="li"> git switch branchname</div>
+</li>
+</ol>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Git switch (remote branch not exist in local)&quot;,&quot;hid&quot;:&quot;git_switch_remote_branch_not_exist_in_local&quot;,&quot;codeblockOffset&quot;:14,&quot;secid&quot;:23,&quot;range&quot;:&quot;17460-&quot;} -->

@@ -1,0 +1,21 @@
+====== Custom Repository ======
+
+  - https://www.drupal.org/project/entity_repository
+  - install module
+  - create service.yml
+  - create folder Drupal\module\Repository
+  - class AdvertiserRepository extends NodeRepository
+  - protected $entityType = 'advertiser' ID in entity @ContentEntityType(id = "advertiser"
+  - delete custom basequery in parent class not applicable to your custom entity
+  - Drupal::service('advertiser.repository.advertiser')->findAll
+
+
+
+
+<file  yml module.services.yml>
+services:
+  advertiser.repository.advertiser:
+    class: Drupal\advertiser\Repository\AdvertiserRepository
+    parent: entity_repository.repository.node
+
+</file>

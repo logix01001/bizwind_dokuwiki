@@ -1,0 +1,9 @@
+====== Docker ======
+<code>
+ [231519] INTERNAL ERROR: cannot create temporary directory! docker
+</code>
+
+  * docker rm -f $(docker ps -a -q) (remove all container stopped or running)
+  * docker rmi -f $(docker images -q) (remove all images)
+  * docker image prune (remove all none)
+

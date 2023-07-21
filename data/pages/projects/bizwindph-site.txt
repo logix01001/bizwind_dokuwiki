@@ -1,0 +1,38 @@
+**Bizwind Wordpress**
+
+
+https://biz1.backlog.jp/git/PHILMNG/bizwindph-website/tree/master
+
+connect to Japan VPN
+
+Bizwind Japan VPN
+
+Server Address: 153.156.79.97
+
+Account Name: BizPH
+
+Password: bizwind110
+
+Shared Secret: bizwind-vpn
+
+Session Options:
+
+Check Send all traffic over VPN connection
+
+
+
+
+
+username: bizadmin
+
+wp-admin pw: 4N$ojiz^wK#l72ckbk%0ExC8
+
+
+
+====== SFTP ======
+
+URL：https://secure.sakura.ad.jp/rs/cp/
+
+ID :biz-ph.sakura.ne.jp
+
+pass : Zwg-S4qB2f8V

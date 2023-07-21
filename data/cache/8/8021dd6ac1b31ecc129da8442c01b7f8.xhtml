@@ -1,0 +1,163 @@
+
+<h1 class="sectionedit1" id="cypressio">Cypress.io</h1>
+<div class="level1">
+
+<p>
+A tool for reliably testing anything that runs in web browser
+Open source
+</p>
+
+<p>
+npm install -D cypress
+</p>
+
+<p>
+npx cypress open
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Cypress.io&quot;,&quot;hid&quot;:&quot;cypressio&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:1,&quot;range&quot;:&quot;1-143&quot;} -->
+<h2 class="sectionedit2" id="cypress_api">Cypress API</h2>
+<div class="level2">
+<pre class="code">cy.&lt;command&gt;</pre>
+
+<p>
+<strong>Finding data</strong>
+</p>
+<pre class="code">cy.request(&#039;/users/1&#039;)
+  .its(&#039;body&#039;)
+  .should(&#039;deep.eql&#039;,{name:&#039;Amir&#039;})
+  
+  
+ 
+</pre>
+<pre class="code">npm install cypress
+npx cypress -v
+npx cypress open
+
+</pre>
+<pre class="code">cy.visit()               //visit URL
+cy.get(&#039;.class&#039;)         //get Object
+cy.contains(&#039;&#039;)          //get object by text first element
+cy.type(&#039;&#039;)              // use after locating element object and type
+cy.get(&#039;.class&#039;).click() //Trigger click event
+
+cy.focused().type(&#039;&#039;).   //type in focused field
+
+
+cy.location(&#039;pathname&#039;).should(&#039;eq&#039;, &#039;/login&#039;).        // equal to /login
+
+cy.get(&#039;.error&#039;).should(&#039;be.empty&#039;)                    // Assert that &#039;.error&#039; is empty
+cy.contains(&#039;Login&#039;).should(&#039;be.visible&#039;)              // Assert that el is visible
+cy.wrap({ foo: &#039;bar&#039; }).its(&#039;foo&#039;).should(&#039;eq&#039;, &#039;bar&#039;) // Assert the &#039;foo&#039; property equals &#039;bar&#039;</pre>
+
+<p>
+SERVER WAIT RESPONSE
+</p>
+<pre class="code">
+cy.server()
+cy.route(&#039;POST&#039;,&#039;api&#039;).as(&#039;create&#039;)
+
+
+cy.wait(&#039;@create&#039;);</pre>
+<pre class="code">
+/// &lt;reference types=&quot;cypress&quot; /&gt;
+
+describe(&#039;Log in&#039;, ()=&gt;
+{
+
+
+    it(&#039;login&#039;, ()=&gt;
+    {
+        cy.visit(&#039;http://localhost/dokuwiki/doku.php&#039;);
+
+        cy.get(&#039;.action &gt; a &gt; span&#039;).click()
+
+       // cy.get(&#039;#focus__this&#039;).type(&#039;logix01001&#039;).should(&#039;have.value&#039;,&#039;logix01001&#039;);
+        cy.focused().type(&#039;logix01001&#039;).should(&#039;have.value&#039;,&#039;logix01001&#039;);
+        cy.get(&#039;:nth-child(4) &gt; .edit&#039;).type(&#039;lynadmin{enter}&#039;).should(&#039;have.value&#039;,&#039;lynadmin&#039;);
+    })
+
+    
+
+
+
+})</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Cypress API&quot;,&quot;hid&quot;:&quot;cypress_api&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:2,&quot;range&quot;:&quot;144-1645&quot;} -->
+<h2 class="sectionedit3" id="adding_custom_commands">Adding Custom Commands</h2>
+<div class="level2">
+
+<p>
+<em>Cypress/Support</em> folder
+</p>
+<dl class="file">
+<dt><a href="/dokuwiki/doku.php?do=export_code&amp;id=biz:20210819&amp;codeblock=6" title="Download Snippet" class="mediafile mf_js">command.js</a></dt>
+<dd><pre class="code file js">Cypress.Commands.add('login', (email,password) =&gt; {
+  cy.get('input[name=&quot;email&quot;]').type(email)
+  cy.get('input[name=&quot;password&quot;]').type(password)
+  cy.get('#login-button').click()
+&nbsp;
+&nbsp;
+})
+&nbsp;
+usage
+&nbsp;
+cy.login('amir@cypress.io','1234')</pre>
+</dd></dl>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Adding Custom Commands&quot;,&quot;hid&quot;:&quot;adding_custom_commands&quot;,&quot;codeblockOffset&quot;:6,&quot;secid&quot;:3,&quot;range&quot;:&quot;1646-1974&quot;} -->
+<h2 class="sectionedit4" id="adding_task">Adding Task</h2>
+<div class="level2">
+
+<p>
+<em>Cypress/plugins</em> folder
+</p>
+<dl class="file">
+<dt><a href="/dokuwiki/doku.php?do=export_code&amp;id=biz:20210819&amp;codeblock=7" title="Download Snippet" class="mediafile mf_js">sample.js</a></dt>
+<dd><pre class="code file js">const {clearDatabase} = require('../../server/db')
+&nbsp;
+module.exports = (on, config) =&gt;{
+&nbsp;
+  on('task', {
+&nbsp;
+   'clear:db': ()=&gt;{
+&nbsp;
+     return clearDatabase()
+&nbsp;
+   }
+&nbsp;
+  })
+&nbsp;
+}
+&nbsp;
+usage
+&nbsp;
+beforeEach(()=&gt;{
+ cy.task('clear:db')
+&nbsp;
+})</pre>
+</dd></dl>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Adding Task&quot;,&quot;hid&quot;:&quot;adding_task&quot;,&quot;codeblockOffset&quot;:7,&quot;secid&quot;:4,&quot;range&quot;:&quot;1975-2286&quot;} -->
+<h2 class="sectionedit5" id="chainers">CHAINERS</h2>
+<div class="level2">
+
+<p>
+<a href="https://docs.cypress.io/guides/references/assertions#Chai" class="urlextern" title="https://docs.cypress.io/guides/references/assertions#Chai" rel="ugc nofollow">https://docs.cypress.io/guides/references/assertions#Chai</a>
+</p>
+
+<p>
+cypress
+</p>
+
+<p>
+para ma automate ang test kung manual uulitin ulet yung process
+cypress assurance na meron ka tinest na pede makita na proof na nag test
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;CHAINERS&quot;,&quot;hid&quot;:&quot;chainers&quot;,&quot;codeblockOffset&quot;:8,&quot;secid&quot;:5,&quot;range&quot;:&quot;2287-&quot;} -->

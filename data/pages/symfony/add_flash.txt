@@ -1,0 +1,14 @@
+<code>
+$this->addFlash(
+            'notice', //Title
+            'Your changes were saved!' // Message
+        );
+        
+        
+        
+{% for message in app.flashes('notice') %}
+    <div class="flash-notice">
+        {{ message }}
+    </div>
+{% endfor %}
+</code>

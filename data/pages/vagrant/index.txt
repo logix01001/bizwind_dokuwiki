@@ -1,0 +1,65 @@
+===== Configuration Version =====
+
+Configuration versions are the mechanism by which Vagrant 1.1+ is able to remain backwards compatible with Vagrant 1.0.x Vagrantfiles, while introducing dramatically new features and configuration options.
+
+
+The **"2"** in the first line above represents the version of the configuration object config that will be used for configuration for that block (the section between the do and the end). This object can be very different from version to version.
+
+
+<code>
+Vagrant.configure("2") do |config|
+
+end
+
+</code>
+
+  * config.vm.box - operating system
+  * config.vm.provider - virtualbox
+  * config.vm.network - how your host sees your box
+  * config.vm.synced_folder - how you access files from your computer
+  * config.vm.provision - what we want setup
+
+<code>
+vagrant up
+vagrant halt
+vagrant up --provisions
+</code>
+
+
+<code>
+
+ config.vm.provider "virtualbox" do |vb|
+    vb.memory = "1024"
+    vb.cpu = "4"
+ end
+</code>
+
+
+<code>
+config.vm.provision :shell, path: "script.sh"
+</code>
+
+
+
+
+RUBY 2.6 to 2.3.0
+<code>
+rbenv install 2.3.0
+rbenv rehash
+rbenv global 2.3.0
+
+vi ~/.zshrc
+
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+vagrant reload --provision encounter error in vagrant up in bizemployee
+</code>
+
+
+==== Vagrant Provisioning ====
+
+Provisioners in Vagrant allow us to automatically install software, alter configurations, and more on the machine as part of the vagrant up process.
+
+This is useful since boxes typically aren't built perfectly for our use case. Of course, if we want to just use vagrant ssh and install the software by hand, that works. But by using the provisioning systems built-in to Vagrant, it automates the process so that it is repeatable. Most importantly, it requires no human interaction, so we can vagrant destroy and vagrant up and have a fully ready-to-go work environment with a single command. Powerful.
+
+

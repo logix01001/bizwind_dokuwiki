@@ -1,0 +1,16 @@
+a:2:{s:7:"current";a:8:{s:4:"date";a:2:{s:7:"created";i:1639621026;s:8:"modified";i:1639640438;}s:11:"last_change";a:8:{s:4:"date";i:1639640438;s:2:"ip";s:3:"::1";s:4:"type";s:1:"E";s:2:"id";s:17:"projects:line_api";s:4:"user";s:0:"";s:3:"sum";s:0:"";s:5:"extra";s:0:"";s:10:"sizechange";i:108;}s:4:"user";s:0:"";s:7:"creator";s:0:"";s:5:"title";s:8:"Headline";s:11:"description";a:2:{s:15:"tableofcontents";a:10:{i:0;a:4:{s:3:"hid";s:8:"headline";s:5:"title";s:8:"Headline";s:4:"type";s:2:"ul";s:5:"level";i:1;}i:1;a:4:{s:3:"hid";s:20:"error_response_guide";s:5:"title";s:20:"Error Response Guide";s:4:"type";s:2:"ul";s:5:"level";i:2;}i:2;a:4:{s:3:"hid";s:38:"issuance_token_30_max_30_mins_validity";s:5:"title";s:41:"Issuance Token (30 Max, 30 mins validity)";s:4:"type";s:2:"ul";s:5:"level";i:2;}i:3;a:4:{s:3:"hid";s:12:"message_push";s:5:"title";s:12:"Message Push";s:4:"type";s:2:"ul";s:5:"level";i:2;}i:4;a:4:{s:3:"hid";s:26:"issuance_short_lived_token";s:5:"title";s:26:"Issuance Short lived Token";s:4:"type";s:2:"ul";s:5:"level";i:2;}i:5;a:4:{s:3:"hid";s:8:"response";s:5:"title";s:8:"response";s:4:"type";s:2:"ul";s:5:"level";i:3;}i:6;a:4:{s:3:"hid";s:18:"verify_short_lived";s:5:"title";s:18:"Verify Short lived";s:4:"type";s:2:"ul";s:5:"level";i:2;}i:7;a:4:{s:3:"hid";s:9:"response1";s:5:"title";s:8:"Response";s:4:"type";s:2:"ul";s:5:"level";i:3;}i:8;a:4:{s:3:"hid";s:14:"error_response";s:5:"title";s:14:"Error Response";s:4:"type";s:2:"ul";s:5:"level";i:3;}i:9;a:4:{s:3:"hid";s:18:"revoke_short_lived";s:5:"title";s:18:"Revoke Short lived";s:4:"type";s:2:"ul";s:5:"level";i:2;}}s:8:"abstract";s:381:"Headline
+
+Error Response Guide
+
+<https://developers.line.biz/en/reference/messaging-api/#error-responses>
+
+Issuance Token (30 Max, 30 mins validity)
+
+<https://api.line.me/oauth2/v2.1/token>
+
+	*  Content-Type application/x-www-form-urlencoded
+
+ BODY form urlencoded 
+
+	*  grant_type client_credentials
+	*  client_assertion_type urn:ietf:params:oauth:client-assertion-type:jwt-bearer";}s:8:"internal";a:2:{s:5:"cache";b:1;s:3:"toc";b:1;}s:8:"relation";a:1:{s:10:"firstimage";s:0:"";}}s:10:"persistent";a:4:{s:4:"date";a:2:{s:7:"created";i:1639621026;s:8:"modified";i:1639640438;}s:11:"last_change";a:8:{s:4:"date";i:1639640438;s:2:"ip";s:3:"::1";s:4:"type";s:1:"E";s:2:"id";s:17:"projects:line_api";s:4:"user";s:0:"";s:3:"sum";s:0:"";s:5:"extra";s:0:"";s:10:"sizechange";i:108;}s:4:"user";s:0:"";s:7:"creator";s:0:"";}}

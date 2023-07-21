@@ -1,0 +1,149 @@
+====== Cypress.io ======
+
+A tool for reliably testing anything that runs in web browser
+Open source
+
+npm install -D cypress
+
+npx cypress open
+
+===== Cypress API =====
+<code>
+cy.<command>
+</code>
+**Finding data**
+<code>
+cy.request('/users/1')
+  .its('body')
+  .should('deep.eql',{name:'Amir'})
+  
+  
+ 
+
+</code>
+
+<code>
+npm install cypress
+npx cypress -v
+npx cypress open
+
+
+</code>
+
+
+<code>
+cy.visit()               //visit URL
+cy.get('.class')         //get Object
+cy.contains('')          //get object by text first element
+cy.type('')              // use after locating element object and type
+cy.get('.class').click() //Trigger click event
+
+cy.focused().type('').   //type in focused field
+
+
+cy.location('pathname').should('eq', '/login').        // equal to /login
+
+cy.get('.error').should('be.empty')                    // Assert that '.error' is empty
+cy.contains('Login').should('be.visible')              // Assert that el is visible
+cy.wrap({ foo: 'bar' }).its('foo').should('eq', 'bar') // Assert the 'foo' property equals 'bar'
+</code>
+
+SERVER WAIT RESPONSE
+<code>
+
+cy.server()
+cy.route('POST','api').as('create')
+
+
+cy.wait('@create');
+</code>
+
+
+<code>
+
+/// <reference types="cypress" />
+
+describe('Log in', ()=>
+{
+
+
+    it('login', ()=>
+    {
+        cy.visit('http://localhost/dokuwiki/doku.php');
+
+        cy.get('.action > a > span').click()
+
+       // cy.get('#focus__this').type('logix01001').should('have.value','logix01001');
+        cy.focused().type('logix01001').should('have.value','logix01001');
+        cy.get(':nth-child(4) > .edit').type('lynadmin{enter}').should('have.value','lynadmin');
+    })
+
+    
+
+
+
+})
+</code>
+
+
+===== Adding Custom Commands =====
+
+
+//Cypress/Support// folder
+<file  js command.js>
+
+Cypress.Commands.add('login', (email,password) => {
+  cy.get('input[name="email"]').type(email)
+  cy.get('input[name="password"]').type(password)
+  cy.get('#login-button').click()
+  
+
+})
+
+usage
+  
+cy.login('amir@cypress.io','1234')
+
+</file>
+
+===== Adding Task =====
+
+//Cypress/plugins// folder
+
+<file  js sample.js>
+
+const {clearDatabase} = require('../../server/db')
+
+module.exports = (on, config) =>{
+
+  on('task', {
+  
+   'clear:db': ()=>{
+   
+     return clearDatabase()
+   
+   }
+  
+  })
+
+}
+
+usage
+
+beforeEach(()=>{
+ cy.task('clear:db')
+
+})
+</file>
+
+===== CHAINERS =====
+
+https://docs.cypress.io/guides/references/assertions#Chai
+
+
+
+
+cypress
+
+para ma automate ang test kung manual uulitin ulet yung process
+cypress assurance na meron ka tinest na pede makita na proof na nag test

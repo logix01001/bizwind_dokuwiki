@@ -1,0 +1,5 @@
+{{:aws:screen_shot_2022-04-26_at_12.30.02_pm.png?800|}}
+
+  * Use private IP of ec2 instance
+  * rds security group add inbound rules
+  * select mysql/aurora

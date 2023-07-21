@@ -1,0 +1,396 @@
+====== 2021-08-13 ======
+
+====== Orientation Notes ======
+
+
+company overview
+
+2005 japan
+
+provide software customers
+
+bizwind philippines establish 2012 may 17
+
+Missiom
+
+to enlighten experience with the world best technoligies
+
+vision
+
+create norderless group innovative comapnes
+
+social inmfrasture
+
+school hospital
+lead your business to success
+
+Mantra
+
+always think what is right what is the best for our programs
+
+discipline task commitment the task
+
+respect 
+
+imrpove
+
+
+employees
+
+Takahashi kuramochi
+presiden/Ceo
+
+Naomi Takeuchi
+Payroll expense
+Director bizwind philippine
+
+Ramil Nazareno Eso
+Software Engineering supervisor Acting Manager
+
+
+Ronya Basilio
+Senior Software Engineer
+contract
+quezon city
+
+John Espiritu
+Senior software engineer
+
+Dominic Ladaga
+Senior software engineer
+
+
+Julius Christeniel Valin
+Senior software engineer
+contract
+cavite
+
+Ivy Jane Javillo
+Software Engineer
+Contract
+laguna
+
+
+Mart Allan Lee
+Senior Software Engineer
+Contract
+
+Work Hour
+
+Monday to friday
+
+9per day
+
+semi 7 to 10
+
+8 days
+
+daily morning meeting 9am
+
+preferably already working around 9am for the morning meeting
+
+salary schedule
+
+cut off period start to end of month
+
+5th and 20th
+timesheet 1sy of the month
+submitted to outsource accounting firm offshore CAD
+
+Benefits
+Miscellaneos allowance 
+ 500
+ internet allowance
+ laundry 
+
+yearly increase
+
+medical insurance
+ no HMO
+ bibili ng individual HMO or Save Money 20k per year
+ 
+Mid year Bonus
+ Max OF half Salary 
+ Summer Bonus
+
+Yearly Summer Trip (Tempory Suspended Due to pandemic)
+
+
+Free Snacks (Coffee Biscuit) if in office
+
+
+
+Office Environment
+
+Assigned with 1 Macbook PRo monitor External HDD
+every end of the friday
+Casual Wear 
+
+
+Office REsponsibilites
+
+Working from home
+require time in time out via MS teams (incluiding lunch break)
+12 to 1
+
+Should have daily report at the end of the day
+
+Bizwind employee management system BEMS
+ portal time record input and adjustments
+ in house system
+ application and monitoring of leaves
+ Language: Symfony
+
+Others
+ *grocery
+ *Minutes of meeting
+
+first day of work
+
+Send message to Ram via Skype / Messenger
+Setup Email Ms Teams and other accounts
+install application
+fillup skill sheet
+Interview American Mcbee
+
+Technologies
+
+MacOS
+JAVA
+PHP
+Javascript
+jquery
+react
+vuejs
+
+springboot framework java
+symfony php
+cakephp framework php
+
+
+Dev tools
+virutal box and vagrant
+docker
+git
+Gradle
+VScode
+
+Eclipse
+
+Probationary schedule
+2-4 weeks training
+Sept period
+
+Scrove
+Actual deployment to project / Labo Contract
+Bizwind philippines -> contact direct to company contract
+working time time of bizwind
+
+6th month of end of probationary period
+
+
+
+
+
+
+
+
+Work Flow
+
+Bizwind 
+In house project
+
+Labo Contract 
+Outsourced
+Macbee Japan Company American manager
+Sprobe Cebu
+
+
+Labo Contract
+Client
+Bizwind engineer to client
+Bizwind ph
+Bizwind engineer to client
+bound of contract
+pag hinire ng direct yung programmer
+
+
+
+Jp2
+client coordination
+project management
+basic detaild design
+detail design confirmartion
+Acceptance Test
+deployement
+user acceptance test
+
+
+
+
+PH
+Project management
+resource management
+dev improvements
+deployment
+staging and prod
+detailed design
+unit test
+integration test
+morning meeting
+
+
+
+WORK FLOW
+jp -> project task requirement basic detail specs -> ph
+ph - details specs estimation assignees -> JP
+jp -> approved confirm spes
+ph Actual dev -> question clarification ph - jp
+ph integration testing -> question clarification ph - jp
+ph -> finished product -> jp
+jp -> deployment
+      staging (PH or JP) remote Azure or AWs
+jp -> improvements Bug reports changes in specs -> ph
+pj -> fixed
+jp -> deployment
+jp -> issues
+ph-> finished
+
+finished project
+
+
+Department Structure
+
+Ram SE Supervisor
+ SE , Senior SE
+
+Flow Commiunication
+
+Sakamaki communication channel to sir Ram
+ Shiga ueda konishi others
+
+
+DeepL translator app
+
+
+PH resource assignment proposal
+
+Whenever ther is a project
+priject PM will designated the following
+at least 2 engineers
+1 project PL
+1 software engineer SE
+1 yester
+
+PM PL SE TESTER
+
+
+PM
+assigned 10 % of the project task
+PL 20 %
+SE 70 %
+
+SPECIFICATION
+
+Quality Assurance Process
+User interface 
+database design 
+acceptance critieria when and then format
+
+Development with automated Unit TESTS
+Should follow the TDD pattern
+
+Test case creation
+
+Integration test should follow the created
+
+
+Quality control
+
+TASK
+check acceptance criteria
+
+Developmenmt
+unit test
+function integration test
+manual / automated cypress selnium
+code review and refactor
+
+System testing
+Function/ integration test
+manual/ automated
+regression test -> regression data
+stress test (large size data)
+
+
+TDD
+Unit test 
+integration test
+user interface test
+
+
+tdd 
+ red green refactor
+ ui test
+ cyrpess selinum
+
+unit test boundaries
+ worse case
+ average case
+ best case
+
+Example
+ number
+ negative
+zero
+positive
+smallest
+largest
+nan
+infinity
+division error
+
+
+string
+zero length
+single chracter
+non Ascii
+multibyte 
+
+Delivery Assurance Process
+SPECS
+UI
+DB
+Acceptance Critiria
+
+Tasklist
+user stories
+details task
+
+estimation
+peer/team
+pert estimation
+
+critical task identification
+critical path
+critical tasks
+
+resource assignment
+number of engineers
+project leaders
+software engineers
+
+risk identification
+description
+effect
+probability
+impact
+
+risk response
+resource assignment modification
+overtime
+buffer days
+
+
+
+

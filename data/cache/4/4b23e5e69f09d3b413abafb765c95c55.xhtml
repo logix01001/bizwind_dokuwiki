@@ -1,0 +1,76 @@
+<pre class="code">let jose = require(&#039;node-jose&#039;);
+
+let privateKey = `
+{
+    &quot;alg&quot;: &quot;RS256&quot;,
+    &quot;d&quot;: &quot;Ib9bFG_JrC-wRo3_0h-MHeA6lS7YQJMi1ionpPE0CRXW2gvU2muJBwg56APjcQi-2Y_qwYxWgGFeWcupLEvRxVz88yFG_4jereTLSkpGt7T3BqBqDOpobuxrPUWAHZYA3OVyj6NolnsJ5Q-ksGyIrNnPSUWiVTb1EeY1OZVFx5HyEL3TI6Nq2V6gQP36Cg-fsmsExW0y_dQjSKYSdWaeBeDHQ82CUdTnfyv0Wy__krQWuz7aAFn_EQg9DbWv8_RG1W5WqvoaeapLXI6-MDLtSis7dWCgtNnWMl73P5GJKPgqgK2vSW3MioKK2zbjZ3cgfikdZaUits5CipComL6u9Q&quot;,
+    &quot;dp&quot;: &quot;SLDuZ0NmHCtdyvNRhHiiRV5T3kI-swsaKAgU6L2w6e9mgHUKJO4ID5dPT2b7dbCJSFaEo1zIv7hHO_JgAgKjg0Gp5mIthTvHV9TwBFhmj0nftMkHza9_Ze5jxa0dosi9PzZBYxb-dJglpwSZxZmjWmIuCQ9bDovAVT1_XwXmpO0&quot;,
+    &quot;dq&quot;: &quot;BWvosRyRrfkiX9fYzAsSp92u7BfebNkp30iyxhRze9fdWmemvCj_FkX8A1GgS1j-iRkw9t4eOzpSXkU_BS8YEz-3Vr_6ujndzFabN2iaWMHN4Nvt6bOVCNc51J2RiKEjJY9kVu2GqJwiEPp4GIPvSDWPq26SbaqJkWxFCodfVmU&quot;,
+    &quot;e&quot;: &quot;AQAB&quot;,
+    &quot;ext&quot;: true,
+    &quot;key_ops&quot;: [
+      &quot;sign&quot;
+    ],
+    &quot;kty&quot;: &quot;RSA&quot;,
+    &quot;n&quot;: &quot;jLWpACxE8QzvZ1T-pWgWuhtUHaYg3Y5AZQ84kdiHUMCCSuPC2N-LKvCxh7G3f4AMi7yoxXqevBYD75lxBo8z6b-Q_bgveRP3j0ESpUu6zA9vfzHiodMxSxeKiNh5Yw3fF0RE_gZUw0n38qMmIe_rHDyrqgl23u4oiyzcJTDcu4LhKQ4WQIy_97VeITVD5MLsFQTEXv60jCt1t8BfBkNutQTqsyumabmts1qvOyDl3Wk-3gJ1FsNfeVDYK6CowSiEyl7SZDqADik4xVo_p80vJh3y0ATnN9tPtli7iVnCQvIxhMAzg8LtGjE1n1KGGWXJENb2dmUFAQqB6G0-92AyaQ&quot;,
+    &quot;p&quot;: &quot;vkq9kNMIAJZ12BHhGIhwTGmVJcj5pH-g-V2v5oDXEBFY4_I-DJRSzcE5OFDaYvbRKkK-J9VW7waQfcBgFZ-rT0_s8Jc3aC6tCPiGAq7zRA5tqr7rZw650LbaRzNGV2m5QhqdBNc0gTKMTuymno2tJte0ceMval2YLbUC1nyLoUU&quot;,
+    &quot;q&quot;: &quot;vUv7xlfxEkAmUmiPdwyBsk4fEOIzpwTfMQqCfjB-m6qC-BcRkX083aPXQurOn7_hvAqllTg0jnbgB5XLI-K2Qs01HlJOlmFiXRJaBJzQCmLU2wM-AZFae5pYoWa4bGIrMZUO6O6fUc3myJAsDRjubPPYT2kiz7bKqrxHTak9NNU&quot;,
+    &quot;qi&quot;: &quot;sI57t6GHzncU4FaA73fu8k9P9DXd2l74yKyMvuifNPgvTuwUPbCi0emwNkEUjJG1XLvhUL83xHIDTy6fi79AXbF-tdgyDOFPlJThJ27UJLbqIGSESQ9RzJq2aoyYOg4qZ6swAo8oeSqSm2GKUugveTjYF74-MSS77MeomrIHI7g&quot;
+  }
+`;
+
+let header = {
+    alg: &quot;RS256&quot;,
+    typ: &quot;JWT&quot;,
+    kid: &quot;90293f32-7c3c-46ed-84cf-cdaf81f36e01&quot;
+};
+
+let payload = {
+    iss: &quot;1656632062&quot;,
+    sub: &quot;1656632062&quot;,
+    aud: &quot;https://api.line.me/&quot;,
+    exp: Math.floor(new Date().getTime() / 1000) + 60 * 30,
+    token_exp: 60 * 60 * 24 * 1
+};
+
+jose.JWS.createSign({format: &#039;compact&#039;, fields: header}, JSON.parse(privateKey))
+    .update(JSON.stringify(payload))
+    .final()
+    .then(result =&gt; {
+        console.log(result);
+    });
+</pre>
+<pre class="code">public static function getToken() {
+        $time = time(); // The current time
+        $jwk = new JWK([
+                &quot;alg&quot;=&gt; &quot;RS256&quot;,
+                &quot;d&quot;=&gt; &quot;Ib9bFG_JrC-wRo3_0h-MHeA6lS7YQJMi1ionpPE0CRXW2gvU2muJBwg56APjcQi-2Y_qwYxWgGFeWcupLEvRxVz88yFG_4jereTLSkpGt7T3BqBqDOpobuxrPUWAHZYA3OVyj6NolnsJ5Q-ksGyIrNnPSUWiVTb1EeY1OZVFx5HyEL3TI6Nq2V6gQP36Cg-fsmsExW0y_dQjSKYSdWaeBeDHQ82CUdTnfyv0Wy__krQWuz7aAFn_EQg9DbWv8_RG1W5WqvoaeapLXI6-MDLtSis7dWCgtNnWMl73P5GJKPgqgK2vSW3MioKK2zbjZ3cgfikdZaUits5CipComL6u9Q&quot;,
+                &quot;dp&quot;=&gt; &quot;SLDuZ0NmHCtdyvNRhHiiRV5T3kI-swsaKAgU6L2w6e9mgHUKJO4ID5dPT2b7dbCJSFaEo1zIv7hHO_JgAgKjg0Gp5mIthTvHV9TwBFhmj0nftMkHza9_Ze5jxa0dosi9PzZBYxb-dJglpwSZxZmjWmIuCQ9bDovAVT1_XwXmpO0&quot;,
+                &quot;dq&quot;=&gt; &quot;BWvosRyRrfkiX9fYzAsSp92u7BfebNkp30iyxhRze9fdWmemvCj_FkX8A1GgS1j-iRkw9t4eOzpSXkU_BS8YEz-3Vr_6ujndzFabN2iaWMHN4Nvt6bOVCNc51J2RiKEjJY9kVu2GqJwiEPp4GIPvSDWPq26SbaqJkWxFCodfVmU&quot;,
+                &quot;e&quot;=&gt; &quot;AQAB&quot;,
+                &quot;ext&quot;=&gt; true,
+                &quot;key_ops&quot;=&gt; [
+                  &quot;sign&quot;
+                ],
+                &quot;kty&quot;=&gt; &quot;RSA&quot;,
+                &quot;n&quot;=&gt; &quot;jLWpACxE8QzvZ1T-pWgWuhtUHaYg3Y5AZQ84kdiHUMCCSuPC2N-LKvCxh7G3f4AMi7yoxXqevBYD75lxBo8z6b-Q_bgveRP3j0ESpUu6zA9vfzHiodMxSxeKiNh5Yw3fF0RE_gZUw0n38qMmIe_rHDyrqgl23u4oiyzcJTDcu4LhKQ4WQIy_97VeITVD5MLsFQTEXv60jCt1t8BfBkNutQTqsyumabmts1qvOyDl3Wk-3gJ1FsNfeVDYK6CowSiEyl7SZDqADik4xVo_p80vJh3y0ATnN9tPtli7iVnCQvIxhMAzg8LtGjE1n1KGGWXJENb2dmUFAQqB6G0-92AyaQ&quot;,
+                &quot;p&quot;=&gt; &quot;vkq9kNMIAJZ12BHhGIhwTGmVJcj5pH-g-V2v5oDXEBFY4_I-DJRSzcE5OFDaYvbRKkK-J9VW7waQfcBgFZ-rT0_s8Jc3aC6tCPiGAq7zRA5tqr7rZw650LbaRzNGV2m5QhqdBNc0gTKMTuymno2tJte0ceMval2YLbUC1nyLoUU&quot;,
+                &quot;q&quot;=&gt; &quot;vUv7xlfxEkAmUmiPdwyBsk4fEOIzpwTfMQqCfjB-m6qC-BcRkX083aPXQurOn7_hvAqllTg0jnbgB5XLI-K2Qs01HlJOlmFiXRJaBJzQCmLU2wM-AZFae5pYoWa4bGIrMZUO6O6fUc3myJAsDRjubPPYT2kiz7bKqrxHTak9NNU&quot;,
+                &quot;qi&quot;=&gt; &quot;sI57t6GHzncU4FaA73fu8k9P9DXd2l74yKyMvuifNPgvTuwUPbCi0emwNkEUjJG1XLvhUL83xHIDTy6fi79AXbF-tdgyDOFPlJThJ27UJLbqIGSESQ9RzJq2aoyYOg4qZ6swAo8oeSqSm2GKUugveTjYF74-MSS77MeomrIHI7g&quot;
+        ]);
+        $jws = Build::jws() // We build a JWS
+            -&gt;payload([
+                &#039;exp&#039; =&gt; ($time) + 1800, // The &quot;exp&quot; claim
+                &#039;iss&#039; =&gt; &#039;1656632062&#039;, // The &quot;iss&quot; claim
+                &#039;sub&#039; =&gt; &#039;1656632062&#039;,
+                &quot;token_exp&quot;=&gt; 60 * 60 * 24 * 1,
+                &#039;aud&#039; =&gt; &quot;https://api.line.me/&quot;, // Add an audience (&quot;aud&quot; claim)
+            ])
+            -&gt;header(&#039;format&#039;, &#039;compact&#039;)
+            -&gt;header(&#039;alg&#039;, &#039;RS256&#039;)
+            -&gt;header(&#039;typ&#039;, &#039;JWT&#039;)
+            -&gt;header(&#039;kid&#039;, &#039;90293f32-7c3c-46ed-84cf-cdaf81f36e01&#039;)
+            -&gt;sign($jwk);
+
+            return $jws; // The variable $jws now contains your token
+    }</pre>

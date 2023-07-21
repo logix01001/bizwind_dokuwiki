@@ -1,0 +1,109 @@
+====== Headline ======
+
+===== Error Response Guide =====
+
+https://developers.line.biz/en/reference/messaging-api/#error-responses
+
+===== Issuance Token (30 Max, 30 mins validity) =====
+
+https://api.line.me/oauth2/v2.1/token
+
+  * **Content-Type** application/x-www-form-urlencoded
+
+** BODY form urlencoded **
+
+  * **grant_type** client_credentials
+  * **client_assertion_type** urn:ietf:params:oauth:client-assertion-type:jwt-bearer
+  * **client_assertion** {GENERATED JWT}
+
+https://developers.line.biz/en/docs/messaging-api/generate-json-web-token/#generate-jwt
+===== Message Push =====
+ 
+
+https://api.line.me/v2/bot/message/push
+
+  * **Content-Type** application/json
+  * **Authorization** Bearer {Channel Access Token (generated JWT or short lived)}
+
+**Body Message Raw**
+<code>
+{
+    "to": lineid,
+    "messages":[
+        {
+            "type":"text",
+            "text":"Hello, world1"
+        }
+    ]
+}
+</code>
+
+===== Issuance Short lived Token =====
+
+
+https://api.line.me/v2/oauth/accessToken
+
+  * **Content-Type** application/x-www-form-urlencoded
+
+
+** BODY form urlencoded **
+
+  * **grant_type** client_credentials
+  * ** client_id** client_id
+  * ** client_secret ** client_secret
+
+==== response ====
+
+<code>
+{
+"access_token":"W1TeHCgfH2Liwa.....",
+"expires_in":2592000,
+"token_type":"Bearer"
+}
+</code>
+
+===== Verify Short lived =====
+
+https://api.line.me/v2/oauth/verify
+
+  * **Content-Type** application/x-www-form-urlencoded
+
+** BODY form urlencoded **
+
+  * **access_token** access_token
+
+==== Response ====
+
+<code>
+{
+"access_token":"W1TeHCgfH2Liwa.....",
+"expires_in":2592000, //SECONDS LEFT
+"token_type":"Bearer"
+}
+</code>
+
+==== Error Response ====
+
+<code>
+// If the channel access token has expired
+{
+    "error": "invalid_request",
+    "error_description": "access_token invalid"
+}
+
+// If an invalid value is specified for the access_token property
+{
+    "error": "invalid_request",
+    "error_description": "access_token in invalid format"
+}
+</code>
+
+===== Revoke Short lived =====
+
+https://api.line.me/v2/oauth/revoke
+
+  * **Content-Type** application/x-www-form-urlencoded
+
+** BODY form urlencoded **
+
+  * **access_token** access_token

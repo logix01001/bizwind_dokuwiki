@@ -1,0 +1,75 @@
+<dl class="file">
+<dt><a href="/dokuwiki/doku.php?do=export_code&amp;id=laravel:last_login&amp;codeblock=0" title="Download Snippet" class="mediafile mf_php">UpdateUserLastLoginDate.php</a></dt>
+<dd><pre class="code file php"><span class="kw2">&lt;?php</span>
+&nbsp;
+<span class="kw2">namespace</span> App\Events<span class="sy0">;</span>
+&nbsp;
+<span class="kw2">use</span> Illuminate\Auth\Events\Login<span class="sy0">;</span>
+<span class="kw2">use</span> Illuminate\Contracts\Queue\ShouldQueue<span class="sy0">;</span>
+<span class="kw2">use</span> Illuminate\Queue\InteractsWithQueue<span class="sy0">;</span>
+<span class="kw2">use</span> Carbon\Carbon<span class="sy0">;</span>
+<span class="kw2">class</span> UpdateUserLastLoginDate
+<span class="br0">&#123;</span>
+    <span class="co4">/**
+     * Create the event listener.
+     *
+     * @return void
+     */</span>
+    <span class="kw2">public</span> <span class="kw2">function</span> __construct<span class="br0">&#40;</span><span class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        <span class="co1">//</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    <span class="co4">/**
+     * Handle the event.
+     *
+     * @param  Login  $event
+     * @return void
+     */</span>
+    <span class="kw2">public</span> <span class="kw2">function</span> handle<span class="br0">&#40;</span>Login <span class="re0">$event</span><span class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        try <span class="br0">&#123;</span>
+            <span class="re0">$user</span> <span class="sy0">=</span> <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">user</span><span class="sy0">;</span>
+            <span class="re0">$user</span><span class="sy0">-&gt;</span><span class="me1">last_login</span> <span class="sy0">=</span> Carbon<span class="sy0">::</span><span class="me2">now</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">toDateTimeString</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="re0">$user</span><span class="sy0">-&gt;</span><span class="me1">last_login_ip</span> <span class="sy0">=</span> request<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">getClientIp</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="re0">$user</span><span class="sy0">-&gt;</span><span class="me1">save</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span> catch <span class="br0">&#40;</span>\Throwable <span class="re0">$th</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            report<span class="br0">&#40;</span><span class="re0">$th</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre>
+</dd></dl>
+
+<h1 class="sectionedit1" id="add_this_to_eventserviceprovider">Add this to eventServiceprovider</h1>
+<div class="level1">
+<pre class="code">&lt;?php
+
+namespace App\Providers;
+
+
+/** ***/
+use Illuminate\Auth\Events\Login;
+use App\Events\UpdateUserLastLoginDate;
+/** ***/
+
+class EventServiceProvider extends ServiceProvider
+{
+    /**
+     * The event listener mappings for the application.
+     *
+     * @var array
+     */
+    protected $listen = [
+       /** ***/
+        Login::class =&gt; [
+            UpdateUserLastLoginDate::class
+        ],
+/** ***/
+
+    ];
+
+  
+}</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Add this to eventServiceprovider&quot;,&quot;hid&quot;:&quot;add_this_to_eventserviceprovider&quot;,&quot;codeblockOffset&quot;:1,&quot;secid&quot;:1,&quot;range&quot;:&quot;811-&quot;} -->

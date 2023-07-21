@@ -1,0 +1,4 @@
+====== Daily Report ======
+[BEMS]
+  * Testing on staging
+  * Create Document

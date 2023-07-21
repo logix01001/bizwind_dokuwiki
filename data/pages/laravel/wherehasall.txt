@@ -1,0 +1,20 @@
+
+Job -> hasMany Skills (Many to Many) (jobs job_skill skills)
+
+**Job Model**
+<code>
+ use \Staudenmeir\EloquentHasManyDeep\HasRelationships;
+
+  public function skills()
+    {
+        return $this->hasManyDeep(Skill::class, [JobSkill::class], ['job_id','id'], ['id','skill_id']);
+    }
+</code>
+
+**Query. all jobs with all skills base on filter**
+
+<code>
+Job::select('id')->whereHas('skills', function ($query) use ($filter) {
+                     $query->whereIn('skills.id', $filter['skills']);
+                }, '=', count($filter['skills'])
+</code>

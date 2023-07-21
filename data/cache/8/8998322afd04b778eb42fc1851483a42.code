@@ -1,0 +1,11 @@
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+&nbsp;
+    server_name  _ *.vm docker;
+&nbsp;
+    root &quot;/var/www/app/public&quot;;
+    index index.php;
+&nbsp;
+    include /opt/docker/etc/nginx/vhost.common.d/*.conf;
+}

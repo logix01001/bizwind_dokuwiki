@@ -1,0 +1,289 @@
+
+<h1 class="sectionedit1" id="test-driven_java_development">TEST-DRIVEN JAVA DEVELOPMENT</h1>
+<div class="level1">
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;TEST-DRIVEN JAVA DEVELOPMENT&quot;,&quot;hid&quot;:&quot;test-driven_java_development&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:1,&quot;range&quot;:&quot;1-44&quot;} -->
+<h2 class="sectionedit2" id="chapter_1_why_should_i_care_for_test-driven_development">Chapter 1. Why Should I Care for Test-driven Development?</h2>
+<div class="level2">
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Chapter\u00a01.\u00a0Why Should I Care for Test-driven Development?&quot;,&quot;hid&quot;:&quot;chapter_1_why_should_i_care_for_test-driven_development&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:2,&quot;range&quot;:&quot;45-117&quot;} -->
+<h2 class="sectionedit3" id="red-green-refactorred-green-refactor">Red-green-refactorRed-green-refactor</h2>
+<div class="level2">
+<ol>
+<li class="level1"><div class="li"> Write a test.</div>
+</li>
+<li class="level1"><div class="li"> Run all tests.</div>
+</li>
+<li class="level1"><div class="li"> Write the implementation code.</div>
+</li>
+<li class="level1"><div class="li"> Run all tests.</div>
+</li>
+<li class="level1"><div class="li"> Refactor.</div>
+</li>
+<li class="level1"><div class="li"> Run all tests.</div>
+</li>
+</ol>
+
+<p>
+<code>While writing tests, we are in the red state. When the implementation of a test is finished, all tests should pass and then we will be in the green state.</code>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Red-green-refactorRed-green-refactor&quot;,&quot;hid&quot;:&quot;red-green-refactorred-green-refactor&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:3,&quot;range&quot;:&quot;118-451&quot;} -->
+<h2 class="sectionedit4" id="speed_is_the_key">Speed is the key</h2>
+<div class="level2">
+
+<p>
+<em>Write a short test and run all <strong>tests (ping)</strong>, write the implementation and run all <strong>tests (pong)</strong>, write another <strong>test (ping)</strong>, write implementation of that <strong>test (pong)</strong>, refactor and confirm that all tests are passing (score), and then repeat—ping, pong, ping, pong, ping, pong, score, serve again. Do not try to make the perfect code.</em>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Speed is the key&quot;,&quot;hid&quot;:&quot;speed_is_the_key&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:4,&quot;range&quot;:&quot;452-835&quot;} -->
+<h2 class="sectionedit5" id="it_s_not_about_testing">It&#039;s not about testing</h2>
+<div class="level2">
+
+<p>
+<strong>T in TDD is often misunderstood. Test-driven development is the way we approach the design</strong>
+</p>
+
+<p>
+It is the way to focus on requirements and implementation of just one thing at a time—organize your thoughts and better structure the code
+</p>
+
+<p>
+<code>The main objective of test-driven development is testable code design with tests as a very useful side product.</code>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;It&#039;s not about testing&quot;,&quot;hid&quot;:&quot;it_s_not_about_testing&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:5,&quot;range&quot;:&quot;836-1228&quot;} -->
+<h2 class="sectionedit6" id="testing">Testing</h2>
+<div class="level2">
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Testing&quot;,&quot;hid&quot;:&quot;testing&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:6,&quot;range&quot;:&quot;1229-1249&quot;} -->
+<h3 class="sectionedit7" id="the_black-box_testing">The black-box testing</h3>
+<div class="level3">
+
+<p>
+Black-box testing (also known as functional testing) treats software under test as a black-box without knowing its internals. Tests use software interfaces and try to ensure that they work as expected
+</p>
+
+<p>
+Advantage
+</p>
+<ul>
+<li class="level1"><div class="li"> Efficient for large segments of code</div>
+</li>
+<li class="level1"><div class="li"> Code access, understanding the code, and ability to code are not required</div>
+</li>
+<li class="level1"><div class="li"> Separation between user&#039;s and developer&#039;s perspectives</div>
+</li>
+</ul>
+
+<p>
+Disadvantage
+</p>
+<ul>
+<li class="level1"><div class="li"> Limited coverage, since only a fraction of test scenarios is performed</div>
+</li>
+<li class="level1"><div class="li"> Inefficient testing due to tester&#039;s lack of knowledge about software internals</div>
+</li>
+<li class="level1"><div class="li"> Blind coverage, since tester has limited knowledge about the application </div>
+</li>
+</ul>
+
+<p>
+<strong><em>“Automated black-box testing relies on some form of automation such as behavior-driven development (BDD).”</em></strong>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;The black-box testing&quot;,&quot;hid&quot;:&quot;the_black-box_testing&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:7,&quot;range&quot;:&quot;1250-2045&quot;} -->
+<h3 class="sectionedit8" id="mocking">Mocking</h3>
+<div class="level3">
+
+<p>
+What is the common way to test code that uses external resources or third-party libraries? Mocks are the answer. A mock object, or simply a mock, is a simulated object that can be used to replace real ones. They are very useful when objects that depend on external resources are deprived of them.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Mocking&quot;,&quot;hid&quot;:&quot;mocking&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:8,&quot;range&quot;:&quot;2046-2361&quot;} -->
+<h2 class="sectionedit9" id="chapter_2">Chapter 2</h2>
+<div class="level2">
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Chapter\u00a02&quot;,&quot;hid&quot;:&quot;chapter_2&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:9,&quot;range&quot;:&quot;2362-2385&quot;} -->
+<h3 class="sectionedit10" id="maven_gradle">Maven &amp; Gradle</h3>
+<div class="level3">
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Maven &amp; Gradle&quot;,&quot;hid&quot;:&quot;maven_gradle&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:10,&quot;range&quot;:&quot;2386-2411&quot;} -->
+<h3 class="sectionedit11" id="hamcrest_assertj_junit_unit_testing_frameworks">Hamcrest, Assertj, Junit (Unit Testing Frameworks)</h3>
+<div class="level3">
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Hamcrest, Assertj, Junit (Unit Testing Frameworks)&quot;,&quot;hid&quot;:&quot;hamcrest_assertj_junit_unit_testing_frameworks&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:11,&quot;range&quot;:&quot;2412-2473&quot;} -->
+<h3 class="sectionedit12" id="code_coverage">Code Coverage</h3>
+<div class="level3">
+
+<p>
+Percentage of code covered in test
+</p>
+
+<p>
+the higher coverage percent the more code automated test
+</p>
+<ul>
+<li class="level1"><div class="li"> JaCoCo (Java Code Coverage)</div>
+</li>
+</ul>
+
+<p>
+client coordination if not meet the percentage
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Code Coverage&quot;,&quot;hid&quot;:&quot;code_coverage&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:12,&quot;range&quot;:&quot;2474-2672&quot;} -->
+<h3 class="sectionedit13" id="mocking_framework">MOCKING FRAMEWORK</h3>
+<div class="level3">
+
+<p>
+Help to create database record as MOCK or fake
+</p>
+<ul>
+<li class="level1"><div class="li"> Mockito</div>
+</li>
+<li class="level1"><div class="li"> EasyMock</div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;MOCKING FRAMEWORK&quot;,&quot;hid&quot;:&quot;mocking_framework&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:13,&quot;range&quot;:&quot;2673-2774&quot;} -->
+<h3 class="sectionedit14" id="user_interface_testing">User interface testing</h3>
+<div class="level3">
+<ul>
+<li class="level1"><div class="li"> Selenium</div>
+</li>
+<li class="level1"><div class="li"> Selenide</div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;User interface testing&quot;,&quot;hid&quot;:&quot;user_interface_testing&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:14,&quot;range&quot;:&quot;2775-2835&quot;} -->
+<h3 class="sectionedit15" id="bdd_framework">BDD Framework</h3>
+<div class="level3">
+<ul>
+<li class="level1"><div class="li"> JBehave</div>
+</li>
+<li class="level1"><div class="li"> cucumber</div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;BDD Framework&quot;,&quot;hid&quot;:&quot;bdd_framework&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:15,&quot;range&quot;:&quot;2836-2886&quot;} -->
+<h2 class="sectionedit16" id="chapter_5_design_if_it_s_not_testable_it_s_not_designed_well">“Chapter 5. Design – If It&#039;s Not Testable, It&#039;s Not Designed Well”</h2>
+<div class="level2">
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;\u201cChapter\u00a05.\u00a0Design \u2013 If It&#039;s Not Testable, It&#039;s Not Designed Well\u201d&quot;,&quot;hid&quot;:&quot;chapter_5_design_if_it_s_not_testable_it_s_not_designed_well&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:16,&quot;range&quot;:&quot;2887-2974&quot;} -->
+<h3 class="sectionedit17" id="why_should_we_care_about_design">“Why should we care about design?”</h3>
+<div class="level3">
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;\u201cWhy should we care about design?\u201d&quot;,&quot;hid&quot;:&quot;why_should_we_care_about_design&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:17,&quot;range&quot;:&quot;2975-3025&quot;} -->
+<h2 class="sectionedit18" id="design_principles">Design principles</h2>
+<div class="level2">
+
+<p>
+<strong>The TDD philosophy encourages programmers to follow some principles and good practices that make code cleaner and more readable As a result, our code becomes easy to understand and safe to modify in the future. Let&#039;s take a look at some of the basic software design principles. </strong>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Design principles&quot;,&quot;hid&quot;:&quot;design_principles&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:18,&quot;range&quot;:&quot;3026-3341&quot;} -->
+<h3 class="sectionedit19" id="you_ain_t_gonna_need_it">You Ain&#039;t Gonna Need It</h3>
+<div class="level3">
+
+<p>
+YAGNI is the acronym for the You Ain&#039;t Gonna Need It principle. It aims to erase all unnecessary code and focuses on the current functionalities, not the future ones.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;You Ain&#039;t Gonna Need It&quot;,&quot;hid&quot;:&quot;you_ain_t_gonna_need_it&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:19,&quot;range&quot;:&quot;3342-3544&quot;} -->
+<h3 class="sectionedit20" id="don_t_repeat_yourself">Don&#039;t Repeat Yourself</h3>
+<div class="level3">
+
+<p>
+The idea behind the Don&#039;t Repeat Yourself (DRY) principle is to reuse the code you previously wrote instead of repeating it.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Don&#039;t Repeat Yourself&quot;,&quot;hid&quot;:&quot;don_t_repeat_yourself&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:20,&quot;range&quot;:&quot;3545-3703&quot;} -->
+<h3 class="sectionedit21" id="keep_it_simple_stupid">Keep It Simple, Stupid</h3>
+<div class="level3">
+
+<p>
+This principle has the confusing acronym of <abbr title="Keep it simple stupid">KISS</abbr> and states that things perform their function better if they are kept simple rather than complicated.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Keep It Simple, Stupid&quot;,&quot;hid&quot;:&quot;keep_it_simple_stupid&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:21,&quot;range&quot;:&quot;3704-3889&quot;} -->
+<h3 class="sectionedit22" id="occam_s_razor">Occam&#039;s Razor</h3>
+<div class="level3">
+
+<p>
+<em>When you have two competing solutions to the same problem, the simpler one is the better.</em>
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Occam&#039;s Razor&quot;,&quot;hid&quot;:&quot;occam_s_razor&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:22,&quot;range&quot;:&quot;3890-4010&quot;} -->
+<h3 class="sectionedit23" id="solid">SOLID</h3>
+<div class="level3">
+
+<p>
+The word SOLID is an acronym invented by Robert C. Martin for the five basic principles of object-oriented programming. By following these five principles, a developer is more likely to create a great, durable, and maintainable application:
+</p>
+<ol>
+<li class="level1"><div class="li"> <strong>Single Responsibility Principle</strong>: A class should have only a single reason to change.</div>
+</li>
+<li class="level1"><div class="li"> <strong>Open-Closed Principle</strong>: A class should be open for extension and closed for modification. This is attributed to Bertrand Meyer.</div>
+</li>
+<li class="level1"><div class="li"> <strong>Liskov Substitution Principle</strong>: This was created by Barbara Liskov, and she says a class should be replaceable by others that extend that class.</div>
+</li>
+<li class="level1"><div class="li"> <strong>Interface Segregation Principle</strong>: A few specific interfaces are preferable than one general-purpose interface.</div>
+</li>
+<li class="level1"><div class="li"> <strong>Dependency Inversion Principle</strong>: A class should depend on abstraction instead of implementation. This means that </div>
+</li>
+</ol>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;SOLID&quot;,&quot;hid&quot;:&quot;solid&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:23,&quot;range&quot;:&quot;4011-4890&quot;} -->
+<h3 class="sectionedit24" id="chapter_6_mocking_removing_external_dependencies">Chapter 6. Mocking – Removing External Dependencies</h3>
+<div class="level3">
+
+<p>
+TDD is about speed. We want to quickly demonstrate whether some idea, concept, or implementation, is valid or not. Further on, we want to run all tests fast.
+</p>
+
+<p>
+Regression bug
+</p>
+
+<p>
+Challenge before
+kapag natapos ang project at may additional d namin sire kung may maapektuhan at yun yung regression bug
+</p>
+
+<p>
+na practice TDD 
+assurance may functionality
+tama kaya wala maapektuhan
+run a test unit test integration test
+</p>
+
+<p>
+Functional and end to end;
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Chapter\u00a06.\u00a0Mocking \u2013 Removing External Dependencies&quot;,&quot;hid&quot;:&quot;chapter_6_mocking_removing_external_dependencies&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:24,&quot;range&quot;:&quot;4891-&quot;} -->

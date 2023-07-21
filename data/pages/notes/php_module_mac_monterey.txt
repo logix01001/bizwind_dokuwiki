@@ -1,0 +1,4 @@
+====== How to sign homebrew PHP module in macOS ======
+
+
+https://www.simplified.guide/macos/apache-php-homebrew-codesign

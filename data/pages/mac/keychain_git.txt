@@ -1,0 +1,17 @@
+https://github.com/settings/tokens
+
+personal token  create
+
+
+go to keychain access
+
+create login key
+
+name: github.com
+
+username email git
+
+password (generated password)
+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
+
+kind: internet password

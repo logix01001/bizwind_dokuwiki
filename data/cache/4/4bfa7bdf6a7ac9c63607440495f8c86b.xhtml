@@ -1,0 +1,54 @@
+
+<p>
+cypress.json
+</p>
+<pre class="code">npm install cypress
+npx cypress -v
+npx cypress open
+
+</pre>
+<pre class="code">{
+ &quot;baseUrl&quot;: &quot;http://localhost:3000&quot;,
+ &quot;watchForFileChanges&quot;: true,
+ &quot;defaultCommandTimeout&quot;: 5000
+}</pre>
+<pre class="code">cy.visit()               //visit URL
+cy.get(&#039;.class&#039;)         //get Object
+cy.contains(&#039;&#039;)          //get object by text
+cy.type(&#039;&#039;)              // use after locating element object and type
+cy.get(&#039;.class&#039;).click() //Trigger click event
+
+cy.focused().type(&#039;&#039;).   //type in focused field</pre>
+
+<p>
+SERVER WAIT RESPONSE
+</p>
+<pre class="code">
+cy.server()
+cy.route(&#039;POST&#039;,&#039;api&#039;).as(&#039;create&#039;)
+
+
+cy.wait(&#039;@create&#039;);</pre>
+<pre class="code">
+/// &lt;reference types=&quot;cypress&quot; /&gt;
+
+describe(&#039;Log in&#039;, ()=&gt;
+{
+
+
+    it(&#039;login&#039;, ()=&gt;
+    {
+        cy.visit(&#039;http://localhost/dokuwiki/doku.php&#039;);
+
+        cy.get(&#039;.action &gt; a &gt; span&#039;).click()
+
+       // cy.get(&#039;#focus__this&#039;).type(&#039;logix01001&#039;).should(&#039;have.value&#039;,&#039;logix01001&#039;);
+        cy.focused().type(&#039;logix01001&#039;).should(&#039;have.value&#039;,&#039;logix01001&#039;);
+        cy.get(&#039;:nth-child(4) &gt; .edit&#039;).type(&#039;lynadmin{enter}&#039;).should(&#039;have.value&#039;,&#039;lynadmin&#039;);
+    })
+
+    
+
+
+
+})</pre>

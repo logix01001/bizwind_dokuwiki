@@ -1,0 +1,22 @@
+====== Keyee  ======
+
+====== Privacy Policy  ======
+
+====== Jfoodo  ======
+
+====== lineminiapp  ======
+
+====== Doushinkai ======
+
+===== Staging =====
+
+<code>
+ssh -i "aws_shift-mren-staging_key.pem" ubuntu@ec2-52-68-139-119.ap-northeast-1.compute.amazonaws.com 
+</code>
+
+
+===== Production =====
+
+<code>
+ssh -i "aws_shift-mren-production_key.pem" ubuntu@ec2-52-197-235-210.ap-northeast-1.compute.amazonaws.com 
+</code>

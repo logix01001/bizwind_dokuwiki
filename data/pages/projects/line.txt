@@ -1,0 +1,149 @@
+====== API USE CASE ======
+{{:projects:reserve_sequence_diagram_en.png?400|}}
+
+{{:projects:reserve_system_diagram_en.png?400|}}
+
+====== Sprint Meeting ======
+
+  * 12-7~28
+  * https://teams.microsoft.com/l/meetup-join/19%3ameeting_MTM5MWZjZWMtYzYzZC00NDlmLTgyMjAtMmQwNjYzNjA0NzU5%40thread.v2/0?context=%7b%22Tid%22%3a%2242f47f52-7d4c-45f7-963d-906a479625d2%22%2c%22Oid%22%3a%2252b9e480-c3e3-4b04-8e3b-2bf850164fbf%22%7d
+====== Documents Link ======
+  * **Screen Transition**
+  * [[https://athlee-my.sharepoint.com/:p:/g/personal/wg_athlee_sg/Edy_zD4KzylIkPfr6KmrzTMB2BwMIddZEAnenLnS9aG2ZA?e=Oq764H]]
+  * **Feedback link 2021-12-14**
+  * [[https://aun-mypage.tools/web/visual/show/8a6ea80f9ce5762aced82908ac815828042367fe]]
+  * BULLBASE BUSINESS ACCOUNT
+  * https://aun-mypage.tools/web/visual/show/beab3a2a87aeba654a88ae55e881b8dc5e68c19f
+
+**Backup PDF BULLBASE BUSINESS ACCOUNT**
+{{ :projects:buckup.pdf |}}
+
+====== Messaging API pricing ======
+
+You can get started with the Messaging API for free.
+
+Anyone can use the Messaging API to send a message from a LINE Official Account. You can send a certain number of messages each month for free.
+
+The number of messages that can be sent for free depends on the Subscription plan (opens new window)of your LINE Official Account. The subscription plan may vary by country. See your country’s subscription plan for more information.
+
+{{:projects:subscriptionplans_line_ultimateguide_589d06a760ebf18e1045034e28865557_800.png?600|}}
+
+
+
+
+===== Line private key and public key =====
+==== Via Browser developer tools ====
+
+<code>
+(async () => {
+  const pair = await crypto.subtle.generateKey(
+    {
+      name: 'RSASSA-PKCS1-v1_5',
+      modulusLength: 2048,
+      publicExponent: new Uint8Array([1, 0, 1]),
+      hash: 'SHA-256'
+    },
+    true,
+    ['sign', 'verify']
+  );
+   
+  console.log('=== private key ===');
+  console.log(JSON.stringify(await crypto.subtle.exportKey('jwk', pair.privateKey), null, '  '));
+   
+  console.log('=== public key ===');
+  console.log(JSON.stringify(await crypto.subtle.exportKey('jwk', pair.publicKey), null, '  ')); 
+})();
+</code>
+
+==== Insert public key ====
+
+{{:projects:screen_shot_2021-12-16_at_10.35.02_am.png?600|}}
+
+Generated KID key
+
+
+==== Reply Token ====
+
+"Because the reply token becomes invalid after a **certain period of time**, responses should be sent as soon as a message is received. Reply tokens can only be used once."
+
+https://developers.line.biz/en/reference/messaging-api/#messages
+
+
+
+==== Event Hook POST ====
+
+<code>
+{
+	"destination": "U2a3c1245a64061c50972ca500223596c",
+	"events": [{
+		"type": "message",
+		"message": {
+			"type": "text",
+			"id": "15256060803170",
+			"text": "Reply hook event test message"
+		},
+		"timestamp": 1639636473833,
+		"source": {
+			"type": "user",
+			"userId": "U29d36eac75189b428747c7573ccb5e38"
+		},
+		"replyToken": "8c69d3d2e1944a1c8b1cdf820af9f5b2",
+		"mode": "active"
+	}]
+}
+</code>
+
+
+{{:projects:screen_shot_2021-12-17_at_7.40.47_am.png?800|}}
+
+===== Narrowcast =====
+==== JP region List ====
+  * jp_01: 北海道 // Hokkaido
+  * jp_02: 青森県 // Aomori
+  * jp_03: 岩手県 // Iwate
+  * jp_04: 宮城県 // Miyagi
+  * jp_05: 秋田県 // Akita
+  * jp_06: 山形県 // Yamagata
+  * jp_07: 福島県 // Fukushima
+  * jp_08: 茨城県 // Ibaraki
+  * jp_09: 栃木県 // Tochigi
+  * jp_10: 群馬県 // Gunma
+  * jp_11: 埼玉県 // Saitama
+  * jp_12: 千葉県 // Chiba
+  * jp_13: 東京都 // Tokyo
+  * jp_14: 神奈川県 // Kanagawa
+  * jp_15: 新潟県 // Niigata
+  * jp_16: 富山県 // Toyama
+  * jp_17: 石川県 // Ishikawa
+  * jp_18: 福井県 // Fukui
+  * jp_19: 山梨県 // Yamanashi
+  * jp_20: 長野県 // Nagano
+  * jp_21: 岐阜県 // Gifu
+  * jp_22: 静岡県 // Shizuoka
+  * jp_23: 愛知県 // Aichi
+  * jp_24: 三重県 // Mie
+  * jp_25: 滋賀県 // Shiga
+  * jp_26: 京都府 // Kyoto
+  * jp_27: 大阪府 // Osaka
+  * jp_28: 兵庫県 // Hyougo
+  * jp_29: 奈良県 // Nara
+  * jp_30: 和歌山県 // Wakayama
+  * jp_31: 鳥取県 // Tottori
+  * jp_32: 島根県 // Shimane
+  * jp_33: 岡山県 // Okayama
+  * jp_34: 広島県 // Hiroshima
+  * jp_35: 山口県 // Yamaguchi
+  * jp_36: 徳島県 // Tokushima
+  * jp_37: 香川県 // Kagawa
+  * jp_38: 愛媛県 // Ehime
+  * jp_39: 高知県 // Kouchi
+  * jp_40: 福岡県 // Fukuoka
+  * jp_41: 佐賀県 // Saga
+  * jp_42: 長崎県 // Nagasaki
+  * jp_43: 熊本県 // Kumamoto
+  * jp_44: 大分県 // Oita
+  * jp_45: 宮崎県 // Miyazaki
+  * jp_46: 鹿児島県 // Kagoshima
+  * jp_47: 沖縄県 // Okinawa
+
+

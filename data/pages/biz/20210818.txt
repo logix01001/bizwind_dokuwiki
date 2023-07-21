@@ -1,0 +1,138 @@
+====== TEST-DRIVEN JAVA DEVELOPMENT ======
+
+===== Chapter 1. Why Should I Care for Test-driven Development? =====
+
+===== Red-green-refactorRed-green-refactor =====
+  - Write a test.
+  - Run all tests.
+  - Write the implementation code.
+  - Run all tests.
+  - Refactor.
+  - Run all tests.
+
+''While writing tests, we are in the red state. When the implementation of a test is finished, all tests should pass and then we will be in the green state.''
+
+===== Speed is the key =====
+
+//Write a short test and run all **tests (ping)**, write the implementation and run all **tests (pong)**, write another **test (ping)**, write implementation of that **test (pong)**, refactor and confirm that all tests are passing (score), and then repeat—ping, pong, ping, pong, ping, pong, score, serve again. Do not try to make the perfect code.//
+
+===== It's not about testing =====
+ 
+**T in TDD is often misunderstood. Test-driven development is the way we approach the design**
+
+It is the way to focus on requirements and implementation of just one thing at a time—organize your thoughts and better structure the code
+
+''The main objective of test-driven development is testable code design with tests as a very useful side product.'' 
+
+===== Testing =====
+
+==== The black-box testing ====
+
+Black-box testing (also known as functional testing) treats software under test as a black-box without knowing its internals. Tests use software interfaces and try to ensure that they work as expected
+
+Advantage
+  * Efficient for large segments of code
+  * Code access, understanding the code, and ability to code are not required
+  * Separation between user's and developer's perspectives
+
+Disadvantage
+  * Limited coverage, since only a fraction of test scenarios is performed
+  * Inefficient testing due to tester's lack of knowledge about software internals
+  * Blind coverage, since tester has limited knowledge about the application 
+
+
+**//“Automated black-box testing relies on some form of automation such as behavior-driven development (BDD).”//**
+
+
+==== Mocking ====
+What is the common way to test code that uses external resources or third-party libraries? Mocks are the answer. A mock object, or simply a mock, is a simulated object that can be used to replace real ones. They are very useful when objects that depend on external resources are deprived of them.
+
+===== Chapter 2 =====
+
+==== Maven & Gradle ====
+
+==== Hamcrest, Assertj, Junit (Unit Testing Frameworks) ====
+
+==== Code Coverage ====
+Percentage of code covered in test
+
+the higher coverage percent the more code automated test
+
+  * JaCoCo (Java Code Coverage)
+
+client coordination if not meet the percentage
+
+==== MOCKING FRAMEWORK ====
+Help to create database record as MOCK or fake
+
+  * Mockito
+  * EasyMock
+
+==== User interface testing ====
+
+  * Selenium
+  * Selenide
+
+==== BDD Framework ====
+
+  * JBehave
+  * cucumber
+
+===== “Chapter 5. Design – If It's Not Testable, It's Not Designed Well” =====
+
+==== “Why should we care about design?”  ====
+
+===== Design principles =====
+
+
+**The TDD philosophy encourages programmers to follow some principles and good practices that make code cleaner and more readable As a result, our code becomes easy to understand and safe to modify in the future. Let's take a look at some of the basic software design principles. **
+
+==== You Ain't Gonna Need It ====
+
+YAGNI is the acronym for the You Ain't Gonna Need It principle. It aims to erase all unnecessary code and focuses on the current functionalities, not the future ones.
+
+==== Don't Repeat Yourself ====
+
+The idea behind the Don't Repeat Yourself (DRY) principle is to reuse the code you previously wrote instead of repeating it.
+
+==== Keep It Simple, Stupid ====
+
+This principle has the confusing acronym of KISS and states that things perform their function better if they are kept simple rather than complicated.
+
+==== Occam's Razor ====
+
+//When you have two competing solutions to the same problem, the simpler one is the better.//
+
+
+==== SOLID ====
+
+The word SOLID is an acronym invented by Robert C. Martin for the five basic principles of object-oriented programming. By following these five principles, a developer is more likely to create a great, durable, and maintainable application:
+
+  - **Single Responsibility Principle**: A class should have only a single reason to change.
+  - **Open-Closed Principle**: A class should be open for extension and closed for modification. This is attributed to Bertrand Meyer.
+  - **Liskov Substitution Principle**: This was created by Barbara Liskov, and she says a class should be replaceable by others that extend that class.
+  - **Interface Segregation Principle**: A few specific interfaces are preferable than one general-purpose interface.
+  - **Dependency Inversion Principle**: A class should depend on abstraction instead of implementation. This means that 
+
+
+==== Chapter 6. Mocking – Removing External Dependencies ====
+
+TDD is about speed. We want to quickly demonstrate whether some idea, concept, or implementation, is valid or not. Further on, we want to run all tests fast.
+
+
+
+
+Regression bug
+
+Challenge before
+kapag natapos ang project at may additional d namin sire kung may maapektuhan at yun yung regression bug
+
+
+na practice TDD 
+assurance may functionality
+tama kaya wala maapektuhan
+run a test unit test integration test
+
+Functional and end to end;
+
+

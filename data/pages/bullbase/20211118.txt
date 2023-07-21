@@ -1,0 +1,22 @@
+====== Meeting with team about Line reservation ======
+
+Line app reservation
+
+  * reservation module proceed
+  * module and utilize it
+
+
+question
+aurora clinic already had a chat menu or chat bot
+our line mini app will connect on their existing?
+
+
+Database application
+Services web browser
+
+navigation disable and enable
+maintaining price list
+screen flow
+inquiry send message
+
+outside of the application

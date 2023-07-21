@@ -1,0 +1,64 @@
+cypress.json
+
+<code>
+npm install cypress
+npx cypress -v
+npx cypress open
+
+
+</code>
+
+<code>
+{
+ "baseUrl": "http://localhost:3000",
+ "watchForFileChanges": true,
+ "defaultCommandTimeout": 5000
+}
+</code>
+
+<code>
+cy.visit()               //visit URL
+cy.get('.class')         //get Object
+cy.contains('')          //get object by text
+cy.type('')              // use after locating element object and type
+cy.get('.class').click() //Trigger click event
+
+cy.focused().type('').   //type in focused field
+</code>
+
+SERVER WAIT RESPONSE
+<code>
+
+cy.server()
+cy.route('POST','api').as('create')
+
+
+cy.wait('@create');
+</code>
+
+
+<code>
+
+/// <reference types="cypress" />
+
+describe('Log in', ()=>
+{
+
+
+    it('login', ()=>
+    {
+        cy.visit('http://localhost/dokuwiki/doku.php');
+
+        cy.get('.action > a > span').click()
+
+       // cy.get('#focus__this').type('logix01001').should('have.value','logix01001');
+        cy.focused().type('logix01001').should('have.value','logix01001');
+        cy.get(':nth-child(4) > .edit').type('lynadmin{enter}').should('have.value','lynadmin');
+    })
+
+    
+
+
+
+})
+</code>

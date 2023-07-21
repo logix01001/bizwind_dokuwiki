@@ -1,0 +1,39 @@
+
+<h1 class="sectionedit1" id="choose_the_php_version_example_uses_74">Choose the PHP version – example uses 7.4</h1>
+<div class="level1">
+<pre class="code">brew install shivammathur/php/php@7.4</pre>
+<ul>
+<li class="level1"><div class="li"> php@5.6</div>
+</li>
+<li class="level1"><div class="li">     php@7.0</div>
+</li>
+<li class="level1"><div class="li">     php@7.1</div>
+</li>
+<li class="level1"><div class="li">     php@7.2</div>
+</li>
+<li class="level1"><div class="li">     php@7.3</div>
+</li>
+<li class="level1"><div class="li">     php@7.4</div>
+</li>
+<li class="level1"><div class="li">     php@8.0 or known as just php</div>
+</li>
+<li class="level1"><div class="li">     php@8.1</div>
+</li>
+</ul>
+<pre class="code">brew link --overwrite --force php@7.4</pre>
+<pre class="code">LoadModule php7_module /usr/local/opt/php@7.4/lib/httpd/modules/libphp7.so</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Choose the PHP version \u2013 example uses 7.4&quot;,&quot;hid&quot;:&quot;choose_the_php_version_example_uses_74&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:1,&quot;range&quot;:&quot;1-405&quot;} -->
+<h1 class="sectionedit2" id="php_8">PHP 8</h1>
+<div class="level1">
+<pre class="code">LoadModule php_module /usr/local/opt/php@8.0/lib/httpd/modules/libphp.so
+
+
+#Add Line 
+&lt;FilesMatch .php$&gt;
+    SetHandler application/x-httpd-php
+&lt;/FilesMatch&gt;</pre>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;PHP 8&quot;,&quot;hid&quot;:&quot;php_8&quot;,&quot;codeblockOffset&quot;:3,&quot;secid&quot;:2,&quot;range&quot;:&quot;406-&quot;} -->

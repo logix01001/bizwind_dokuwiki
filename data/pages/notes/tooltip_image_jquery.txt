@@ -1,0 +1,42 @@
+====== Jquery ======
+
+<code>
+$('.link-image-tooltip').mouseenter(function(e) {
+     x = e.pageX - $(this).offset().left;
+     y = e.pageY - $(this).offset().top;
+
+     $(this).children("div.tooltip-image").css({'top': y + 10,'left': x + 20,'display':'block'});
+}).mousemove(function(e) {
+     x = e.pageX - $(this).offset().left;
+     y = e.pageY - $(this).offset().top;
+
+     $(this).children("div.tooltip-image").css({'top': y + 10,'left': x + 20});
+}).mouseleave(function() {
+     $(this).children("div.tooltip-image").animate({"opacity": "hide"}, "fast");
+});
+</code>
+
+====== CSS ======
+
+<code>
+.link-image-tooltip
+    position: relative
+    margin: 0px 5px
+
+.tooltip-image
+    display: none
+    position: absolute
+    padding: 8px 0 0 8px
+
+</code>
+
+====== HTML ======
+<code>
+<div class="link-image-tooltip">
+    <a href="#" target="_blank">text</a>
+    <div class="tooltip-image">
+        <img src="src" />
+    </div>
+</div>
+
+</code>

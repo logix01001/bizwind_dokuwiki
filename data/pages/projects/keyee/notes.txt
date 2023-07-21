@@ -1,0 +1,38 @@
+AMAZON
+
+**naoyuki.matsuo@ud-intl.com**
+
+**oPuAtcdrMKYzKFGw46wk**
+
+**RDS**
+
+**keyee_user**
+
+**lx18T7MoglaQySxo**
+
+**RDS STG**
+
+**stg_keyee_user**
+
+**To78MpBX9rkmJsns**
+
+**Google Account**
+
+**keyeeuser2022**
+
+**Keyeeuser2022!**
+
+TERMS FEED
+
+PW:
+Lynadmin2018
+
+https://www.termsfeed.com/live/79b8fcf2-7c3b-49cf-bd0d-f8ab60960418
+
+
+====== SES ======
+
+AWS_SES_ACCESS_KEY_ID=AKIAXTEVKBOHAFTNHSRI
+AWS_SES_SECRET_ACCESS_KEY=BJoOy4O4vx6HYO1yPFLqubPkIEQZoElRRnUVxT7lIE+e
+
+https://www.termsfeed.com/live/9b920e19-9044-43c8-8b6e-d822c8b7b3eb

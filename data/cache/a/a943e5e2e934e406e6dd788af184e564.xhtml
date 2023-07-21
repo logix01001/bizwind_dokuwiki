@@ -1,0 +1,24 @@
+
+<p>
+Doctrine ORM - Order by ASC with NULL values last
+32&times;32
+Michael Agbenyegah
+April 7, 2020
+Issue
+Assuming I am attempting to fetch data from a table which contains course modules, with a custom field for course ordering which defaults null.
+</p>
+<pre class="code">$query = $this-&gt;createQueryBuilder(&#039;m&#039;)
+            -&gt;addOrderBy(&#039;m.listOrder&#039;,&#039;ASC&#039;);</pre>
+
+<p>
+The result of this query will be sorted as defined. However our rows with null list_order entries will appear first before the other rows.
+</p>
+
+<p>
+Solution
+In order to make those entries follow the non-null entries from the bottom we add a select and create a hidden variable to handle the null values.
+</p>
+<pre class="code">$query = $this-&gt;createQueryBuilder(&#039;m&#039;)
+            -&gt;addSelect(&#039;CASE WHEN m.listOrder IS NULL THEN 1 ELSE 0 END as HIDDEN list_order_is_null&#039;)
+            -&gt;addOrderBy(&#039;list_order_is_null&#039;,&#039;ASC&#039;) // always ASC
+            -&gt;addOrderBy(&#039;m.listOrder&#039;,&#039;ASC&#039;); //DESC or ASC</pre>

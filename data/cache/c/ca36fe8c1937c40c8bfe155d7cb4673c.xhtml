@@ -1,0 +1,118 @@
+
+<p>
+email
+Check valid email address
+integer
+Integer value only like 1,2,5,200 etc
+numeric
+Any numeric value like 1,2,5,1.2,5.30 etc
+string
+Allow string
+regex:/(^[\pL0-9 ]+$)/u
+Allow letter, number &amp; space only
+json
+Valid JSON string
+accepted
+Allow yes, on, 1, or true
+active_url
+Check active <abbr title="Uniform Resource Locator">URL</abbr>
+url
+Check valid <abbr title="Uniform Resource Locator">URL</abbr>
+recaptcha
+Protect spam form submission by Google reCaptcha validation
+ip
+Check valid IP address
+ipv4
+Check valid IPv4 address
+ipv6
+Check valid IPv6 address
+after:YYYY-MM-DD
+Check given date is after YYYY-MM-DD
+before:YYYY-MM-DD
+Check given date is before YYYY-MM-DD
+date_format:YYYY-MM-DD
+Check the date format is YYYY-MM-DD
+alpha
+Alphabetic characters
+alpha_dash
+Allow alpha-numeric characters, dash, underscore
+alpha_num
+Alpha-numeric characters only
+array
+PHP array. Example: [1,2,3]
+lt:field
+Allow less value than the given field
+lte:field
+Allow less or equal value than the given field
+gt:field
+Allow greater value than the given field
+gte:field
+Allow greater or equal value than the given field
+distinct
+Allow array value without duplicate value
+between:1,10
+Check number between
+confirmed
+Matching fields like password match with password_confirmation
+date
+Must valid, non-relative date
+timezone
+Valid timezone. Example &#039;user_timezone&#039; ⇒ &#039;timezone:America/Los_Angeles&#039; Timezone list
+different:fieldname
+Given value must have a different value than fieldname
+digits:value
+Numeric &amp; exact length of value
+digits_between:min,max
+Numeric &amp; between min, max
+boolean
+Allow boolean value only
+in:foo,bar,…
+Value must be included given comma separated list
+not_in:foo,bar,…
+Value must not be included given comma separated list
+image
+Must be an image like jpeg, png, bmp, gif, svg, or webp
+dimensions
+Must be an image with defined dimensions.
+Example &#039;user_photo&#039; ⇒ &#039;dimensions:min_width=150,min_height=150&#039;
+mimes:jpeg,png
+Example &#039;photo&#039; ⇒ &#039;mimes:jpeg,bmp,png&#039;
+mimetypes:text/plain,…
+Example &#039;photo&#039; ⇒ &#039;image/png&#039;
+max:value
+Allow max value. Example &#039;withdraw_amount&#039;⇒&#039;max:500&#039;
+min:value
+Allow min value. Example &#039;trx_amount&#039;⇒&#039;min:50&#039;
+regex:[0-9]
+Allow value with regular expression.
+sometimes
+Only validate when value exist
+required
+Value must be required
+required_if:another_field,value
+Required only if another_field value is same
+required_with:foo,bar,…
+Required and exist any of foo,bar,…
+required_with_all:foo,bar,…
+Required and exist all foo,bar,…
+required_without:foo,bar,…
+Required and any value without these foo,bar,…
+required_without_all:foo,bar,…
+Required and any value without all foo,bar,…
+same:field
+Value must match with the field
+size:value
+It is dynamic.
+For string count characters &#039;title&#039; ⇒ &#039;size:12&#039;
+For integer check equal &#039;seats&#039; ⇒ &#039;integer|size:10&#039;
+For array check array elements &#039;tags&#039; ⇒ &#039;array|size:5&#039;
+for image check size in KB &#039;image&#039; ⇒ &#039;file|size:512&#039;
+password:password:guard_name
+Must match with auth user password according to guard name.
+Example &#039;password&#039; ⇒ &#039;password:api&#039;
+unique:table,column,except,idColumn
+Unique value check on table.
+Example: &#039;email&#039; ⇒ &#039;exists:users,email,id,&#039;. $this→id
+exists:table,column
+Check value already exist. Example: &#039;email&#039; ⇒ &#039;exists:users,email&#039;
+</p>

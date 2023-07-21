@@ -1,0 +1,102 @@
+
+<h1 class="sectionedit1" id="setup_webdevops">Setup webdevops</h1>
+<div class="level1">
+<dl class="file">
+<dt><a href="/doku.php?do=export_code&amp;id=notes:docker:webdevops&amp;codeblock=0" title="Download Snippet" class="mediafile mf_yml">docker-compose.yml</a></dt>
+<dd><pre class="code file yml">version: '3.8'
+&nbsp;
+services:
+  database:
+    container_name: database
+    image: mysql:8.0
+    ports:
+      - '4306:3306'
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      - MYSQL_DATABASE=bems
+      - MYSQL_ROOT_PASSWORD=bizwind
+      - MYSQL_USER=bems
+      - MYSQL_PASSWORD=bizwind
+    volumes:
+      - bems-mysql-data:/var/lib/mysql
+&nbsp;
+  app:
+    container_name: app
+    environment:
+      - XDEBUG_MODE=debug
+      - XDEBUG_CLIENT_HOST=host.docker.internal
+      - XDEBUG_START_WITH_REQUEST=yes
+      - XDEBUG_CLIENT_PORT=9003
+    build:
+      context: .
+      dockerfile: ./app/Dockerfile
+    ports:
+      - &quot;8080:80&quot;
+    volumes:
+      - ./app:/var/www/app
+      - ./nginx/vhost.conf:/opt/docker/etc/nginx/vhost.conf
+    depends_on:
+      - database
+&nbsp;
+volumes:
+  bems-mysql-data:</pre>
+</dd></dl>
+
+<p>
+<strong>Xdebug launch.json</strong>
+</p>
+<dl class="file">
+<dt><a href="/doku.php?do=export_code&amp;id=notes:docker:webdevops&amp;codeblock=1" title="Download Snippet" class="mediafile mf_json">launch.json</a></dt>
+<dd><pre class="code file json">{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+&nbsp;
+    &quot;version&quot;: &quot;0.2.0&quot;,
+    &quot;configurations&quot;: [
+        {
+            &quot;name&quot;: &quot;Launch BEMS in xDebug Mode&quot;,
+            &quot;type&quot;: &quot;php&quot;,
+            &quot;request&quot;: &quot;launch&quot;,
+            &quot;port&quot;: 9003,
+            &quot;pathMappings&quot;: {
+                &quot;/var/www/app&quot;: &quot;${workspaceFolder}/app&quot;
+            },
+        }
+    ]
+}</pre>
+</dd></dl>
+<dl class="file">
+<dt><a href="/doku.php?do=export_code&amp;id=notes:docker:webdevops&amp;codeblock=2" title="Download Snippet" class="mediafile mf_">dockerfile</a></dt>
+<dd><pre class="code file dockerfile">FROM webdevops/php-nginx-dev:8.2-alpine AS base
+&nbsp;
+WORKDIR /var/www/app
+&nbsp;
+RUN apk add npm nodejs=16.20.1-r0 --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.16/main/
+RUN npm install -g yarn</pre>
+</dd></dl>
+<dl class="file">
+<dt><a href="/doku.php?do=export_code&amp;id=notes:docker:webdevops&amp;codeblock=3" title="Download Snippet" class="mediafile mf_conf">vhost.conf</a></dt>
+<dd><pre class="code file conf">server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+&nbsp;
+    server_name  _ *.vm docker;
+&nbsp;
+    root &quot;/var/www/app/public&quot;;
+    index index.php;
+&nbsp;
+    include /opt/docker/etc/nginx/vhost.common.d/*.conf;
+}</pre>
+</dd></dl>
+
+<p>
+<strong>xdebug for docker container</strong>
+<a href="https://dev.to/jackmiras/xdebug-in-vscode-with-docker-379l" class="urlextern" title="https://dev.to/jackmiras/xdebug-in-vscode-with-docker-379l" rel="ugc nofollow">https://dev.to/jackmiras/xdebug-in-vscode-with-docker-379l</a>
+</p>
+
+<p>
+<a href="https://dockerfile.readthedocs.io/en/latest/content/DockerImages/dockerfiles/php-nginx-dev.html" class="urlextern" title="https://dockerfile.readthedocs.io/en/latest/content/DockerImages/dockerfiles/php-nginx-dev.html" rel="ugc nofollow">https://dockerfile.readthedocs.io/en/latest/content/DockerImages/dockerfiles/php-nginx-dev.html</a>
+</p>
+
+</div>

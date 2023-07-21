@@ -1,0 +1,37 @@
+====== Choose the PHP version – example uses 7.4 ======
+
+
+<code>
+brew install shivammathur/php/php@7.4
+</code>
+  * php@5.6
+  *     php@7.0
+  *     php@7.1
+  *     php@7.2
+  *     php@7.3
+  *     php@7.4
+  *     php@8.0 or known as just php
+  *     php@8.1
+
+<code>
+brew link --overwrite --force php@7.4
+</code>
+
+<code>
+LoadModule php7_module /usr/local/opt/php@7.4/lib/httpd/modules/libphp7.so
+</code>
+
+
+====== PHP 8 ======
+
+<code>
+LoadModule php_module /usr/local/opt/php@8.0/lib/httpd/modules/libphp.so
+
+
+#Add Line 
+<FilesMatch .php$>
+    SetHandler application/x-httpd-php
+</FilesMatch>
+</code>
+
+

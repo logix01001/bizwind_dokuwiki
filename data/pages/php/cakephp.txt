@@ -1,0 +1,11 @@
+<file php cake.php>
+// Set the layout.
+$this->viewBuilder()->setLayout('admin');
+
+// Before 3.4
+$this->viewBuilder()->layout('admin');
+
+// Before 3.1
+$this->layout = 'admin';
+
+</file>
